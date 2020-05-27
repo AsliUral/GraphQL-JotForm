@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "react-dom";
 import AceEditor from "react-ace";
 import { format } from "graphql-formatter";
 import "ace-builds/src-noconflict/mode-graphqlschema";
@@ -7,24 +6,7 @@ import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
 import { Button, Icon } from "semantic-ui-react";
-import gql from "graphql-tag";
-import { Query } from "react-apollo";
-import UserQuery from "./UserQuery";
 import AceEditorJS from "./AceEditorJS";
-
-const User_QUERY = gql`
-    query UserQuery {
-        user {
-            name
-            email
-            time_zone
-            account_type
-            status
-            loginToGetSubmissions
-            pdf_designer_group
-        }
-    }
-`;
 
 class AceEditorGraphql extends React.Component {
     constructor(props) {
@@ -37,7 +19,7 @@ class AceEditorGraphql extends React.Component {
         this.setState({
             codeGraphql: newValue,
         });
-        console.log("change", newValue);
+        //console.log("change", newValue);
     };
     prettify = () => {
         this.setState({
