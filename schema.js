@@ -26,7 +26,7 @@ const UserType = new GraphQLObjectType({
 const UserFormType = new GraphQLObjectType({
     name: "UserFormType",
     fields: () => ({
-        id: { type: GraphQLInt },
+        id: { type: GraphQLString },
         username: { type: GraphQLString },
         type: { type: GraphQLString },
         last_submission: { type: GraphQLString },
@@ -47,7 +47,9 @@ const RootQuery = new GraphQLObjectType({
             },
             resolve(parentValue, args) {
                 return axios
-                    .get(`https://api.jotform.com/user?apiKey=${args.apiKey}`)
+                    .get(
+                        `https://api.jotform.com/user?apiKey=e8d6edf1b4b67670c947ede51ba14398`
+                    )
                     .then((res) => res.data.content);
             },
         },
