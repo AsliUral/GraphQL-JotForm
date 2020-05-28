@@ -5,9 +5,10 @@ import "ace-builds/src-noconflict/mode-graphqlschema";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
-import { Button, Icon, Popup, Image } from "semantic-ui-react";
+import { Button, Icon, Popup, Image, Modal } from "semantic-ui-react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const User_QUERY = gql`
     query UserQuery {
@@ -22,6 +23,19 @@ const User_QUERY = gql`
         }
     }
 `;
+const USERFORM_QUERY = gql`
+    query {
+        userForm(apiKey: "e8d6edf1b4b67670c947ede51ba14398") {
+            id
+            username
+            type
+            last_submission
+            status
+            height
+            count
+        }
+    }
+`;
 
 class AceEditorJS extends React.Component {
     constructor(props) {
@@ -30,6 +44,8 @@ class AceEditorJS extends React.Component {
         this.state = {
             codeJS: "",
             helper: "{ user { name} } ",
+            value: "",
+            copied: false,
         };
         this.user = {
             name: "",
@@ -40,13 +56,15 @@ class AceEditorJS extends React.Component {
             loginToGetSubmissions: "",
             pdf_designer_group: "",
         };
+        this.userForm = [];
         this.userdata = {};
+        this.userformdata = [];
+        this.historyArray = [];
     }
     onChange = (newValue) => {
         this.setState({
             codeJS: newValue,
         });
-        //console.log("change", newValue);
     };
     prettify = () => {
         this.setState({
@@ -55,33 +73,42 @@ class AceEditorJS extends React.Component {
     };
     play = () => {
         this.userdata = {};
-        if (this.props.codeGraphql.includes("name")) {
-            this.userdata.name = this.user.name;
+        this.userformdata = {};
+        // if (this.props.codeGraphql.includes("userForm")) {
+        //     console.log("ı am in userform");
+        //     console.log(
+        //         JSON.stringify(this.userForm.map((val) => val.username))
+        //     );
+        //     this.onChange(JSON.stringify(this.userForm.username));
+        // }
+        if (this.props.codeGraphql.includes("user")) {
+            console.log("ı am in user");
+            if (this.props.codeGraphql.includes("name")) {
+                this.userdata.name = this.user.name;
+            }
+            if (this.props.codeGraphql.includes("email")) {
+                this.userdata.email = this.user.email;
+            }
+            if (this.props.codeGraphql.includes("time_zone")) {
+                this.userdata.time_zone = this.user.time_zone;
+            }
+            if (this.props.codeGraphql.includes("account_type")) {
+                this.userdata.account_type = this.user.account_type;
+            }
+            if (this.props.codeGraphql.includes("status")) {
+                this.userdata.status = this.user.status;
+            }
+            if (this.props.codeGraphql.includes("loginToGetSubmissions")) {
+                this.userdata.loginToGetSubmissions = this.user.loginToGetSubmissions;
+            }
+            if (this.props.codeGraphql.includes("pdf_designer_group")) {
+                this.userdata.pdf_designer_group = this.user.pdf_designer_group;
+            }
         }
-        if (this.props.codeGraphql.includes("email")) {
-            this.userdata.email = this.user.email;
-        }
-        if (this.props.codeGraphql.includes("time_zone")) {
-            this.userdata.time_zone = this.user.time_zone;
-        }
-        if (this.props.codeGraphql.includes("account_type")) {
-            this.userdata.account_type = this.user.account_type;
-        }
-        if (this.props.codeGraphql.includes("status")) {
-            this.userdata.status = this.user.status;
-        }
-        if (this.props.codeGraphql.includes("loginToGetSubmissions")) {
-            this.userdata.loginToGetSubmissions = this.user.loginToGetSubmissions;
-        }
-        if (this.props.codeGraphql.includes("pdf_designer_group")) {
-            this.userdata.pdf_designer_group = this.user.pdf_designer_group;
-        }
+        this.historyArray.push(this.props.codeGraphql + " \n");
         console.log(this.codeJS);
         this.onChange("");
         this.onChange(JSON.stringify(this.userdata));
-    };
-    getData = (data) => {
-        //console.log("burasi getdata", data.user.name);
     };
     render() {
         return (
@@ -92,6 +119,47 @@ class AceEditorJS extends React.Component {
                         <Icon name="play circle outline" />
                     </Button.Content>
                 </Button>
+                <Modal
+                    trigger={
+                        <Button animated="vertical">
+                            <Button.Content hidden>History</Button.Content>
+                            <Button.Content visible>
+                                <Icon name="history" />
+                            </Button.Content>
+                        </Button>
+                    }
+                    style={{
+                        height: "auto",
+                        top: "auto",
+                        left: "auto",
+                        bottom: "auto",
+                        right: "auto",
+                    }}
+                >
+                    <Modal.Header>History of Query</Modal.Header>
+                    <Modal.Content>
+                        <Modal.Description>
+                            {this.historyArray.map((history) => (
+                                <h2>
+                                    {" "}
+                                    {history}
+                                    <CopyToClipboard text={history}>
+                                        <Button animated="vertical">
+                                            <Button.Content hidden>
+                                                Copy
+                                            </Button.Content>
+                                            <Button.Content visible>
+                                                <Icon name="copy" />
+                                            </Button.Content>
+                                        </Button>
+                                    </CopyToClipboard>
+                                    <br></br>
+                                </h2>
+                            ))}
+                        </Modal.Description>
+                    </Modal.Content>
+                </Modal>
+
                 <AceEditor
                     mode="javascript"
                     theme="dracula"
@@ -129,6 +197,14 @@ class AceEditorJS extends React.Component {
                             data.user.loginToGetSubmissions;
                         this.user.pdf_designer_group =
                             data.user.loginToGetSubmissions;
+                        return <div></div>;
+                    }}
+                </Query>
+                <Query query={USERFORM_QUERY}>
+                    {({ loading, error, data }) => {
+                        if (loading) return <h4> Loading ...</h4>;
+                        if (error) console.log(error);
+                        this.userForm = data.userForm;
                         return <div></div>;
                     }}
                 </Query>

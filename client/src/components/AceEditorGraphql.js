@@ -19,7 +19,6 @@ class AceEditorGraphql extends React.Component {
         this.setState({
             codeGraphql: newValue,
         });
-        //console.log("change", newValue);
     };
     prettify = () => {
         this.setState({
