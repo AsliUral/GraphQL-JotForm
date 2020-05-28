@@ -159,7 +159,20 @@ class AceEditorJS extends React.Component {
                         </Modal.Description>
                     </Modal.Content>
                 </Modal>
-
+                <CopyToClipboard
+                    text={this.state.codeJS}
+                    style={{
+                        position: "absolute",
+                        right: "40px",
+                    }}
+                >
+                    <Button animated="vertical">
+                        <Button.Content hidden>Copy</Button.Content>
+                        <Button.Content visible>
+                            <Icon name="copy" />
+                        </Button.Content>
+                    </Button>
+                </CopyToClipboard>
                 <AceEditor
                     mode="javascript"
                     theme="dracula"
