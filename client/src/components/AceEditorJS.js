@@ -5,7 +5,7 @@ import "ace-builds/src-noconflict/mode-graphqlschema";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
-import { Button, Icon, Image, Popup } from "semantic-ui-react";
+import { Button, Icon, Popup, Image } from "semantic-ui-react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 
