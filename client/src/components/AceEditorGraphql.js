@@ -6,7 +6,7 @@ import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
 import { Button, Icon } from "semantic-ui-react";
-import AceEditorJS from "./AceEditorJS";
+import QueryResult from "./QueryResult";
 
 class AceEditorGraphql extends React.Component {
     constructor(props) {
@@ -57,7 +57,7 @@ class AceEditorGraphql extends React.Component {
                         wrapBehavioursEnabled: true,
                     }}
                 />
-                <AceEditorJS codeGraphql={this.state.codeGraphql} />
+                <QueryResult codeGraphql={this.state.codeGraphql} />
             </>
         );
     }
