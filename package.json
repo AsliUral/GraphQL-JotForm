@@ -43,6 +43,8 @@
         "react-codemirror2": "^7.2.0",
         "react-copy-to-clipboard": "^5.0.2",
         "react-dom": "^16.13.1",
+        "react-json-prettify": "^0.2.0",
+        "react-json-view": "^1.19.1",
         "react-monaco-editor": "^0.36.0",
         "react-prism": "^4.3.2",
         "react-simple-code-editor": "^0.11.0",

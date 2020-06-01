@@ -15,11 +15,11 @@ class QueryResult extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            codeJS: "",
+            codeJS: {},
             copied: false,
             queryText: "",
             currentQuery: gql`
-                query {
+                {
                     ${`queryText`}
                 }
             `,
@@ -68,9 +68,9 @@ class QueryResult extends React.Component {
                         {({ loading, error, data }) => {
                             if (loading) return <h4> Loading ...</h4>;
                             if (error) console.log(error);
-                            this.setData(JSON.stringify(data));
+                            this.setData(data);
                             this.setState({
-                                codeJS: JSON.stringify(data),
+                                codeJS: data,
                             });
                             this.setState({
                                 buttonClick: false,
