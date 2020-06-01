@@ -8,13 +8,7 @@ class CopyClipBoard extends React.Component {
     }
     render() {
         return (
-            <CopyToClipboard
-                text={this.props.copy}
-                style={{
-                    position: "absolute",
-                    right: "40px",
-                }}
-            >
+            <CopyToClipboard text={this.props.copy}>
                 <Button animated="vertical">
                     <Button.Content hidden>Copy</Button.Content>
                     <Button.Content visible>

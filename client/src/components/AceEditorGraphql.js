@@ -7,6 +7,7 @@ import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
 import { Button, Icon } from "semantic-ui-react";
 import QueryResult from "./QueryResult";
+import CopyToClipboard from "./CopyToClipboard";
 
 class AceEditorGraphql extends React.Component {
     constructor(props) {
@@ -34,6 +35,7 @@ class AceEditorGraphql extends React.Component {
                         <Icon name="leaf" />
                     </Button.Content>
                 </Button>
+                <CopyToClipboard copy={this.state.codeGraphql} />
                 <AceEditor
                     mode="graphqlschema"
                     theme="dracula"

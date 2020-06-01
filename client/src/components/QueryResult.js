@@ -6,10 +6,10 @@ import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import CopyToClipboard from "./CopyToClipboard";
 import HistoryModal from "./HistoryModal";
 import AceEditorJS from "./AceEditorJS";
 import PopupIcon from "./PopupIcon";
+import Loader from "./Loader";
 
 class QueryResult extends React.Component {
     constructor(props) {
@@ -61,12 +61,11 @@ class QueryResult extends React.Component {
                     </Button.Content>
                 </Button>
                 <HistoryModal historyArray={this.historyArray} />
-                <CopyToClipboard copy={this.state.codeJS} />
                 <AceEditorJS codeJS={this.state.codeJS} />
                 {this.state.buttonClick === true ? (
                     <Query query={this.state.currentQuery}>
                         {({ loading, error, data }) => {
-                            if (loading) return <h4> Loading ...</h4>;
+                            if (loading) return <Loader />;
                             if (error) console.log(error);
                             this.setData(data);
                             this.setState({
