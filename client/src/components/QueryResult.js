@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Icon, Popup, Image } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 import "ace-builds/src-noconflict/mode-graphqlschema";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
@@ -17,32 +17,40 @@ class QueryResult extends React.Component {
         this.state = {
             codeJS: "",
             copied: false,
-            currentQuery: gql("query{user{name}}"),
+            queryText: "",
+            currentQuery: gql`
+                query {
+                    ${`queryText`}
+                }
+            `,
             buttonClick: false,
         };
         this.historyArray = [];
     }
 
+    //run query
     play = () => {
         this.setState({
             currentQuery: gql`
                 ${this.props.codeGraphql}
             `,
+            queryText: this.props.codeGraphql,
+        });
+        this.setState({
             buttonClick: true,
         });
-
         const User_QUERY = gql`
             ${this.props.codeGraphql}
         `;
-
         this.historyArray.push(this.props.codeGraphql + " \n");
     };
-
+    //set aceEditorJs data
     setData = (data) => {
         this.setState({
             codeJS: data,
         });
     };
+
     render() {
         return (
             <>
@@ -61,6 +69,9 @@ class QueryResult extends React.Component {
                             if (loading) return <h4> Loading ...</h4>;
                             if (error) console.log(error);
                             this.setData(JSON.stringify(data));
+                            this.setState({
+                                codeJS: JSON.stringify(data),
+                            });
                             this.setState({
                                 buttonClick: false,
                             });

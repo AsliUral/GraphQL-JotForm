@@ -9,19 +9,6 @@ const {
 } = require("graphql");
 
 //User Type
-const UserType = new GraphQLObjectType({
-    name: "User",
-    fields: () => ({
-        name: { type: GraphQLString },
-        email: { type: GraphQLString },
-        time_zone: { type: GraphQLString },
-        account_type: { type: GraphQLString },
-        status: { type: GraphQLString },
-        loginToGetSubmissions: { type: GraphQLInt },
-        pdf_designer_group: { type: GraphQLInt },
-    }),
-});
-
 // User Form Type
 const UserFormType = new GraphQLObjectType({
     name: "UserFormType",
@@ -33,6 +20,29 @@ const UserFormType = new GraphQLObjectType({
         status: { type: GraphQLString },
         height: { type: GraphQLInt },
         count: { type: GraphQLInt },
+    }),
+});
+
+const UserType = new GraphQLObjectType({
+    name: "User",
+    fields: () => ({
+        name: { type: GraphQLString },
+        email: { type: GraphQLString },
+        time_zone: { type: GraphQLString },
+        account_type: { type: GraphQLString },
+        status: { type: GraphQLString },
+        loginToGetSubmissions: { type: GraphQLInt },
+        pdf_designer_group: { type: GraphQLInt },
+        userform: {
+            type: new GraphQLList(UserFormType),
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/user/forms?apiKey=e8d6edf1b4b67670c947ede51ba14398`
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
     }),
 });
 
@@ -61,7 +71,7 @@ const RootQuery = new GraphQLObjectType({
             resolve(parentValue, args) {
                 return axios
                     .get(
-                        `https://api.jotform.com/user/forms?apiKey=${args.apiKey}`
+                        `https://api.jotform.com/user/forms?apiKey=e8d6edf1b4b67670c947ede51ba14398`
                     )
                     .then((res) => res.data.content);
             },
