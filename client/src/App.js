@@ -5,6 +5,7 @@ import { ApolloProvider } from "react-apollo";
 import "./App.css";
 import "bootswatch/dist/solar/bootstrap.min.css";
 import { Sidebar } from "./components/SideBarDocs/SideBarDocs";
+import AccordionExampleNested from "./components/SideBarDocs/AccordionQueryList/AccordionQueryList";
 
 const client = new ApolloClient({
     uri: "/graphql",
@@ -20,11 +21,7 @@ class App extends Component {
 
                 <AceEditorGraphql />
                 <Sidebar width={300} height={"100vh"}>
-                    <h1>Asli Ural</h1>
-                    <h1>Asli Ural</h1>
-                    <h1>Asli Ural</h1>
-                    <h1>Asli Ural</h1>
-                    <h1>Asli Ural</h1>
+                    <AccordionExampleNested />
                 </Sidebar>
             </ApolloProvider>
         );
