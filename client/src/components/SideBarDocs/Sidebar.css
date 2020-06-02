@@ -8,6 +8,7 @@
     background-color: rgb(255, 255, 255);
     transition: 0.8s ease;
     z-index: 999;
+    position: relative;
 }
 .ui.button.toggle-menu {
     height: 70px;
@@ -16,7 +17,7 @@
     width: 35px;
     position: absolute;
     outline: none;
-    z-index: 1;
+    z-index: 999;
     background-color: rgb(241, 119, 219);
     border-color: rgb(183, 182, 184);
     border-left: 0;
