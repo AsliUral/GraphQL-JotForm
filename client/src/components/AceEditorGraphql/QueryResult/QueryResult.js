@@ -39,15 +39,15 @@ class QueryResult extends React.Component {
         this.setState({
             buttonClick: true,
         });
-        const User_QUERY = gql`
-            ${this.props.codeGraphql}
-        `;
         this.historyArray.push(this.props.codeGraphql + " \n");
     };
     //set aceEditorJs data
     setData = (data) => {
         this.setState({
             codeJS: data,
+        });
+        this.setState({
+            buttonClick: false,
         });
     };
 
@@ -68,13 +68,7 @@ class QueryResult extends React.Component {
                             if (loading) return <Loader />;
                             if (error) console.log(error);
                             this.setData(data);
-                            this.setState({
-                                codeJS: data,
-                            });
-                            this.setState({
-                                buttonClick: false,
-                            });
-                            return data.user.name;
+                            return "";
                         }}
                     </Query>
                 ) : null}
