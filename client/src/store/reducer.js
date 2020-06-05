@@ -14,6 +14,7 @@ const initialState = {
         }
     `,
     playButtonClick: false,
+    queryHistoryArray: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -37,6 +38,10 @@ const reducer = (state = initialState, action) => {
             currentQuery: gql`
                 ${state.codeGraphql}
             `,
+            queryHistoryArray: [
+                ...state.queryHistoryArray,
+                state.codeGraphql + " \n",
+            ],
         };
     }
     if (action.type === "SETQUERYRESULT") {

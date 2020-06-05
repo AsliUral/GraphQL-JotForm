@@ -15,25 +15,17 @@ import Loader from "./Loader/Loader";
 class QueryResult extends React.Component {
     constructor(props) {
         super(props);
-        this.historyArray = [];
     }
-
-    //run query
-    play = () => {
-        this.props.resultOfPlay();
-        this.historyArray.push(this.props.codeGraphql + " \n");
-    };
-
     render() {
         return (
             <>
-                <Button animated="vertical" onClick={this.play}>
+                <Button animated="vertical" onClick={this.props.resultOfPlay}>
                     <Button.Content hidden>Run</Button.Content>
                     <Button.Content visible>
                         <Icon name="play circle outline" />
                     </Button.Content>
                 </Button>
-                <HistoryModal historyArray={this.historyArray} />
+                <HistoryModal />
                 <AceEditorJS />
                 {this.props.playButtonClick === true ? (
                     <Query query={this.props.currentQuery}>
@@ -67,6 +59,7 @@ const mapStateToProps = (state) => {
         queryText: state.queryText,
         currentQuery: state.currentQuery,
         playButtonClick: state.playButtonClick,
+        queryHistoryArray: state.queryHistoryArray,
     };
 };
 const mapDispatchToProps = (dispatch) => {

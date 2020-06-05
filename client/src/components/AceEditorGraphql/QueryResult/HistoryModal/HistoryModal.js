@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import { Button, Icon, Modal } from "semantic-ui-react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
@@ -29,7 +31,7 @@ class HistoryModal extends React.Component {
                     <Modal.Header>History of Query</Modal.Header>
                     <Modal.Content>
                         <Modal.Description>
-                            {this.props.historyArray.map((history) => (
+                            {this.props.queryHistoryArray.map((history) => (
                                 <h2>
                                     {" "}
                                     {history}
@@ -54,4 +56,10 @@ class HistoryModal extends React.Component {
     }
 }
 
-export default HistoryModal;
+const mapStateToProps = (state) => {
+    return {
+        queryHistoryArray: state.queryHistoryArray,
+    };
+};
+
+export default connect(mapStateToProps)(HistoryModal);
