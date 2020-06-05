@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-json";
 import "ace-builds/src-noconflict/theme-dracula";
@@ -26,4 +28,10 @@ class AceEditorJS extends React.Component {
     }
 }
 
-export default AceEditorJS;
+const mapStateToProps = (state) => {
+    return {
+        codeJS: state.codeJS,
+    };
+};
+
+export default connect(mapStateToProps)(AceEditorJS);

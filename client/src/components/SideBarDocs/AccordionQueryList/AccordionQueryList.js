@@ -1,10 +1,12 @@
 import React from "react";
 import { Accordion, Message } from "semantic-ui-react";
+import SearchQuery from "../SearchQuery/SearchQuery";
 
 class AccordionExampleNested extends React.Component {
     constructor(props) {
         super(props);
     }
+
     // find more easy way
     userQuery =
         "name: { type: GraphQLString },email: { type: GraphQLString },time_zone: { type: GraphQLString },account_type: { type: GraphQLString },status: { type: GraphQLString }, loginToGetSubmissions: { type: GraphQLInt }, pdf_designer_group: { type: GraphQLInt },}";
@@ -68,6 +70,7 @@ class AccordionExampleNested extends React.Component {
         return (
             <div>
                 <h1> JotForm Query</h1>
+                <SearchQuery />
                 <Accordion
                     defaultActiveIndex={0}
                     panels={this.rootPanels}

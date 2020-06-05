@@ -1,10 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import { Button, Icon } from "semantic-ui-react";
 import "ace-builds/src-noconflict/mode-graphqlschema";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
-import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import HistoryModal from "./HistoryModal/HistoryModal";
 import AceEditorJS from "./AceEditorJS/AceEditorJS";
@@ -14,41 +15,13 @@ import Loader from "./Loader/Loader";
 class QueryResult extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            codeJS: {},
-            copied: false,
-            queryText: "",
-            currentQuery: gql`
-                {
-                    ${`queryText`}
-                }
-            `,
-            buttonClick: false,
-        };
         this.historyArray = [];
     }
 
     //run query
     play = () => {
-        this.setState({
-            currentQuery: gql`
-                ${this.props.codeGraphql}
-            `,
-            queryText: this.props.codeGraphql,
-        });
-        this.setState({
-            buttonClick: true,
-        });
+        this.props.resultOfPlay();
         this.historyArray.push(this.props.codeGraphql + " \n");
-    };
-    //set aceEditorJs data
-    setData = (data) => {
-        this.setState({
-            codeJS: data,
-        });
-        this.setState({
-            buttonClick: false,
-        });
     };
 
     render() {
@@ -61,14 +34,24 @@ class QueryResult extends React.Component {
                     </Button.Content>
                 </Button>
                 <HistoryModal historyArray={this.historyArray} />
-                <AceEditorJS codeJS={this.state.codeJS} />
-                {this.state.buttonClick === true ? (
-                    <Query query={this.state.currentQuery}>
+                <AceEditorJS />
+                {this.props.playButtonClick === true ? (
+                    <Query query={this.props.currentQuery}>
                         {({ loading, error, data }) => {
                             if (loading) return <Loader />;
                             if (error) console.log(error);
-                            this.setData(data);
-                            return "";
+                            if (data) {
+                                this.props.setQueryResult(data);
+                                return "";
+                            } else {
+                                const wrongQuery = {
+                                    Message: "Wrong Query",
+                                    Helper: "Please check docs",
+                                    Query: this.props.codeGraphql,
+                                };
+                                this.setData(wrongQuery);
+                                return "";
+                            }
                         }}
                     </Query>
                 ) : null}
@@ -78,4 +61,20 @@ class QueryResult extends React.Component {
     }
 }
 
-export default QueryResult;
+const mapStateToProps = (state) => {
+    return {
+        codeJS: state.codeJS,
+        queryText: state.queryText,
+        currentQuery: state.currentQuery,
+        playButtonClick: state.playButtonClick,
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        resultOfPlay: () => dispatch({ type: "RESULTOFPLAY" }),
+        setQueryResult: (value) =>
+            dispatch({ type: "SETQUERYRESULT", val: value }),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(QueryResult);
