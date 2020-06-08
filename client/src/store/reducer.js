@@ -15,6 +15,7 @@ const initialState = {
     `,
     playButtonClick: false,
     queryHistoryArray: [],
+    xPosition: 300,
 };
 
 const reducer = (state = initialState, action) => {
@@ -49,6 +50,12 @@ const reducer = (state = initialState, action) => {
             ...state,
             playButtonClick: false,
             codeJS: action.val,
+        };
+    }
+    if (action.type === "SETXPOSITION") {
+        return {
+            ...state,
+            xPosition: action.val,
         };
     }
     return state;

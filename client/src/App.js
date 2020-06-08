@@ -4,7 +4,7 @@ import AceEditorGraphql from "./components/AceEditorGraphql/AceEditorGraphql";
 import { ApolloProvider } from "react-apollo";
 import "./App.css";
 import "bootswatch/dist/solar/bootstrap.min.css";
-import { Sidebar } from "./components/SideBarDocs/SideBarDocs";
+import Sidebar from "./components/SideBarDocs/SideBarDocs";
 import AccordionExampleNested from "./components/SideBarDocs/AccordionQueryList/AccordionQueryList";
 
 const client = new ApolloClient({
@@ -20,7 +20,7 @@ class App extends Component {
                 </div>
 
                 <AceEditorGraphql />
-                <Sidebar width={300} height={"100vh"}>
+                <Sidebar width={-300} height={"100vh"}>
                     <AccordionExampleNested />
                 </Sidebar>
             </ApolloProvider>

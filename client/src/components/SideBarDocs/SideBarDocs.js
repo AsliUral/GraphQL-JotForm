@@ -1,55 +1,66 @@
 import "./Sidebar.css";
 import React from "react";
+import { connect } from "react-redux";
 import { Button, Icon } from "semantic-ui-react";
 
-export const Sidebar = ({ width, height, children }) => {
-    const [xPosition, setX] = React.useState(-width);
+class Sidebar extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
-    //when clicked, xPosition should be change
-    const toggleMenu = () => {
-        if (xPosition < 0) {
-            setX(0);
+    toggleMenu = () => {
+        console.log("toggle menu ilk xPos", this.props.xPosition);
+        if (this.props.xPosition === 0) {
+            this.props.setXPosition(300);
+            console.log("toggle", this.props.xPosition);
         } else {
-            setX(-width);
+            this.props.setXPosition(0);
+            console.log("toggle", this.props.xPosition);
         }
     };
 
     // after first render component
-    React.useEffect(() => {
-        setX(-width);
-    }, []); // componentDidMount
-
-    return (
-        <React.Fragment>
-            <div
-                className="side-bar"
-                style={{
-                    transform: `translatex(${xPosition}px)`,
-                    width: width,
-                    minHeight: height,
-                }}
-            >
-                <Button
-                    animated="vertical"
-                    className="toggle-menu"
-                    onClick={() => toggleMenu()}
+    useEffect() {
+        this.props.setXPosition(0);
+    } // componentDidMount
+    render() {
+        return (
+            <React.Fragment>
+                <div
+                    className="side-bar"
                     style={{
-                        transform: `translate(${width}px, 20vh)`,
+                        transform: `translatex(${this.props.xPosition}px)`,
+                        width: this.props.width,
+                        minHeight: this.props.height,
                     }}
                 >
-                    <Button.Content hidden>Docs</Button.Content>
-                    <Button.Content visible>
-                        <Icon
-                            className="toggle-menu"
-                            style={{
-                                transform: `translate(${width}px, 20vh)`,
-                            }}
-                            name="bookmark"
-                        />
-                    </Button.Content>
-                </Button>
-                <div className="content">{children}</div>
-            </div>
-        </React.Fragment>
-    );
+                    <Button
+                        animated="vertical"
+                        className="toggle-menu"
+                        onClick={() => this.toggleMenu()}
+                        style={{
+                            transform: `translate(${this.props.width}px, 20vh)`,
+                        }}
+                    >
+                        <Button.Content hidden>Docs</Button.Content>
+                        <Button.Content visible></Button.Content>
+                    </Button>
+                    <div className="content">{this.props.children}</div>
+                </div>
+            </React.Fragment>
+        );
+    }
+}
+const mapStateToProps = (state) => {
+    return {
+        xPosition: state.xPosition,
+    };
 };
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setXPosition: (value) => dispatch({ type: "SETXPOSITION", val: value }),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
