@@ -2,6 +2,7 @@ import "./Sidebar.css";
 import React from "react";
 import { connect } from "react-redux";
 import { Button, Icon } from "semantic-ui-react";
+import WindowSizeListener from "react-window-size-listener";
 
 class Sidebar extends React.Component {
     constructor(props) {
@@ -47,6 +48,12 @@ class Sidebar extends React.Component {
                     </Button>
                     <div className="content">{this.props.children}</div>
                 </div>
+                <WindowSizeListener
+                    onResize={(windowSize) => {
+                        console.log("Window height", windowSize.windowHeight);
+                        console.log("Window width", windowSize.windowWidth);
+                    }}
+                />
             </React.Fragment>
         );
     }

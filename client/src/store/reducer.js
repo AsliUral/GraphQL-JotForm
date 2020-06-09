@@ -13,9 +13,9 @@ const initialState = {
             ${`queryText`}
         }
     `,
-    playButtonClick: false,
-    queryHistoryArray: [],
+    queryHistory: [],
     xPosition: 300,
+    querymark: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -34,21 +34,16 @@ const reducer = (state = initialState, action) => {
     if (action.type === "RESULTOFPLAY") {
         return {
             ...state,
-            playButtonClick: true,
             queryText: state.codeGraphql,
             currentQuery: gql`
                 ${state.codeGraphql}
             `,
-            queryHistoryArray: [
-                ...state.queryHistoryArray,
-                state.codeGraphql + " \n",
-            ],
+            queryHistory: [...state.queryHistory, state.codeGraphql + " \n"],
         };
     }
     if (action.type === "SETQUERYRESULT") {
         return {
             ...state,
-            playButtonClick: false,
             codeJS: action.val,
         };
     }
@@ -58,6 +53,13 @@ const reducer = (state = initialState, action) => {
             xPosition: action.val,
         };
     }
+    if (action.type === "ADDMARKQUERY") {
+        return {
+            ...state,
+            querymark: [...state.querymark, state.codeGraphql + " \n"],
+        };
+    }
+
     return state;
 };
 

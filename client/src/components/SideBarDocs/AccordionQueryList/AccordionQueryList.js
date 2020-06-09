@@ -1,6 +1,8 @@
 import React from "react";
-import { Accordion, Message } from "semantic-ui-react";
+import { Accordion, Message, Tab } from "semantic-ui-react";
 import SearchQuery from "../SearchQuery/SearchQuery";
+import { connect } from "react-redux";
+import CopyToClipboard from "../../CopyToClipboard";
 
 class AccordionExampleNested extends React.Component {
     constructor(props) {
@@ -65,20 +67,55 @@ class AccordionExampleNested extends React.Component {
             content: { content: this.userFormContent },
         },
     ];
-
+    panes = [
+        {
+            menuItem: "Marked Query",
+            render: () => (
+                <Tab.Pane>
+                    {this.props.querymark.map((q) => {
+                        return (
+                            <div>
+                                <CopyToClipboard text={q} />
+                                <li> {q}</li>
+                            </div>
+                        );
+                    })}
+                </Tab.Pane>
+            ),
+        },
+        {
+            menuItem: "Schema Details",
+            render: () => (
+                <Tab.Pane>
+                    <Accordion
+                        defaultActiveIndex={0}
+                        panels={this.rootPanels}
+                        styled
+                    />
+                </Tab.Pane>
+            ),
+        },
+    ];
     render() {
         return (
             <div>
                 <h1> JotForm Query</h1>
-                <SearchQuery />
+                {this.props.querymark.map((q) => {})}
+                {/* <SearchQuery />
                 <Accordion
                     defaultActiveIndex={0}
                     panels={this.rootPanels}
                     styled
-                />
+                /> */}
+                <Tab panes={this.panes} />
             </div>
         );
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        querymark: state.querymark,
+    };
+};
 
-export default AccordionExampleNested;
+export default connect(mapStateToProps)(AccordionExampleNested);
