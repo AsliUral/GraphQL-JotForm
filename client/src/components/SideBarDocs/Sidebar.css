@@ -1,19 +1,5 @@
-.side-bar {
-    height: 100% !important;
-    display: flex;
-    margin-left: 82%;
-    flex-direction: column;
-    border-right: 1px solid;
-    border-radius: 0;
-    border-color: rgba(145, 113, 152, 0.693);
-    background-color: rgb(255, 255, 255);
-    transition: 0.8s ease;
-    z-index: 999;
-    position: relative;
-}
 .ui.button.toggle-menu {
     height: 70px;
-    margin-left: 80%;
     border-top-left-radius: 30rem;
     border-bottom-left-radius: 29rem;
     width: 35px;

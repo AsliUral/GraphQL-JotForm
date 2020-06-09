@@ -16,6 +16,8 @@ const initialState = {
     queryHistory: [],
     xPosition: 300,
     querymark: [],
+    sidebarOpen: false,
+    sidebarDocked: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -59,7 +61,18 @@ const reducer = (state = initialState, action) => {
             querymark: [...state.querymark, state.codeGraphql + " \n"],
         };
     }
-
+    if (action.type === "ONSETSIDEBAROPEN") {
+        return {
+            ...state,
+            sidebarOpen: action.val,
+        };
+    }
+    if (action.type === "PINSIDEBAR") {
+        return {
+            ...state,
+            sidebarDocked: action.val,
+        };
+    }
     return state;
 };
 

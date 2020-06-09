@@ -19,6 +19,7 @@ class EditorAceQuery extends React.Component {
                         position: "absolute",
                         left: "40px",
                         width: "700px",
+                        zIndex: 999,
                     }}
                     value={this.props.codeGraphql}
                     onChange={this.props.onChangecodeGraphql}
