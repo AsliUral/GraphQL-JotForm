@@ -11,20 +11,19 @@ class QueryData extends React.Component {
             <>
                 <Query query={this.props.currentQuery}>
                     {({ loading, error, data }) => {
+                        this.props.setQueryResult({});
                         if (loading) return <Loader />;
-                        if (error) console.log(error);
+                        if (error) {
+                            this.props.setQueryResult(
+                                ...error.networkError.result.errors
+                            );
+                            return "";
+                        }
                         if (data) {
                             this.props.setQueryResult(data);
                             return "";
-                        } else {
-                            const wrongQuery = {
-                                Message: "Wrong Query",
-                                Helper: "Please check docs",
-                                Query: this.props.query,
-                            };
-                            //this.setData(wrongQuery);
-                            return "";
                         }
+                        return "";
                     }}
                 </Query>
             </>
