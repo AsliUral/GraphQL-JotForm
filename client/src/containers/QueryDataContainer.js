@@ -4,7 +4,7 @@ import QueryData from "../components/QueryData";
 
 const mapStateToProps = (state) => {
     return {
-        queryText: state.queryText,
+        query: state.query,
         currentQuery: state.currentQuery,
     };
 };

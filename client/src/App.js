@@ -5,7 +5,6 @@ import { ApolloProvider } from "react-apollo";
 import "./App.css";
 import "bootswatch/dist/solar/bootstrap.min.css";
 import Sidebar from "./containers/SideBarContainer";
-import AccordionExampleNested from "./components/SideBarDocs/AccordionQueryList/AccordionQueryList";
 const client = new ApolloClient({
     uri: "/graphql",
 });
@@ -18,7 +17,7 @@ class App extends Component {
                     <h1>GraphQL</h1>
                 </div>
                 <Editor />
-                <Sidebar>{/* <AccordionExampleNested /> */}</Sidebar>
+                <Sidebar />
             </ApolloProvider>
         );
     }

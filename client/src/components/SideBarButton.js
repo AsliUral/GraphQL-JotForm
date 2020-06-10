@@ -1,11 +1,6 @@
-import "./SideBarDocs/Sidebar.css";
-// import React from "react";
-// import { connect } from "react-redux";
+import "../style/Sidebar.css";
 import { Button, Icon } from "semantic-ui-react";
 import React from "react";
-import Sidebar from "react-sidebar";
-
-const mql = window.matchMedia(`(min-width: 800px)`);
 
 class SideBarButton extends React.Component {
     constructor(props) {

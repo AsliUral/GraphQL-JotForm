@@ -7,10 +7,10 @@ const reactRedux = require("react-redux");
 const initialState = {
     codeGraphql: "",
     codeJS: {},
-    queryText: "",
+    query: "",
     currentQuery: gql`
         {
-            ${`queryText`}
+            ${`query`}
         }
     `,
     queryHistory: [],
@@ -36,7 +36,7 @@ const reducer = (state = initialState, action) => {
     if (action.type === "RESULTOFPLAY") {
         return {
             ...state,
-            queryText: state.codeGraphql,
+            query: state.codeGraphql,
             currentQuery: gql`
                 ${state.codeGraphql}
             `,
