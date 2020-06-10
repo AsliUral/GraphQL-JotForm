@@ -20,7 +20,7 @@ class QueryData extends React.Component {
                             const wrongQuery = {
                                 Message: "Wrong Query",
                                 Helper: "Please check docs",
-                                Query: this.props.codeGraphql,
+                                Query: this.props.query,
                             };
                             //this.setData(wrongQuery);
                             return "";

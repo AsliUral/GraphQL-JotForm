@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        prettifycodeGraphql: () => dispatch({ type: "PRETTIFYGRAPHQL" }),
+        prettifyQuery: () => dispatch({ type: "PRETTIFYQUERY" }),
     };
 };
 

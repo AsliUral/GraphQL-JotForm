@@ -7,10 +7,7 @@ class Prettify extends React.Component {
     }
     render() {
         return (
-            <Button
-                animated="vertical"
-                onClick={this.props.prettifycodeGraphql}
-            >
+            <Button animated="vertical" onClick={this.props.prettifyQuery}>
                 <Button.Content hidden>Prettify</Button.Content>
                 <Button.Content visible>
                     <Icon name="leaf" />

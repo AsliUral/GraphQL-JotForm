@@ -3,14 +3,14 @@ import EditorAceQuery from "../components/EditorAceQuery";
 
 const mapStateToProps = (state) => {
     return {
-        codeGraphql: state.codeGraphql,
+        query: state.query,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onChangecodeGraphql: (value) =>
-            dispatch({ type: "ONCHANGEGRAPHQL", val: value }),
+        onChangeQuery: (value) =>
+            dispatch({ type: "ONCHANGEQUERY", val: value }),
     };
 };
 

@@ -8,7 +8,7 @@ class CopyClipBoard extends React.Component {
     }
     render() {
         return (
-            <CopyToClipboard text={this.props.codeGraphql}>
+            <CopyToClipboard text={this.props.query}>
                 <Button animated="vertical">
                     <Button.Content hidden>Copy</Button.Content>
                     <Button.Content visible>

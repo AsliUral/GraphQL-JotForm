@@ -4,7 +4,7 @@ import QueryMark from "../components/QueryMark";
 
 const mapStateToProps = (state) => {
     return {
-        querymark: state.querymark,
+        queryMark: state.queryMark,
     };
 };
 const mapDispatchToProps = (dispatch) => {

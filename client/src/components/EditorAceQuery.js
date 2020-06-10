@@ -21,8 +21,8 @@ class EditorAceQuery extends React.Component {
                         width: "700px",
                         zIndex: 999,
                     }}
-                    value={this.props.codeGraphql}
-                    onChange={this.props.onChangecodeGraphql}
+                    value={this.props.query}
+                    onChange={this.props.onChangeQuery}
                     name="UNIQUE_ID_OF_DIV"
                     enableSnippets={true}
                     enableLiveAutocompletion={true}

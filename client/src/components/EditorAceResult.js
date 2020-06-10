@@ -12,7 +12,7 @@ class EditorAceResult extends React.Component {
         return (
             <>
                 <ReactJson
-                    src={this.props.codeJS}
+                    src={this.props.result}
                     style={{
                         position: "absolute",
                         right: "40px",

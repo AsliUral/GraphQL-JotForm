@@ -1,12 +1,8 @@
 import { format } from "graphql-formatter";
 import gql from "graphql-tag";
 
-const redux = require("redux");
-const reactRedux = require("react-redux");
-
 const initialState = {
-    codeGraphql: "",
-    codeJS: {},
+    result: {},
     query: "",
     currentQuery: gql`
         {
@@ -14,51 +10,44 @@ const initialState = {
         }
     `,
     queryHistory: [],
-    xPosition: 300,
-    querymark: [],
+    queryMark: [],
     sidebarOpen: false,
     sidebarDocked: false,
 };
 
 const reducer = (state = initialState, action) => {
-    if (action.type === "ONCHANGEGRAPHQL") {
+    if (action.type === "ONCHANGEQUERY") {
         return {
             ...state,
-            codeGraphql: action.val,
+            query: action.val,
         };
     }
-    if (action.type === "PRETTIFYGRAPHQL") {
+    if (action.type === "PRETTIFYQUERY") {
         return {
             ...state,
-            codeGraphql: format(state.codeGraphql),
+            query: format(state.query),
         };
     }
     if (action.type === "RESULTOFPLAY") {
         return {
             ...state,
-            query: state.codeGraphql,
+            query: state.query,
             currentQuery: gql`
-                ${state.codeGraphql}
+                ${state.query}
             `,
-            queryHistory: [...state.queryHistory, state.codeGraphql + " \n"],
+            queryHistory: [...state.queryHistory, state.query + " \n"],
         };
     }
     if (action.type === "SETQUERYRESULT") {
         return {
             ...state,
-            codeJS: action.val,
-        };
-    }
-    if (action.type === "SETXPOSITION") {
-        return {
-            ...state,
-            xPosition: action.val,
+            result: action.val,
         };
     }
     if (action.type === "ADDMARKQUERY") {
         return {
             ...state,
-            querymark: [...state.querymark, state.codeGraphql + " \n"],
+            queryMark: [...state.queryMark, state.query + " \n"],
         };
     }
     if (action.type === "ONSETSIDEBAROPEN") {
