@@ -3,11 +3,8 @@ import { Tab } from "semantic-ui-react";
 import SideBarSchemaTab from "./SideBarSchemaTab";
 import SideBarMarkedQueryTab from "../containers/SideBarMarkedQueryTabContainer";
 
-class SideBarTabView extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    panes = [
+function SideBarTabView() {
+    const panes = [
         {
             menuItem: "Marked Query",
             render: () => (
@@ -26,14 +23,12 @@ class SideBarTabView extends React.Component {
         },
     ];
 
-    render() {
-        return (
-            <div>
-                <h1> JotForm Query</h1>
-                <Tab panes={this.panes} />
-            </div>
-        );
-    }
+    return (
+        <div>
+            <h1> JotForm Query</h1>
+            <Tab panes={panes} />
+        </div>
+    );
 }
 
 export default SideBarTabView;

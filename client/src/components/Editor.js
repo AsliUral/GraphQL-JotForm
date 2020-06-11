@@ -10,19 +10,14 @@ import QueryResult from "./QueryResult";
 import EditorAceQuery from "../containers/EditorAceQueryContainer";
 import Navbar from "./Navbar";
 
-class Editor extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-            <>
-                <Navbar />
-                <EditorAceQuery />
-                <QueryResult />
-            </>
-        );
-    }
+function Editor() {
+    return (
+        <>
+            <Navbar />
+            <EditorAceQuery />
+            <QueryResult />
+        </>
+    );
 }
 
 export default Editor;

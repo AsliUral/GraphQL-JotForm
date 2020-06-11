@@ -2,33 +2,27 @@ import React from "react";
 import { Query } from "react-apollo";
 import Loader from "./Loader";
 
-class QueryData extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    render() {
-        return (
-            <>
-                <Query query={this.props.currentQuery}>
-                    {({ loading, error, data }) => {
-                        this.props.setQueryResult({});
-                        if (loading) return <Loader />;
-                        if (error) {
-                            this.props.setQueryResult(
-                                ...error.networkError.result.errors
-                            );
-                            return "";
-                        }
-                        if (data) {
-                            this.props.setQueryResult(data);
-                            return "";
-                        }
+function QueryData(props) {
+    return (
+        <>
+            <Query query={props.currentQuery}>
+                {({ loading, error, data }) => {
+                    props.setQueryResult({});
+                    if (loading) return <Loader />;
+                    if (error) {
+                        props.setQueryResult(error.networkError.result.errors);
+                        console.log("error", error.networkError.result.errors);
                         return "";
-                    }}
-                </Query>
-            </>
-        );
-    }
+                    }
+                    if (data) {
+                        props.setQueryResult(data);
+                        return "";
+                    }
+                    return "";
+                }}
+            </Query>
+        </>
+    );
 }
 
 export default QueryData;

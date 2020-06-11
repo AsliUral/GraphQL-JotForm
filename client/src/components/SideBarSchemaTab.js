@@ -1,16 +1,12 @@
 import React from "react";
 import { Accordion, Message } from "semantic-ui-react";
 
-class SideBarSchemaTab extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
+function SideBarSchemaTab(props) {
     // find more easy way
-    userQuery =
+    const userQuery =
         "name: { type: GraphQLString },email: { type: GraphQLString },time_zone: { type: GraphQLString },account_type: { type: GraphQLString },status: { type: GraphQLString }, loginToGetSubmissions: { type: GraphQLInt }, pdf_designer_group: { type: GraphQLInt },}";
 
-    userFormQuery =
+    const userFormQuery =
         "id: { type: GraphQLString }," +
         " username: { type: GraphQLString }," +
         "type: { type: GraphQLString }," +
@@ -19,57 +15,53 @@ class SideBarSchemaTab extends React.Component {
         "height: { type: GraphQLInt }," +
         "count: { type: GraphQLInt },";
 
-    userFormContent_User = (
+    const userFormContent_User = (
         <div>
-            <Message>{this.userFormQuery}</Message>
+            <Message>{userFormQuery}</Message>
         </div>
     );
 
-    user = [
+    const user = [
         {
             key: "panel-1a",
             title: "userForm",
-            content: this.userFormContent_User,
+            content: userFormContent_User,
         },
     ];
 
-    userContent = (
+    const userContent = (
         <div>
             Schema Details
             <Message>
-                {this.userQuery}
-                <Accordion.Accordion panels={this.user} />
+                {userQuery}
+                <Accordion.Accordion panels={user} />
             </Message>
         </div>
     );
 
-    userFormContent = (
+    const userFormContent = (
         <div>
             Schema Details
             <div>
-                <Message>{this.userFormQuery}</Message>
+                <Message>{userFormQuery}</Message>
             </div>
         </div>
     );
 
-    rootPanels = [
+    const rootPanels = [
         {
             key: "panel-1",
             title: "user query",
-            content: { content: this.userContent },
+            content: { content: userContent },
         },
         {
             key: "panel-2",
             title: "userForm query",
-            content: { content: this.userFormContent },
+            content: { content: userFormContent },
         },
     ];
 
-    render() {
-        return (
-            <Accordion defaultActiveIndex={0} panels={this.rootPanels} styled />
-        );
-    }
+    return <Accordion defaultActiveIndex={0} panels={rootPanels} styled />;
 }
 
 export default SideBarSchemaTab;
