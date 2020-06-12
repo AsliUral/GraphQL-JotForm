@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import SideBar from "../components/SideBar";
+import * as actionTypes from "../store/actions";
 
 const mapStateToProps = (state) => {
     return {
@@ -11,7 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onSetSidebarOpen: (value) =>
-            dispatch({ type: "ONSETSIDEBAROPEN", val: value }),
+            dispatch({ type: actionTypes.ONSETSIDEBAROPEN, val: value }),
     };
 };
 

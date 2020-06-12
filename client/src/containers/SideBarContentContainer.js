@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import SideBarContent from "../components/SideBarContent";
+import * as actionTypes from "../store/actions";
 
 const mapStateToProps = (state) => {
     return {
@@ -9,7 +10,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        pinSideBar: (value) => dispatch({ type: "PINSIDEBAR", val: value }),
+        pinSideBar: (value) =>
+            dispatch({ type: actionTypes.PINSIDEBAR, val: value }),
     };
 };
 

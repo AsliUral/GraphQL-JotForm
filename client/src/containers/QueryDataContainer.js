@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import QueryData from "../components/QueryData";
+import * as actionTypes from "../store/actions";
 
 const mapStateToProps = (state) => {
     return {
@@ -11,7 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         setQueryResult: (value) =>
-            dispatch({ type: "SETQUERYRESULT", val: value }),
+            dispatch({ type: actionTypes.SETQUERYRESULT, val: value }),
     };
 };
 

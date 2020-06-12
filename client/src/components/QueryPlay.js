@@ -16,7 +16,7 @@ function QueryPlay(props) {
         if (conditionsArray.includes(true)) {
             toast("👽 Oops, something went wrong.. GraphQL-Syntax Error ");
         } else {
-            props.resultOfPlay();
+            props.runResult();
         }
     };
     return (
