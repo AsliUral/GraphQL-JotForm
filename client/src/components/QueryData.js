@@ -7,11 +7,9 @@ function QueryData(props) {
         <>
             <Query query={props.currentQuery}>
                 {({ loading, error, data }) => {
-                    props.setQueryResult({});
                     if (loading) return <Loader />;
                     if (error) {
-                        props.setQueryResult(error.networkError.result.errors);
-                        console.log("error", error.networkError.result.errors);
+                        props.setQueryError(error.networkError.result.errors);
                         return "";
                     }
                     if (data) {

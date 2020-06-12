@@ -13,6 +13,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setQueryResult: (value) =>
             dispatch({ type: actionTypes.SETQUERYRESULT, val: value }),
+        setQueryError: (value) =>
+            dispatch({ type: actionTypes.SETQUERYERROR, val: value }),
     };
 };
 

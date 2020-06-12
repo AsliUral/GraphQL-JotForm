@@ -5,6 +5,8 @@ import * as actionTypes from "../store/actions";
 const mapStateToProps = (state) => {
     return {
         query: state.query,
+        error: state.error,
+        errorHappen: state.errorHappen,
     };
 };
 

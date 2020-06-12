@@ -5,6 +5,8 @@ import * as actionTypes from "./actions";
 const initialState = {
     result: {},
     query: "",
+    error: {},
+    errorHappen: false,
     currentQuery: gql`
         {
             ${`query`}
@@ -41,6 +43,14 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 result: action.val,
+                errorHappen: false,
+            };
+        case actionTypes.SETQUERYERROR:
+            return {
+                ...state,
+                error: action.val,
+                result: action.val,
+                errorHappen: true,
             };
         case actionTypes.ADDMARKQUERY:
             return {
