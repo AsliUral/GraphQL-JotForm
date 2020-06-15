@@ -3,6 +3,7 @@ node_js:
     - 10.13.0
 install:
     - npm install
+before_script: cd client
 script:
     - npm run test
 branches:
