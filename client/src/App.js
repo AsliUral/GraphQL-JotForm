@@ -9,18 +9,16 @@ const client = new ApolloClient({
     uri: "/graphql",
 });
 
-class App extends Component {
-    render() {
-        return (
-            <ApolloProvider client={client}>
-                <div className="container">
-                    <h1>GraphQL</h1>
-                </div>
-                <Editor />
-                <Sidebar />
-            </ApolloProvider>
-        );
-    }
+function App() {
+    return (
+        <ApolloProvider client={client}>
+            <div className="container">
+                <h1>GraphQL</h1>
+            </div>
+            <Editor />
+            <Sidebar />
+        </ApolloProvider>
+    );
 }
 
 export default App;

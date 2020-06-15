@@ -33,7 +33,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.RUNRESULT:
             return {
                 ...state,
-                query: state.query,
+                query: format(state.query),
                 currentQuery: gql`
                     ${state.query}
                 `,

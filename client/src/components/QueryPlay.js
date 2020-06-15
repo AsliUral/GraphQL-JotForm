@@ -4,16 +4,11 @@ import { Button, Icon } from "semantic-ui-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const queryValidate = require("./QueryValidate");
+
 function QueryPlay(props) {
     const resultPlay = () => {
-        const str = props.query.replace(/\s+/g, "");
-        const conditionsArray = [
-            str === "",
-            str === "{",
-            str === "}",
-            str === "{}",
-        ];
-        if (conditionsArray.includes(true)) {
+        if (queryValidate(props.query)) {
             toast("👽 Oops, something went wrong.. GraphQL-Syntax Error ");
         } else {
             props.runResult();
