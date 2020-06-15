@@ -21,7 +21,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build && move build ../public",
-        "test": "jest --watchAll --coverage",
+        "test": "jest --watchAll --coverage --forceExit",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
