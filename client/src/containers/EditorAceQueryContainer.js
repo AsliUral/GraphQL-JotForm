@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import EditorAceQuery from "../components/EditorAceQuery";
-import * as actionTypes from "../store/actions";
+import { onChangeQuery } from "../store/actions";
 
 const mapStateToProps = (state) => {
     return {
@@ -12,8 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onChangeQuery: (value) =>
-            dispatch({ type: actionTypes.ONCHANGEQUERY, val: value }),
+        onChangeQuery: (value) => dispatch(onChangeQuery(value)),
     };
 };
 

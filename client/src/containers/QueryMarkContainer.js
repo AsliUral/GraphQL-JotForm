@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import QueryMark from "../components/QueryMark";
-import * as actionTypes from "../store/actions";
+import { addMarkQuery } from "../store/actions";
 
 const mapStateToProps = (state) => {
     return {
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        addMarkQuery: () => dispatch({ type: actionTypes.ADDMARKQUERY }),
+        addMarkQuery: () => dispatch(addMarkQuery()),
     };
 };
 

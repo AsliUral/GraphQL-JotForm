@@ -1,6 +1,6 @@
 import QueryPlay from "../components/QueryPlay";
 import { connect } from "react-redux";
-import * as actionTypes from "../store/actions";
+import { runResult } from "../store/actions";
 
 const mapStateToProps = (state) => {
     return {
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        runResult: () => dispatch({ type: actionTypes.RUNRESULT }),
+        runResult: () => dispatch(runResult()),
     };
 };
 
