@@ -26,13 +26,19 @@ const UserFormType = new GraphQLObjectType({
 const UserType = new GraphQLObjectType({
     name: "User",
     fields: () => ({
+        username: { type: GraphQLString },
         name: { type: GraphQLString },
         email: { type: GraphQLString },
         time_zone: { type: GraphQLString },
         account_type: { type: GraphQLString },
         status: { type: GraphQLString },
-        loginToGetSubmissions: { type: GraphQLInt },
-        pdf_designer_group: { type: GraphQLInt },
+        created_at: { type: GraphQLString },
+        updated_at: { type: GraphQLString },
+        website: { type: GraphQLString },
+        company: { type: GraphQLString },
+        folderLayout: { type: GraphQLString },
+        language: { type: GraphQLString },
+        avatarUrl: { type: GraphQLString },
         userform: {
             type: new GraphQLList(UserFormType),
             resolve(parentValue, args) {
@@ -43,6 +49,16 @@ const UserType = new GraphQLObjectType({
                     .then((res) => res.data.content);
             },
         },
+    }),
+});
+
+const UserUsageType = new GraphQLObjectType({
+    name: "UserUsage",
+    fields: () => ({
+        submissions: { type: GraphQLInt },
+        ssl_submissions: { type: GraphQLInt },
+        payments: { type: GraphQLInt },
+        uploads: { type: GraphQLInt },
     }),
 });
 
@@ -72,6 +88,19 @@ const RootQuery = new GraphQLObjectType({
                 return axios
                     .get(
                         `https://api.jotform.com/user/forms?apiKey=e8d6edf1b4b67670c947ede51ba14398`
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
+        userUsage: {
+            type: UserUsageType,
+            args: {
+                apiKey: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/user/usage?apiKey=e8d6edf1b4b67670c947ede51ba14398`
                     )
                     .then((res) => res.data.content);
             },
