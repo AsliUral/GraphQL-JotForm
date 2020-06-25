@@ -5,7 +5,7 @@ import { pinSideBar } from "../store/actions";
 
 const mapStateToProps = (state) => {
     return {
-        sidebarDocked: state.sidebarDocked,
+        sidebarDocked: state.project.sidebarDocked,
     };
 };
 const mapDispatchToProps = (dispatch) => {

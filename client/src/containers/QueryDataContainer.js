@@ -5,8 +5,8 @@ import { setQueryResult, setQueryError } from "../store/actions";
 
 const mapStateToProps = (state) => {
     return {
-        query: state.query,
-        currentQuery: state.currentQuery,
+        query: state.project.query,
+        currentQuery: state.project.currentQuery,
     };
 };
 const mapDispatchToProps = (dispatch) => {

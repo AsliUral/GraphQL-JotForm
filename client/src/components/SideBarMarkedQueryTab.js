@@ -2,14 +2,24 @@ import React from "react";
 import CopyToClipboard from "./CopyToClipboard";
 
 function SideBarMarkedQueryTab(props) {
-    return props.queryMark.map((q) => {
+    if (
+        typeof props.queryMark !== "undefined" &&
+        typeof props.email !== "undefined"
+    ) {
         return (
-            <div>
-                <CopyToClipboard text={q} />
-                <li> {q}</li>
-            </div>
+            <ol>
+                {props.queryMark.map((result, i) => (
+                    <div>
+                        {result.developerEmail === props.email ? (
+                            <li key={i}>{result.markedQuery}</li>
+                        ) : null}
+                    </div>
+                ))}
+            </ol>
         );
-    });
+    } else {
+        return null;
+    }
 }
 
 export default SideBarMarkedQueryTab;

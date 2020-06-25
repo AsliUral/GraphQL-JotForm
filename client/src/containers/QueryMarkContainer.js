@@ -2,16 +2,22 @@ import React from "react";
 import { connect } from "react-redux";
 import QueryMark from "../components/QueryMark";
 import { addMarkQuery } from "../store/actions";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
 const mapStateToProps = (state) => {
     return {
-        queryMark: state.queryMark,
+        queryMark: state.firestore.ordered.userMarkedQuery,
+        query: state.project.query,
     };
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        addMarkQuery: () => dispatch(addMarkQuery()),
+        addMarkQuery: (value) => dispatch(addMarkQuery(value)),
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(QueryMark);
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    firestoreConnect([{ collection: "userMarkedQuery" }])
+)(QueryMark);

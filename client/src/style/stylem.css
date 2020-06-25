@@ -1,0 +1,5 @@
+.replacement_marker {
+    position: absolute;
+    background-color: red;
+    opacity: 0.3;
+}

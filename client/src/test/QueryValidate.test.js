@@ -12,7 +12,7 @@ test("query is not only include {}", () => {
 test("query is not only include empty character", () => {
     expect(queryValidate("")).toBeTruthy();
 });
-test("query is not only include empty space and curly braces ", () => {
+test("query is not only include space and curly braces ", () => {
     expect(queryValidate("     } ")).toBeTruthy();
 });
 test("the query may contain the appropriate graphQL syntax", () => {

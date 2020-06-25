@@ -4,7 +4,7 @@ import { runResult } from "../store/actions";
 
 const mapStateToProps = (state) => {
     return {
-        query: state.query,
+        query: state.project.query,
     };
 };
 

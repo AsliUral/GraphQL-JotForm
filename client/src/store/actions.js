@@ -7,55 +7,66 @@ export const ADDMARKQUERY = "ADDMARKQUERY";
 export const ONSETSIDEBAROPEN = "ONSETSIDEBAROPEN";
 export const PINSIDEBAR = "PINSIDEBAR";
 
-export const prettifyQuery = () => {
-    return {
-        type: PRETTIFYQUERY,
+export const prettifyQuery = (value) => {
+    return (dispatch, getState) => {
+        dispatch({ type: PRETTIFYQUERY, val: value });
     };
 };
 
 export const onChangeQuery = (value) => {
-    return {
-        type: ONCHANGEQUERY,
-        val: value,
+    return (dispatch, getState) => {
+        dispatch({ type: ONCHANGEQUERY, val: value });
     };
 };
 
 export const runResult = () => {
-    return {
-        type: RUNRESULT,
+    return (dispatch, getState) => {
+        dispatch({ type: RUNRESULT });
     };
 };
 
 export const setQueryResult = (value) => {
-    return {
-        type: SETQUERYRESULT,
-        val: value,
+    return (dispatch, getState) => {
+        dispatch({ type: SETQUERYRESULT, val: value });
     };
 };
 
 export const setQueryError = (value) => {
-    return {
-        type: SETQUERYERROR,
-        val: value,
+    return (dispatch, getState) => {
+        dispatch({ type: SETQUERYERROR, val: value });
     };
 };
-
-export const addMarkQuery = () => {
-    return {
-        type: ADDMARKQUERY,
+// add marked query to firebase but takes time (async)
+export const addMarkQuery = (value) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        const email = getState().firebase.auth.email;
+        const profile = getState().firebase.profile;
+        const developerId = getState().firebase.auth.uid;
+        firestore
+            .collection("userMarkedQuery")
+            .add({
+                markedQuery: value,
+                developerFirstName: profile.firstName,
+                developerLastName: profile.lastName,
+                developerId: developerId,
+                developerEmail: email,
+                createdAt: new Date(),
+            })
+            .then(() => {
+                dispatch({ type: ADDMARKQUERY, val: value });
+            });
     };
 };
 
 export const onSetSideBarOpen = (value) => {
-    return {
-        type: ONSETSIDEBAROPEN,
-        val: value,
+    return (dispatch, getState) => {
+        dispatch({ type: ONSETSIDEBAROPEN, val: value });
     };
 };
 
 export const pinSideBar = (value) => {
-    return {
-        type: PINSIDEBAR,
-        val: value,
+    return (dispatch, getState) => {
+        dispatch({ type: PINSIDEBAR, val: value });
     };
 };

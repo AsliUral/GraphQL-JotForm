@@ -5,7 +5,7 @@
     width: 35px;
     position: absolute;
     outline: none;
-    z-index: 999;
+    z-index: 4;
     background-color: rgb(241, 119, 219);
     border-color: rgb(183, 182, 184);
     border-right: 0;

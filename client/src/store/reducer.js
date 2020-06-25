@@ -1,5 +1,6 @@
 import { format } from "graphql-formatter";
 import gql from "graphql-tag";
+import { firestoreReducer } from "redux-firestore";
 import * as actionTypes from "./actions";
 
 const initialState = {
@@ -55,7 +56,6 @@ const reducer = (state = initialState, action) => {
         case actionTypes.ADDMARKQUERY:
             return {
                 ...state,
-                queryMark: [...state.queryMark, state.query + " \n"],
             };
         case actionTypes.ONSETSIDEBAROPEN:
             return {

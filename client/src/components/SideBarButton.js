@@ -12,7 +12,6 @@ function SideBarButton(props) {
                     onClick={() => props.onSetSidebarOpen(true)}
                     style={{
                         transform: `translate(${props.width}px, 20vh)`,
-                        position: "absolute",
                         right: "0",
                     }}
                 >

@@ -5,7 +5,7 @@ import EditorAceResult from "../components/EditorAceResult";
 
 const mapStateToProps = (state) => {
     return {
-        result: state.result,
+        result: state.project.result,
     };
 };
 

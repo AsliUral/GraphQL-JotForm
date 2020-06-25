@@ -4,12 +4,11 @@ import "ace-builds/src-noconflict/mode-graphqlschema";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools";
-import "./stylem.css";
+import "../style/stylem.css";
 
 function EditorAceQuery(props) {
     let markers = [];
     for (var i = 0; i < props.error.length; i++) {
-        console.log(props.error[i].locations[0].line);
         markers.push({
             startRow: props.error[i].locations[0].line - 1,
             startCol: 0,

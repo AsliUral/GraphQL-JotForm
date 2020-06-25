@@ -4,9 +4,9 @@ import { onChangeQuery } from "../store/actions";
 
 const mapStateToProps = (state) => {
     return {
-        query: state.query,
-        error: state.error,
-        errorHappen: state.errorHappen,
+        query: state.project.query,
+        error: state.project.error,
+        errorHappen: state.project.errorHappen,
     };
 };
 

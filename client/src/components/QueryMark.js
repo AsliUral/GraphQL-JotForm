@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function QueryMark(props) {
     const onClick = () => {
-        props.addMarkQuery();
+        props.addMarkQuery(props.query);
         toast(" 🦄 The Query was added in marked query sidebar ");
     };
     return (

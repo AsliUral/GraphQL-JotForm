@@ -9,7 +9,12 @@ function QueryData(props) {
                 {({ loading, error, data }) => {
                     if (loading) return <Loader />;
                     if (error) {
-                        props.setQueryError(error.networkError.result.errors);
+                        if (props.queryRun) {
+                            props.setQueryError(
+                                error.networkError.result.errors
+                            );
+                            return "";
+                        }
                         return "";
                     }
                     if (data) {

@@ -5,7 +5,7 @@ import { onSetSideBarOpen } from "../store/actions";
 
 const mapStateToProps = (state) => {
     return {
-        sidebarOpen: state.sidebarOpen,
+        sidebarOpen: state.project.sidebarOpen,
     };
 };
 const mapDispatchToProps = (dispatch) => {

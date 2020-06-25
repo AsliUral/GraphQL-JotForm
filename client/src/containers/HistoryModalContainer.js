@@ -4,7 +4,7 @@ import HistoryModal from "../components/HistoryModal";
 
 const mapStateToProps = (state) => {
     return {
-        queryHistory: state.queryHistory,
+        queryHistory: state.project.queryHistory,
     };
 };
 
