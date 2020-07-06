@@ -1,0 +1,51 @@
+/* Pen-specific styles */
+* {
+    box-sizing: border-box;
+}
+section {
+    color: #fff;
+}
+.social {
+    height: 100%;
+}
+
+.page {
+    height: 100%;
+}
+
+h1 {
+    font-size: 1.75rem;
+    margin: 0 0 0.75rem 0;
+}
+
+/* Pattern styles */
+.container {
+    display: table;
+    width: 100%;
+}
+
+.left-half {
+    height: 100%;
+    overflow-y: scroll;
+    position: absolute;
+    left: 0px;
+    width: 40%;
+    background-color: #01495c;
+}
+
+.right-half {
+    height: 100%;
+    position: absolute;
+    right: 0px;
+    width: 60%;
+}
+
+.tag {
+    float: right;
+    font-size: 13px;
+}
+.user {
+    float: left;
+    font-size: 13px;
+    font-style: italic;
+}

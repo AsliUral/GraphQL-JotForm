@@ -1,3 +1,5 @@
+import { firestore } from "firebase";
+
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 export const SIGNOUT_SUCCESS = "SIGNOUT_SUCCESS";
@@ -8,7 +10,7 @@ export const SETSIGNEMAILVALUE = "SETSIGNEMAILVALUE";
 export const SETSIGNFIRSTNAMEVALUE = "SETSIGNFIRSTNAMEVALUE";
 export const SETSIGNLASTNAMEVALUE = "SETSIGNLASTNAMEVALUE";
 
-export const signIn = (credentials) => {
+export const signIn = (credentials, auth) => {
     return (dispatch, getState, { getFirebase }) => {
         const firebase = getFirebase();
         firebase
@@ -53,6 +55,7 @@ export const signUp = (newUser) => {
                         firstName: newUser.firstName,
                         lastName: newUser.lastName,
                         initials: newUser.firstName[0] + newUser.lastName[0],
+                        email: newUser.email,
                     });
             })
             .then(() => {

@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import "firebase/database";
 const firebaseConfig = {
     apiKey: "AIzaSyDdY5Jlu_6fjAO62tRVh7U3O0uoKgLJHHI",
     authDomain: "graphql-jotform.firebaseapp.com",

@@ -2,8 +2,15 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Redirect } from "react-router-dom";
+import "../../style/Sign.css";
 
 function SignUp(props) {
+    let signIn = {
+        width: "700px",
+        margin: "auto",
+        display: "block",
+        align: "center",
+    };
     const handleSubmit = (event) => {
         event.preventDefault();
         let signUp = {
@@ -30,52 +37,57 @@ function SignUp(props) {
     if (props.auth.uid) return <Redirect to="/" />;
     return (
         <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                    type="email"
-                    id="email"
-                    placeholder="Enter email"
-                    onChange={handleChange}
-                />
-                <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                </Form.Text>
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>First Name</Form.Label>
-                <Form.Control
-                    id="firstName"
-                    placeholder="FirstName"
-                    onChange={handleChange}
-                />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>First Name</Form.Label>
-                <Form.Control
-                    id="lastName"
-                    placeholder="lastName"
-                    onChange={handleChange}
-                />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    onChange={handleChange}
-                />
-            </Form.Group>
-            <Form.Group>
-                <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-            <Button variant="danger" type="submit">
-                SignUp
-            </Button>
-            <div className="red-text center">
-                {authError ? <p> {authError}</p> : null}
-            </div>
+            <span
+                className="block-example border border-danger rounded mb-0"
+                style={signIn}
+            >
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control
+                        type="email"
+                        id="email"
+                        placeholder="Enter email"
+                        onChange={handleChange}
+                    />
+                    <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control
+                        id="firstName"
+                        placeholder="FirstName"
+                        onChange={handleChange}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>First Name</Form.Label>
+                    <Form.Control
+                        id="lastName"
+                        placeholder="lastName"
+                        onChange={handleChange}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        onChange={handleChange}
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Check type="checkbox" label="Check me out" />
+                </Form.Group>
+                <Button variant="danger" type="submit">
+                    SignUp
+                </Button>
+                <div className="red-text center">
+                    {authError ? <p> {authError}</p> : null}
+                </div>
+            </span>
         </Form>
     );
 }
