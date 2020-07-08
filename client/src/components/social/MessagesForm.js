@@ -42,7 +42,9 @@ function MessagesForm(props) {
             />
             <Button.Group icon widths="2">
                 <Button
-                    onClick={() => props.sendMessage(props.messages)}
+                    onClick={() =>
+                        props.sendMessage(props.messages, props.currentUser.uid)
+                    }
                     color="teal"
                     content="Add reply"
                     labelPosition="left"

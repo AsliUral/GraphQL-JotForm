@@ -4,7 +4,7 @@ export const SENDMESSAGEERROR = "SENDMESSAGEERROR";
 export const SETTYPING = "SETTYPING";
 export const REMOVETYPING = "REMOVETYPING";
 
-export const sendMessage = (value) => {
+export const sendMessage = (value, id) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         if (value) {
             const firestore = getFirestore();
@@ -26,7 +26,25 @@ export const sendMessage = (value) => {
                 channelId: channel.channelid,
                 uid: value.uid,
             };
-            removeTyping(type);
+            firestore
+                .collection("typing")
+                .where("uid", "==", id)
+                .get()
+                .then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        doc.ref
+                            .delete()
+                            .then(() => {
+                                console.log("Document successfully deleted!");
+                            })
+                            .catch(function (error) {
+                                console.error(
+                                    "Error removing document: ",
+                                    error
+                                );
+                            });
+                    });
+                });
             firestore
                 .collection("messages")
                 .add({

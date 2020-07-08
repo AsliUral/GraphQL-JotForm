@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        sendMessage: (value) => dispatch(sendMessage(value)),
+        sendMessage: (value, id) => dispatch(sendMessage(value, id)),
         setChannelMessageValue: (value) =>
             dispatch(setChannelMessageValue(value)),
         setTyping: (value) => dispatch(setTyping(value)),
