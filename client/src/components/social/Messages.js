@@ -37,6 +37,12 @@ function Messages(props) {
 
     person = [...new Set(person.map((p) => p))];
 
+    var copyM = props.messages.slice();
+
+    const compare = require("./SortMessage");
+
+    copyM.sort(compare);
+
     const TypingDiv = () => (
         <div
             style={{
@@ -58,7 +64,7 @@ function Messages(props) {
             <MessagesHeader />
             <Segment>
                 <Comment.Group className="messages">
-                    {props.messages.map((message) =>
+                    {copyM.map((message) =>
                         message.channelName === props.channelName ? (
                             <Comment>
                                 <Comment.Avatar

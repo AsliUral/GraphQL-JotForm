@@ -20,7 +20,11 @@ const SignedInLinks = (props) => {
                 <li class="nav-item active">
                     <a class="nav-link">
                         <Menu.Menu>
-                            <Dropdown direction="left" trigger={trigger}>
+                            <Dropdown
+                                direction="left"
+                                trigger={trigger}
+                                style={{ zIndex: "310" }}
+                            >
                                 <Dropdown.Menu>
                                     <Dropdown.Item
                                         text={
