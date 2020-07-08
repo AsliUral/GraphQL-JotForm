@@ -76,23 +76,44 @@ export const setChannelMessageValue = (value) => {
 export const setTyping = (value) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
-
-        const documentSnapshot = firestore
-            .collection("typing")
-            .doc(value.uid)
-            .get();
-        if (!documentSnapshot.exists) {
-            firestore
-                .collection("typing")
-                .add({
-                    channelName: value.channelName,
-                    channelId: value.channelid,
-                    uid: value.uid,
-                })
-                .then(() => {
-                    dispatch({ type: SETTYPING, val: value });
-                });
-        }
+        const firebase = getFirebase();
+        var connectedRef = firebase.database().ref(".info/connected");
+        connectedRef.on("value", async function (snap) {
+            if (snap.val() === true) {
+                let objArr = [];
+                const db = await firebase.firestore();
+                db.settings({ timestampsInSnapshots: true });
+                await db
+                    .collection("typing")
+                    .get()
+                    .then((snapshot) => {
+                        snapshot.DE.docs.forEach((doc) => {
+                            let items = doc.data().proto.mapValue.fields;
+                            objArr.push(items);
+                        });
+                        function uidExists(uid) {
+                            return objArr.some(function (el) {
+                                return el.uid.stringValue === uid;
+                            });
+                        }
+                        if (!uidExists(value.uid)) {
+                            firestore
+                                .collection("typing")
+                                .add({
+                                    channelName: value.channelName,
+                                    channelId: value.channelid,
+                                    uid: value.uid,
+                                })
+                                .then(() => {
+                                    dispatch({
+                                        type: SETTYPING,
+                                        val: value,
+                                    });
+                                });
+                        }
+                    });
+            }
+        });
     };
 };
 
