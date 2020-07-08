@@ -26,6 +26,53 @@ function compose(...arrayFunctions) {
     };
 }
 
+
+/*
+
+
+const { compose } = require('redux');
+
+
+function multply2(x) {
+    return 2 * x;
+}
+
+function add1(x) {
+    return 1 + x;
+}
+
+function multply4(x) {
+    return 4 * x;
+}
+// console.log(multply4(2));
+
+const composee = (...xs) => x => xs.reduceRight((acc, f) => f(acc), x)
+
+function compose_(...arrayFunctions) {
+    return function (x) {
+        // return arrayFunctions.reduceRight(
+        //     (acc, f) => f(acc),
+        //     x
+        // );
+        let result = x;
+        //console.log(result);
+        for (let i = arrayFunctions.length -1 ; i >= 0 ; i--) {
+            const currentFunction = arrayFunctions[i];
+            result = currentFunction(result);
+        }
+        return result;
+    };
+}
+
+const combineFunction = compose_(add1, multply2);
+console.log(combineFunction(2));
+
+
+*/
+
+const combineFunction = compose(add3, multply4);
+console.log(combineFunction(2));
+
 // Refactor `fastestCar` using `compose()` and other functions in pointfree-style.
 
 // fastestCar :: [Car] -> String
@@ -41,9 +88,6 @@ const fastestCar = (cars) => {
 //     last,
 //     sortBy(prop("horsepower"))
 // );
-
-const combineFunction = compose(add3, multply4);
-console.log(combineFunction(2));
 
 // ************************************************************************************ //
 
@@ -89,6 +133,18 @@ let uniqueInOrder = (iterable) => {
 };
 console.log(uniqueInOrder([1, 2, 2, 3, 3]));
 ///*********************************************************************** //
+
+
+/**
+ * 
+ * // const isDiffByPrev :: a -> Number -> [a] -> Bool
+const isDiffByPrev = (a, i, xs) => a !== xs[i - 1];
+
+let uniqueInOrder = (xs) => [...xs].filter(isDiffByPrev);
+
+uniqueInOrder([1, 2, 2, 3, 3])
+
+*/
 
 // function closure nedir? -inner function
 

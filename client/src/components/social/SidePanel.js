@@ -5,13 +5,18 @@ import { Menu, Grid, Header, Icon } from "semantic-ui-react";
 function SidePanel() {
     return (
         <>
-            <div>SidePanel</div>
             <Menu
                 size="large"
                 inverted
-                fixed="right"
                 vertical
-                style={{ background: "#00212a", fontSize: "1.2rem" }}
+                style={{
+                    background: "#00212a",
+                    fontSize: "1.2rem",
+                    right: "0px",
+                    height: "100%",
+                    position: "absolute",
+                    zIndex: "200",
+                }}
             >
                 <Grid style={{ background: "#00212a" }}>
                     <Grid.Column>

@@ -6,8 +6,10 @@ import moment from "moment";
 import Typing from "./Typing";
 
 function Messages(props) {
-    console.log(props.messages);
     if (typeof props.messages === "undefined") {
+        return <div></div>;
+    }
+    if (typeof props.typing === "undefined") {
         return <div></div>;
     }
     const isOwnMessage = (message, user) => {
@@ -20,6 +22,36 @@ function Messages(props) {
     const timeFromNow = (timestamp) => {
         return moment(timestamp.toDate()).fromNow();
     };
+
+    let person = [];
+    props.typing.map((val) => {
+        if (val.uid != props.currentUser.uid) {
+            props.allUser.map((v) => {
+                if (v.id == val.uid) {
+                    if (val.channelId === props.currentChannel.id)
+                        person.push(v);
+                }
+            });
+        }
+    });
+
+    person = [...new Set(person.map((p) => p))];
+
+    const TypingDiv = () => (
+        <div
+            style={{
+                display: "flex",
+                alignItems: "center",
+                color: "black",
+                marginBottom: "0.2em",
+            }}
+        >
+            <span className="user__typing">
+                {person.map((p) => p.firstName)} is typing
+            </span>
+            <Typing />
+        </div>
+    );
 
     return (
         <React.Fragment>
@@ -54,16 +86,8 @@ function Messages(props) {
                             </Comment>
                         ) : null
                     )}
-                    <div
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            color: "black",
-                        }}
-                    >
-                        <span className="user__typing">asli is typing</span>
-                        <Typing />
-                    </div>
+
+                    {person.length === 0 ? null : TypingDiv()}
                 </Comment.Group>
             </Segment>
             <MessageForm />

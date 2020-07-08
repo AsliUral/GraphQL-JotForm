@@ -5,9 +5,7 @@ import Badge from "react-bootstrap/Badge";
 import CodeBlock from "react-highlight-codeblock";
 import "../style/SocialQl.css";
 import { Icon, Label } from "semantic-ui-react";
-import ColorPanel from "./social/ColorPanel";
 import SidePanel from "./social/SidePanel";
-import MetaPanel from "./social/MetaPanel";
 import Messages from "../containers/MessagesContainer";
 import { Grid } from "semantic-ui-react";
 function SocailQL(props) {
@@ -73,14 +71,13 @@ function SocailQL(props) {
                 </div>
                 <div class="right-half">
                     <Grid columns="equal" className="app">
-                        <ColorPanel />
+                        <div></div>
                         <SidePanel />
-                        <Grid.Column style={{ marginLeft: 320 }}>
+                        <Grid.Column>
                             <Messages />
                         </Grid.Column>
-                        <Grid.Column width={4}>
-                            <MetaPanel />
-                        </Grid.Column>
+                        <div></div>
+                        <Grid.Column width={4}></Grid.Column>
                     </Grid>
                 </div>
             </div>

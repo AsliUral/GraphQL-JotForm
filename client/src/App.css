@@ -1,6 +1,7 @@
 .messages {
     height: 440px;
     overflow-y: scroll;
+    align-self: center;
 }
 
 /* MessageForm.js */

@@ -11,10 +11,15 @@ const mapStateToProps = (state) => {
         messagesError: state.message.messagesError,
         user: state.firebase.profile,
         channelName: state.channel.currentChannel.channelName,
+        currentChannel: state.channel.currentChannel,
+        typing: state.firestore.ordered.typing,
+        currentUser: state.firebase.auth,
+        allUser: state.firestore.ordered.users,
     };
 };
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([{ collection: "messages" }])
+    firestoreConnect([{ collection: "messages" }]),
+    firestoreConnect([{ collection: "typing" }])
 )(Messages);
