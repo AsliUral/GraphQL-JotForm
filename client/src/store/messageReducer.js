@@ -4,6 +4,7 @@ import * as actionTypes from "./messageActions";
 const initialState = {
     messages: "",
     messagesError: "",
+    emojiPicker: false,
 };
 
 const messageReducer = (state = initialState, action) => {
@@ -30,6 +31,11 @@ const messageReducer = (state = initialState, action) => {
         case actionTypes.REMOVETYPING:
             return {
                 ...state,
+            };
+        case actionTypes.SETEMOJIPICKER:
+            return {
+                ...state,
+                emojiPicker: action.val,
             };
         default:
             return state;

@@ -3,6 +3,7 @@ export const SETCHANNELMESSAGEVALUE = "SETCHANNELMESSAGEVALUE";
 export const SENDMESSAGEERROR = "SENDMESSAGEERROR";
 export const SETTYPING = "SETTYPING";
 export const REMOVETYPING = "REMOVETYPING";
+export const SETEMOJIPICKER = "SETEMOJIPICKER";
 
 export const sendMessage = (value, id) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
@@ -70,6 +71,12 @@ export const sendMessage = (value, id) => {
 export const setChannelMessageValue = (value) => {
     return (dispatch, getState) => {
         dispatch({ type: SETCHANNELMESSAGEVALUE, val: value });
+    };
+};
+
+export const setEmojiPicker = (value) => {
+    return (dispatch, getState) => {
+        dispatch({ type: SETEMOJIPICKER, val: value });
     };
 };
 
