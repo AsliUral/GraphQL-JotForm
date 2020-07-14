@@ -8,10 +8,21 @@ import { Icon, Label } from "semantic-ui-react";
 import SidePanel from "./social/SidePanel";
 import Messages from "../containers/MessagesContainer";
 import { Grid } from "semantic-ui-react";
-function SocailQL(props) {
+import { Redirect, useHistory } from "react-router-dom";
+
+function SocialQL(props) {
+    const history = useHistory();
+
     if (typeof props.queryMark === "undefined") {
         return <div></div>;
     }
+
+    const handleClick = (markedQuery) => {
+        props.runMarkedQueryfromSocialQL(markedQuery);
+        history.push("/");
+    };
+
+    if (!props.auth.uid) return <Redirect to="/signin" />;
 
     return (
         <section class="container">
@@ -23,7 +34,7 @@ function SocailQL(props) {
                                 <Card>
                                     <Card.Body>
                                         <Card.Title>
-                                            Get Request User and UserForm
+                                            {result.header}
                                             <div class="tag">
                                                 <Label as="a">
                                                     <Icon name="star" /> 23
@@ -42,20 +53,31 @@ function SocailQL(props) {
                                                 showLineNumbers={false}
                                             />
                                         </Card.Text>
-                                        <ButtonB variant="danger">
+                                        <ButtonB
+                                            variant="danger"
+                                            onClick={() =>
+                                                handleClick(result.markedQuery)
+                                            }
+                                        >
                                             Run Query
                                         </ButtonB>
                                     </Card.Body>
                                     <Card.Footer>
                                         <div class="tag">
                                             <Badge variant="primary">
-                                                Primary
+                                                {result.tag[0]
+                                                    ? result.tag[0]
+                                                    : null}
                                             </Badge>
                                             <Badge variant="warning">
-                                                Primary
+                                                {result.tag[1]
+                                                    ? result.tag[1]
+                                                    : null}
                                             </Badge>
                                             <Badge variant="success">
-                                                Primary
+                                                {result.tag[2]
+                                                    ? result.tag[2]
+                                                    : null}
                                             </Badge>
                                         </div>
                                         <div class="user">
@@ -84,4 +106,4 @@ function SocailQL(props) {
         </section>
     );
 }
-export default SocailQL;
+export default SocialQL;

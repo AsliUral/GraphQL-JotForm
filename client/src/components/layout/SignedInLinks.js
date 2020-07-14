@@ -1,6 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Dropdown, Icon, Button, Menu } from "semantic-ui-react";
+import {
+    Dropdown,
+    Icon,
+    Button,
+    Menu,
+    Modal,
+    Header,
+    Checkbox,
+    Form,
+    Input,
+    Radio,
+} from "semantic-ui-react";
 
 const SignedInLinks = (props) => {
     const { profile } = props;
@@ -48,10 +59,82 @@ const SignedInLinks = (props) => {
                                         text="Your Stars"
                                     />
                                     <Dropdown.Divider />
-                                    <Dropdown.Item
-                                        icon="setting"
-                                        text="Settings"
-                                    />
+                                    <Modal
+                                        open={props.modal}
+                                        trigger={
+                                            <Dropdown.Item
+                                                icon="setting"
+                                                text="Settings"
+                                                onClick={() =>
+                                                    props.setOpenModalSettings(
+                                                        true
+                                                    )
+                                                }
+                                            />
+                                        }
+                                        style={{
+                                            height: "auto",
+                                            top: "auto",
+                                            left: "auto",
+                                            bottom: "auto",
+                                            right: "auto",
+                                        }}
+                                    >
+                                        <Modal.Header>
+                                            {props.profile.firstName}{" "}
+                                            {props.profile.lastName}
+                                        </Modal.Header>
+                                        <Modal.Content>
+                                            <Modal.Description>
+                                                <Header>
+                                                    Profile Settings
+                                                </Header>
+
+                                                <Checkbox
+                                                    label="Prettify Query Automatically "
+                                                    toggle
+                                                />
+                                                <Form.Group inline>
+                                                    <label>
+                                                        Delete Query History
+                                                    </label>
+                                                    <Form.Field
+                                                        control={Radio}
+                                                        label="1 day"
+                                                        value="1 day"
+                                                        // checked={value === "1"}
+                                                        // onChange={
+                                                        //     this.handleChange
+                                                        // }
+                                                    />
+                                                    <Form.Field
+                                                        control={Radio}
+                                                        label="1 week"
+                                                        value="1 week"
+                                                        // checked={value === "2"}
+                                                        // onChange={
+                                                        //     this.handleChange
+                                                        // }
+                                                    />
+                                                    <Form.Field
+                                                        control={Radio}
+                                                        label="1 month"
+                                                        value="1 month"
+                                                        // checked={value === "3"}
+                                                        // onChange={
+                                                        //     this.handleChange
+                                                        // }
+                                                    />
+                                                </Form.Group>
+                                                <Form.Field
+                                                    control={Input}
+                                                    label="Api Key "
+                                                    placeholder="Enter to change api key"
+                                                />
+                                            </Modal.Description>
+                                        </Modal.Content>
+                                    </Modal>
+
                                     <Dropdown.Divider />
                                     <Dropdown.Item
                                         icon="log out"

@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
         connectedRef: firebase.database().ref(".info/connected"),
         presenceRef: firebase.database().ref("presence"),
         usersRef: firebase.database().ref("users"),
+        status: firebase.database().ref().child("status"),
         presence: state.firestore.ordered.presence,
     };
 };
@@ -28,3 +29,7 @@ export default compose(
     firestoreConnect([{ collection: "users" }]),
     firestoreConnect([{ collection: "presence" }])
 )(DirectMessages);
+
+// database.on("value", snap => {
+//     snap.val()
+//   })

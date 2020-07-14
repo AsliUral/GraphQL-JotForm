@@ -7,6 +7,7 @@ const initialState = {
     password: "",
     firstName: "",
     lastName: "",
+    settingModal: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -52,6 +53,11 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 lastName: action.val,
+            };
+        case actionTypes.SETOPENMODALSETTING:
+            return {
+                ...state,
+                settingModal: action.val,
             };
         default:
             return state;

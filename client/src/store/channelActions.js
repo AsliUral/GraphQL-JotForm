@@ -58,41 +58,70 @@ export const addOnline = (value, auth) => {
         const firestore = getFirestore();
         const firebase = getFirebase();
         var connectedRef = firebase.database().ref(".info/connected");
-        connectedRef.on("value", function (snap) {
-            if (snap.val() === true) {
-                alert("connected");
-                firestore
-                    .collection("presence")
-                    .where("uid", "==", auth.uid)
-                    .get()
-                    .then(function (querySnapshot) {
-                        querySnapshot.forEach(function (doc) {
-                            return firestore
-                                .collection("presence")
-                                .doc(doc.id)
-                                .update({ status: true });
-                        });
-                    });
+        var database = firebase.database().ref().child("status");
 
-                // firestore.collection("presence").add({
-                //     status: true,
-                //     uid: auth.uid,
-                //     email: auth.email,
-                // });
+        let statusArr = [];
+        database.on("value", (snap) => {
+            statusArr.push(snap.val());
+        });
+
+        var uid = auth.uid;
+
+        var userStatusDatabaseRef = firebase.database().ref("/status/" + uid);
+        var userStatusFirestoreRef = firestore.doc("/status/" + uid);
+
+        var isOfflineForDatabase = {
+            state: false,
+            last_changed: firebase.database.ServerValue.TIMESTAMP,
+            email: auth.email,
+            uid: auth.uid,
+        };
+
+        var isOnlineForDatabase = {
+            state: true,
+            last_changed: firebase.database.ServerValue.TIMESTAMP,
+            email: auth.email,
+            uid: auth.uid,
+        };
+
+        var isOfflineForFirestore = {
+            state: false,
+            last_changed: firestore.FieldValue.serverTimestamp(),
+            email: auth.email,
+            uid: auth.uid,
+        };
+
+        var isOnlineForFirestore = {
+            state: true,
+            last_changed: firestore.FieldValue.serverTimestamp(),
+            email: auth.email,
+            uid: auth.uid,
+        };
+
+        connectedRef.on("value", async function (snap) {
+            if ((await snap.val()) === true) {
+                userStatusDatabaseRef
+                    .onDisconnect()
+                    .set(isOfflineForDatabase)
+                    .then(function () {
+                        userStatusDatabaseRef.set(isOnlineForDatabase);
+                        userStatusFirestoreRef.set(isOnlineForFirestore);
+                    });
             } else {
-                alert("not connected");
+                userStatusFirestoreRef.set(isOfflineForFirestore);
                 firestore
-                    .collection("presence")
+                    .collection("status")
                     .where("uid", "==", auth.uid)
                     .get()
                     .then(function (querySnapshot) {
                         querySnapshot.forEach(function (doc) {
                             firestore
-                                .collection("presence")
+                                .collection("status")
                                 .doc(doc.id)
-                                .update({ status: false });
+                                .update({ state: false });
                         });
                     });
+                return;
             }
         });
     };

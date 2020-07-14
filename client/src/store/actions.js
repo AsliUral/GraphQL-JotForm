@@ -6,6 +6,10 @@ export const SETQUERYERROR = "SETQUERYERROR";
 export const ADDMARKQUERY = "ADDMARKQUERY";
 export const ONSETSIDEBAROPEN = "ONSETSIDEBAROPEN";
 export const PINSIDEBAR = "PINSIDEBAR";
+export const RUNMARKEDQUERYFROMSOCIALQL = "RUNMARKEDQUERYFROMSOCIALQL";
+export const SETTAGQUERY = "SETTAGQUERY";
+export const SETHEADER = "SETHEADER";
+export const SETOPENMODAL = "SETOPENMODAL";
 
 export const prettifyQuery = (value) => {
     return (dispatch, getState) => {
@@ -37,7 +41,7 @@ export const setQueryError = (value) => {
     };
 };
 // add marked query to firebase but takes time (async)
-export const addMarkQuery = (value) => {
+export const addMarkQuery = (query, header, tag) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
         const email = getState().firebase.auth.email;
@@ -46,15 +50,17 @@ export const addMarkQuery = (value) => {
         firestore
             .collection("userMarkedQuery")
             .add({
-                markedQuery: value,
+                markedQuery: query,
                 developerFirstName: profile.firstName,
                 developerLastName: profile.lastName,
                 developerId: developerId,
                 developerEmail: email,
                 createdAt: new Date(),
+                header: header,
+                tag: tag,
             })
             .then(() => {
-                dispatch({ type: ADDMARKQUERY, val: value });
+                dispatch({ type: ADDMARKQUERY, query, header, tag });
             });
     };
 };
@@ -68,5 +74,29 @@ export const onSetSideBarOpen = (value) => {
 export const pinSideBar = (value) => {
     return (dispatch, getState) => {
         dispatch({ type: PINSIDEBAR, val: value });
+    };
+};
+
+export const runMarkedQueryfromSocialQL = (value) => {
+    return (dispatch, getState) => {
+        dispatch({ type: RUNMARKEDQUERYFROMSOCIALQL, val: value });
+    };
+};
+
+export const setTagQuery = (value) => {
+    return (dispatch, getState) => {
+        dispatch({ type: SETTAGQUERY, val: value });
+    };
+};
+
+export const setPostHeader = (value) => {
+    return (dispatch, getState) => {
+        dispatch({ type: SETHEADER, val: value });
+    };
+};
+
+export const setOpenModal = (value) => {
+    return (dispatch, getState) => {
+        dispatch({ type: SETOPENMODAL, val: value });
     };
 };

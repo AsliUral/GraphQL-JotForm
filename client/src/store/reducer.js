@@ -17,6 +17,9 @@ const initialState = {
     queryMark: [],
     sidebarOpen: false,
     sidebarDocked: false,
+    tags: [],
+    markedQueryPostHeader: "",
+    modal: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -66,6 +69,26 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 sidebarDocked: action.val,
+            };
+        case actionTypes.RUNMARKEDQUERYFROMSOCIALQL:
+            return {
+                ...state,
+                query: action.val,
+            };
+        case actionTypes.SETTAGQUERY:
+            return {
+                ...state,
+                tags: [...action.val],
+            };
+        case actionTypes.SETHEADER:
+            return {
+                ...state,
+                markedQueryPostHeader: action.val,
+            };
+        case actionTypes.SETOPENMODAL:
+            return {
+                ...state,
+                modal: action.val,
             };
     }
     return state;

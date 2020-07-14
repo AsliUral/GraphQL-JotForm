@@ -9,6 +9,7 @@ export const SETSIGNPASSWORDVALUE = "SETSIGNPASSWORDVALUE";
 export const SETSIGNEMAILVALUE = "SETSIGNEMAILVALUE";
 export const SETSIGNFIRSTNAMEVALUE = "SETSIGNFIRSTNAMEVALUE";
 export const SETSIGNLASTNAMEVALUE = "SETSIGNLASTNAMEVALUE";
+export const SETOPENMODALSETTING = "SETOPENMODALSETTING";
 
 export const signIn = (credentials, auth) => {
     return (dispatch, getState, { getFirebase }) => {
@@ -88,5 +89,11 @@ export const setSignFirstNameValue = (value) => {
 export const setSignLastNameValue = (value) => {
     return (dispatch, getState) => {
         dispatch({ type: SETSIGNLASTNAMEVALUE, val: value });
+    };
+};
+
+export const setOpenModalSettings = (value) => {
+    return (dispatch, getState) => {
+        dispatch({ type: SETOPENMODALSETTING, val: value });
     };
 };

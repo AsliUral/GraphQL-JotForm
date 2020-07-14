@@ -9,6 +9,7 @@ const initialState = {
     channelsRef: "",
     currentChannel: "",
     users: [],
+    usersStatus: [],
 };
 
 const channelReducer = (state = initialState, action) => {
