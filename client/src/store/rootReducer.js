@@ -5,6 +5,7 @@ import authReducer from "./authReducer";
 import channelReducer from "./channelReducer";
 import { firebaseReducer } from "react-redux-firebase";
 import messageReducer from "./messageReducer";
+import collaborateReducer from "./collaborateReducer";
 
 const rootReducer = combineReducers({
     firestore: firestoreReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     auth: authReducer,
     message: messageReducer,
     channel: channelReducer,
+    collaborate: collaborateReducer,
     firebase: firebaseReducer,
 });
 export default rootReducer;

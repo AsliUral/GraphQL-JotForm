@@ -11,6 +11,7 @@ import Dashboard from "./containers/DashboarContainer";
 import SignIn from "./containers/SignInContainer";
 import SignUp from "./containers/SignUpContainer";
 import SocialQl from "./containers/SocialQLContainer";
+import Collaborate from "./components/collaborate/collaborate";
 const client = new ApolloClient({
     uri: "/graphql",
 });
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/signin" component={SignIn} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/socialQL" component={SocialQl} />
+                <Route path="/collaborate" component={Collaborate} />
             </Switch>
         </BrowserRouter>
     );

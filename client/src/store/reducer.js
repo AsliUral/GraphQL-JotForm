@@ -8,6 +8,7 @@ const initialState = {
     query: "",
     error: {},
     errorHappen: false,
+    apiKey: "",
     currentQuery: gql`
         {
             ${`query`}
