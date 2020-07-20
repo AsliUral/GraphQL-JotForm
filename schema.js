@@ -8,8 +8,6 @@ const {
     GraphQLList,
 } = require("graphql");
 
-//User Type
-// User Form Type
 const UserFormType = new GraphQLObjectType({
     name: "UserFormType",
     fields: () => ({
@@ -44,7 +42,8 @@ const UserType = new GraphQLObjectType({
             resolve(parentValue, args) {
                 return axios
                     .get(
-                        `https://api.jotform.com/user/forms?apiKey=e8d6edf1b4b67670c947ede51ba14398`
+                        `https://api.jotform.com/user/forms?apiKey=` +
+                            args.apiKey
                     )
                     .then((res) => res.data.content);
             },
@@ -62,6 +61,53 @@ const UserUsageType = new GraphQLObjectType({
     }),
 });
 
+const UserSubmissionsType = new GraphQLObjectType({
+    name: "UserSubmissions",
+    fields: () => ({
+        id: { type: GraphQLString },
+        form_id: { type: GraphQLString },
+        ip: { type: GraphQLString },
+        created_at: { type: GraphQLString },
+        updated_at: { type: GraphQLString },
+        status: { type: GraphQLString },
+        new: { type: GraphQLString },
+        flag: { type: GraphQLString },
+        userform: {
+            type: new GraphQLList(UserFormType),
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/user/forms?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
+    }),
+});
+
+const permissions = new GraphQLObjectType({
+    name: "permissions",
+    fields: () => ({
+        type: { type: GraphQLString },
+        resource_id: { type: GraphQLString },
+        access_type: { type: GraphQLString },
+        title: { type: GraphQLString },
+    }),
+});
+
+const UserSubusersType = new GraphQLObjectType({
+    name: "UserSubusers",
+    fields: () => ({
+        owner: { type: GraphQLString },
+        status: { type: GraphQLString },
+        email: { type: GraphQLString },
+        username: { type: GraphQLString },
+        created_at: { type: GraphQLString },
+        permissions: { type: GraphQLList(permissions) },
+    }),
+});
+
 //Root Query
 const RootQuery = new GraphQLObjectType({
     name: "RootQueryType",
@@ -72,10 +118,9 @@ const RootQuery = new GraphQLObjectType({
                 apiKey: { type: GraphQLString },
             },
             resolve(parentValue, args) {
+                console.log(args);
                 return axios
-                    .get(
-                        `https://api.jotform.com/user?apiKey=e8d6edf1b4b67670c947ede51ba14398`
-                    )
+                    .get(`https://api.jotform.com/user?apiKey=` + args.apiKey)
                     .then((res) => res.data.content);
             },
         },
@@ -87,7 +132,8 @@ const RootQuery = new GraphQLObjectType({
             resolve(parentValue, args) {
                 return axios
                     .get(
-                        `https://api.jotform.com/user/forms?apiKey=e8d6edf1b4b67670c947ede51ba14398`
+                        `https://api.jotform.com/user/forms?apiKey=` +
+                            args.apiKey
                     )
                     .then((res) => res.data.content);
             },
@@ -100,7 +146,36 @@ const RootQuery = new GraphQLObjectType({
             resolve(parentValue, args) {
                 return axios
                     .get(
-                        `https://api.jotform.com/user/usage?apiKey=e8d6edf1b4b67670c947ede51ba14398`
+                        `https://api.jotform.com/user/usage?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
+        userSubmissions: {
+            type: new GraphQLList(UserSubmissionsType),
+            args: {
+                apiKey: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/user/submissions?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
+        userSubusers: {
+            type: UserSubusersType,
+            args: {
+                apiKey: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/user/subusers?apiKey=` +
+                            args.apiKey
                     )
                     .then((res) => res.data.content);
             },
