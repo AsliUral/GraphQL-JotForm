@@ -1,0 +1,6 @@
+[
+    {
+        "User": "schema {\n  query: UserFormType\n}\n\ntype UserFormType {\n  id: String\n  username: String\n  type: String\n  last_submission: String\n  status: String\n  height: Int\n  count: Int\n}\n",
+        "UserForm": "schema {\n  query: UserFormType\n}\n\ntype UserFormType {\n  id: String\n  username: String\n  type: String\n  last_submission: String\n  status: String\n  height: Int\n  count: Int\n}\n"
+    }
+]

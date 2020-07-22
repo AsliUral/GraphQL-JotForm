@@ -18,6 +18,7 @@ const Navbar = (props) => {
                             </NavLink>
                         </a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link">
                             <NavLink style={{ color: "#fff" }} to="/socialQL">

@@ -1,12 +1,19 @@
 const axios = require("axios");
-
+const fs = require("fs");
 const {
     GraphQLObjectType,
     GraphQLString,
     GraphQLSchema,
     GraphQLInt,
     GraphQLList,
+    GraphQLBoolean,
+    buildSchema,
+    printSchema,
 } = require("graphql");
+
+let schemaObj = {
+    User: null,
+};
 
 const UserFormType = new GraphQLObjectType({
     name: "UserFormType",
@@ -20,6 +27,12 @@ const UserFormType = new GraphQLObjectType({
         count: { type: GraphQLInt },
     }),
 });
+
+const UserFormschema = new GraphQLSchema({
+    query: UserFormType,
+});
+const val = printSchema(UserFormschema);
+schemaObj = { ...schemaObj, UserForm: val };
 
 const UserType = new GraphQLObjectType({
     name: "User",
@@ -37,8 +50,11 @@ const UserType = new GraphQLObjectType({
         folderLayout: { type: GraphQLString },
         language: { type: GraphQLString },
         avatarUrl: { type: GraphQLString },
-        userform: {
+        userForm: {
             type: new GraphQLList(UserFormType),
+            args: {
+                apiKey: { type: GraphQLString },
+            },
             resolve(parentValue, args) {
                 return axios
                     .get(
@@ -50,6 +66,22 @@ const UserType = new GraphQLObjectType({
         },
     }),
 });
+
+const UserTypeschema = new GraphQLSchema({
+    query: UserType,
+});
+const valUserType = printSchema(UserFormschema);
+schemaObj = { ...schemaObj, User: valUserType };
+
+const data = JSON.stringify(schemaObj);
+let check = true;
+
+// if (check) {
+//     fs.writeFileSync("graphqlSchema.json", data);
+//     console.log("JSON data is saved.");
+//     check = false;
+//     return;
+// }
 
 const UserUsageType = new GraphQLObjectType({
     name: "UserUsage",
@@ -72,8 +104,11 @@ const UserSubmissionsType = new GraphQLObjectType({
         status: { type: GraphQLString },
         new: { type: GraphQLString },
         flag: { type: GraphQLString },
-        userform: {
+        userForm: {
             type: new GraphQLList(UserFormType),
+            args: {
+                apiKey: { type: GraphQLString },
+            },
             resolve(parentValue, args) {
                 return axios
                     .get(
@@ -108,6 +143,157 @@ const UserSubusersType = new GraphQLObjectType({
     }),
 });
 
+const UserHistoryType = new GraphQLObjectType({
+    name: "UserHistory",
+    fields: () => ({
+        type: { type: GraphQLString },
+        formID: { type: GraphQLString },
+        username: { type: GraphQLString },
+        formTitle: { type: GraphQLString },
+        formStatus: { type: GraphQLString },
+        ip: { type: GraphQLString },
+        timestamp: { type: GraphQLInt },
+    }),
+});
+
+const UserReportType = new GraphQLObjectType({
+    name: "UserReport",
+    fields: () => ({
+        id: { type: GraphQLString },
+        form_id: { type: GraphQLString },
+        title: { type: GraphQLString },
+        created_at: { type: GraphQLString },
+        updated_at: { type: GraphQLString },
+        fields: { type: GraphQLString },
+        list_type: { type: GraphQLString },
+        status: { type: GraphQLString },
+        url: { type: GraphQLString },
+        isProtected: { type: GraphQLBoolean },
+    }),
+});
+
+const UserSettingType = new GraphQLObjectType({
+    name: "UserSetting",
+    fields: () => ({
+        username: { type: GraphQLString },
+        name: { type: GraphQLString },
+        email: { type: GraphQLString },
+        website: { type: GraphQLString },
+        time_zone: { type: GraphQLString },
+        account_type: { type: GraphQLString },
+        status: { type: GraphQLString },
+        created_at: { type: GraphQLString },
+        updated_at: { type: GraphQLString },
+        usage: { type: GraphQLString },
+        industry: { type: GraphQLString },
+        securityAnswer: { type: GraphQLString },
+        company: { type: GraphQLString },
+        doNotClone: { type: GraphQLString },
+        webhooks: { type: GraphQLString },
+        avatarUrl: { type: GraphQLString },
+    }),
+});
+
+const subfolders = new GraphQLObjectType({
+    name: "subfolders",
+    fields: () => ({
+        id: { type: GraphQLString },
+        path: { type: GraphQLString },
+        owner: { type: GraphQLString },
+        name: { type: GraphQLString },
+        parent: { type: GraphQLString },
+        color: { type: GraphQLString },
+    }),
+});
+
+const UserFolderType = new GraphQLObjectType({
+    name: "UserFolders",
+    fields: () => ({
+        id: { type: GraphQLString },
+        path: { type: GraphQLString },
+        owner: { type: GraphQLString },
+        name: { type: GraphQLString },
+        parent: { type: GraphQLString },
+        color: { type: GraphQLString },
+        subfolders: { type: GraphQLList(subfolders) },
+        userForm: {
+            type: new GraphQLList(UserFormType),
+            args: {
+                apiKey: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/user/forms?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
+    }),
+});
+
+/* FORM ENDPOINT REQUEST*/
+
+const formType = new GraphQLObjectType({
+    name: "form",
+    fields: () => ({
+        id: { type: GraphQLString },
+        username: { type: GraphQLString },
+        title: { type: GraphQLString },
+        height: { type: GraphQLString },
+        url: { type: GraphQLString },
+        status: { type: GraphQLString },
+        created_at: { type: GraphQLString },
+        updated_at: { type: GraphQLString },
+        new: { type: GraphQLString },
+        count: { type: GraphQLString },
+    }),
+});
+
+const formQuestionsType = new GraphQLObjectType({
+    name: "formQuestions",
+    fields: () => ({
+        hint: { type: GraphQLString },
+        labelAlign: { type: GraphQLString },
+        name: { type: GraphQLString },
+        order: { type: GraphQLString },
+        qid: { type: GraphQLString },
+        readonly: { type: GraphQLString },
+        required: { type: GraphQLString },
+        shrink: { type: GraphQLString },
+        size: { type: GraphQLString },
+        text: { type: GraphQLString },
+        type: { type: GraphQLString },
+        validationtype: { type: GraphQLString },
+    }),
+});
+
+/* SUBMISSONS ENDPOINT REQUEST*/
+
+const submissionAnswer = new GraphQLObjectType({
+    name: "submissionAnswer",
+    fields: () => ({
+        text: { type: GraphQLString },
+        type: { type: GraphQLString },
+        answer: { type: GraphQLString },
+    }),
+});
+
+const submissionsType = new GraphQLObjectType({
+    name: "submissions",
+    fields: () => ({
+        id: { type: GraphQLString },
+        form_id: { type: GraphQLString },
+        ip: { type: GraphQLString },
+        created_at: { type: GraphQLString },
+        updated_at: { type: GraphQLString },
+        status: { type: GraphQLString },
+        new: { type: GraphQLString },
+        answers: { type: submissionAnswer },
+    }),
+});
+
 //Root Query
 const RootQuery = new GraphQLObjectType({
     name: "RootQueryType",
@@ -118,7 +304,6 @@ const RootQuery = new GraphQLObjectType({
                 apiKey: { type: GraphQLString },
             },
             resolve(parentValue, args) {
-                console.log(args);
                 return axios
                     .get(`https://api.jotform.com/user?apiKey=` + args.apiKey)
                     .then((res) => res.data.content);
@@ -175,6 +360,112 @@ const RootQuery = new GraphQLObjectType({
                 return axios
                     .get(
                         `https://api.jotform.com/user/subusers?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
+        userHistory: {
+            type: new GraphQLList(UserHistoryType),
+            args: {
+                apiKey: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/user/history?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
+
+        userFolders: {
+            type: UserFolderType,
+            args: {
+                apiKey: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/user/folders?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
+        userReports: {
+            type: UserReportType,
+            args: {
+                apiKey: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/user/reports?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
+        userSettings: {
+            type: UserSettingType,
+            args: {
+                apiKey: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/user/settings?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
+
+        form: {
+            type: formType,
+            args: {
+                apiKey: { type: GraphQLString },
+                formID: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/form/${args.formID}?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
+        formQuestions: {
+            type: formQuestionsType,
+            args: {
+                apiKey: { type: GraphQLString },
+                formID: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/form/${args.formID}/questions?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => {
+                        res.data.content;
+                    });
+            },
+        },
+
+        submission: {
+            type: submissionsType,
+            args: {
+                apiKey: { type: GraphQLString },
+                submissionID: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/submission/${args.submissionID}?apiKey=` +
                             args.apiKey
                     )
                     .then((res) => res.data.content);

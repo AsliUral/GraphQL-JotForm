@@ -77,3 +77,11 @@
         opacity: 0;
     }
 }
+
+.variable {
+    color: #1f61a0;
+}
+
+.type {
+    color: #f177db;
+}
