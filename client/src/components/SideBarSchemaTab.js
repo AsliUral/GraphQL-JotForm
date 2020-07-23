@@ -56,6 +56,300 @@ function SideBarSchemaTab(props) {
         </Message>
     );
 
+    const userUsageContentQL = (
+        <Message>
+            <span className="variable">username:</span>
+            <span className="type">String</span> <br />
+            <span className="variable">name:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">email:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">website:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">time_zone:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">account_type:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">status:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">created_at:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">updated_at:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">usage:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">industry:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">securityAnswer:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">company:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">doNotClone:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">webhooks:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">avatarUrl:</span>
+            <span className="type">String</span>
+            <br />
+        </Message>
+    );
+
+    const userSubmissionsContentQL = (
+        <Message>
+            <span className="variable">submissions:</span>
+            <span className="type">Int</span> <br />
+            <span className="variable">ssl_submissions:</span>
+            <span className="type">Int</span>
+            <br />
+            <span className="variable">payments:</span>
+            <span className="type">Int</span>
+            <br />
+            <span className="variable">uploads:</span>
+            <span className="type">Int</span>
+            <br />
+        </Message>
+    );
+    const userSubusersContentQL = (
+        <Message>
+            <span className="variable">owner:</span>
+            <span className="type">String</span> <br />
+            <span className="variable">status:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">email:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">username:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">created_at:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">permissions:</span>
+            <span className="type">[permissions]</span>
+            <br />
+        </Message>
+    );
+    const userHistoryContentQL = (
+        <Message>
+            <span className="variable">type:</span>
+            <span className="type">String</span> <br />
+            <span className="variable">formID:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">username:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">formTitle:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">formTitle:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">ip:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">timestamp:</span>
+            <span className="type">String</span>
+            <br />
+        </Message>
+    );
+
+    const userFoldersContentQL = (
+        <Message>
+            <span className="variable">id:</span>
+            <span className="type">String</span> <br />
+            <span className="variable">path:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">owner:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">name:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">parent:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">color:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">subfolders:</span>
+            <span className="type">[subfolders]</span>
+            <br />
+        </Message>
+    );
+    const userReportsContentQL = (
+        <Message>
+            <span className="variable">id:</span>
+            <span className="type">String</span> <br />
+            <span className="variable">form_id:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">title:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">created_at:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">updated_at:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">fields:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">list_type:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">status:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">url:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">isProtected:</span>
+            <span className="type">Boolean</span>
+            <br />
+        </Message>
+    );
+    const userSettingsContentQL = (
+        <Message>
+            <span className="variable">username:</span>
+            <span className="type">String</span> <br />
+            <span className="variable">name:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">email:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">website:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">time_zone:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">account_type:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">status:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">created_at:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">updated_at:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">usage:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">industry:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">securityAnswer:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">company:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">doNotClone:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">webhooks:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">avatarUrl:</span>
+            <span className="type">String</span>
+            <br />
+        </Message>
+    );
+    const formContentQL = (
+        <Message>
+            <span className="variable">id:</span>
+            <span className="type">String</span> <br />
+            <span className="variable">username:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">title:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">height:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">url:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">status:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">created_at:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">updated_at:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">new:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">count:</span>
+            <span className="type">String</span>
+            <br />
+        </Message>
+    );
+    const formQuestionsContentQL = (
+        <Message>
+            <span className="variable">hint:</span>
+            <span className="type">String</span> <br />
+            <span className="variable">labelAlign:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">name:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">order:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">qid:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">readonly:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">required:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">shrink:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">size:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">text:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">type:</span>
+            <span className="type">String</span>
+            <br />
+            <span className="variable">validationtype:</span>
+            <span className="type">String</span>
+            <br />
+        </Message>
+    );
+
     const user = [
         {
             key: "panel-1a",
@@ -87,7 +381,7 @@ function SideBarSchemaTab(props) {
         <div>
             Schema Details
             <div>
-                <Message>{userFormContentQL}</Message>
+                <Message>{userUsageContentQL}</Message>
             </div>
         </div>
     );
@@ -96,7 +390,7 @@ function SideBarSchemaTab(props) {
         <div>
             Schema Details
             <div>
-                <Message>{userFormContentQL}</Message>
+                <Message>{userSubmissionsContentQL}</Message>
             </div>
         </div>
     );
@@ -105,7 +399,7 @@ function SideBarSchemaTab(props) {
         <div>
             Schema Details
             <div>
-                <Message>{userFormContentQL}</Message>
+                <Message>{userSubusersContentQL}</Message>
             </div>
         </div>
     );
@@ -114,7 +408,7 @@ function SideBarSchemaTab(props) {
         <div>
             Schema Details
             <div>
-                <Message>{userFormContentQL}</Message>
+                <Message>{userHistoryContentQL}</Message>
             </div>
         </div>
     );
@@ -123,7 +417,7 @@ function SideBarSchemaTab(props) {
         <div>
             Schema Details
             <div>
-                <Message>{userFormContentQL}</Message>
+                <Message>{userFoldersContentQL}</Message>
             </div>
         </div>
     );
@@ -132,7 +426,7 @@ function SideBarSchemaTab(props) {
         <div>
             Schema Details
             <div>
-                <Message>{userFormContentQL}</Message>
+                <Message>{userReportsContentQL}</Message>
             </div>
         </div>
     );
@@ -141,7 +435,7 @@ function SideBarSchemaTab(props) {
         <div>
             Schema Details
             <div>
-                <Message>{userFormContentQL}</Message>
+                <Message>{userSettingsContentQL}</Message>
             </div>
         </div>
     );
@@ -150,7 +444,7 @@ function SideBarSchemaTab(props) {
         <div>
             Schema Details
             <div>
-                <Message>{userFormContentQL}</Message>
+                <Message>{formContentQL}</Message>
             </div>
         </div>
     );
@@ -159,7 +453,8 @@ function SideBarSchemaTab(props) {
         <div>
             Schema Details
             <div>
-                <Message>{userFormContentQL}</Message>
+                <Message>{formQuestionsContentQL} </Message>
+                <Accordion.Accordion panels={user} />
             </div>
         </div>
     );

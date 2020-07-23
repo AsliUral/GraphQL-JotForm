@@ -266,6 +266,20 @@ const formQuestionsType = new GraphQLObjectType({
         text: { type: GraphQLString },
         type: { type: GraphQLString },
         validationtype: { type: GraphQLString },
+        userForm: {
+            type: new GraphQLList(UserFormType),
+            args: {
+                apiKey: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/user/forms?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
     }),
 });
 
@@ -422,7 +436,6 @@ const RootQuery = new GraphQLObjectType({
                     .then((res) => res.data.content);
             },
         },
-
         form: {
             type: formType,
             args: {
@@ -455,7 +468,6 @@ const RootQuery = new GraphQLObjectType({
                     });
             },
         },
-
         submission: {
             type: submissionsType,
             args: {
