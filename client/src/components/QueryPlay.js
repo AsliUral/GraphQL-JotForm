@@ -24,7 +24,7 @@ function QueryPlay(props) {
                     data-for="runTip"
                     onClick={resultPlay}
                 >
-                    <Icon name="play circle outline" />
+                    <Icon name="play circle outline" color="purple" />
                 </button>
                 <ReactTooltip id="runTip" place="bottom" effect="solid">
                     Run Query

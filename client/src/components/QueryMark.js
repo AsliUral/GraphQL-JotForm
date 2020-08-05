@@ -49,7 +49,7 @@ function QueryMark(props) {
                             data-for="queryMarkTip"
                             onClick={() => props.setOpenModal(true)}
                         >
-                            <Icon name="bookmark" />
+                            <Icon name="bookmark" color="teal" />
                             <ToastContainer autoClose={2000} />
                         </button>
                         <ReactTooltip

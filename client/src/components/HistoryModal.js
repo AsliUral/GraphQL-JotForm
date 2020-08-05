@@ -17,7 +17,7 @@ function HistoryModal(props) {
                     // </Button>
                     <div>
                         <button data-tip className="bar" data-for="historyTip">
-                            <Icon name="history" />
+                            <Icon name="history" color="green" />
                         </button>
                         <ReactTooltip
                             id="historyTip"

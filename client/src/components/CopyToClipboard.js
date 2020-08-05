@@ -14,7 +14,7 @@ function CopyClipBoard(props) {
             </Button> */}
             <div>
                 <button data-tip className="bar" data-for="copyTip">
-                    <Icon name="copy" />
+                    <Icon name="copy" color="orange" />
                 </button>
                 <ReactTooltip id="copyTip" place="bottom" effect="solid">
                     Copy To Clipboard

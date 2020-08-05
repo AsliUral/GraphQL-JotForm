@@ -22,7 +22,7 @@ function Prettify(props) {
                 data-for="prettifyTip"
                 onClick={props.prettifyQuery}
             >
-                <Icon name="leaf" />
+                <Icon name="leaf" color="pink" />
             </button>
             <ReactTooltip id="prettifyTip" place="bottom" effect="solid">
                 Prettify
