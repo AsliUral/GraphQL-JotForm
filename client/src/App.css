@@ -85,3 +85,64 @@
 .type {
     color: #f177db;
 }
+
+.CodeMirror {
+    position: "relative";
+    left: "40px";
+}
+
+.CodeMirror-lint-message-error {
+    font-family: arial;
+    background: #ffa;
+    color: #a00;
+    position: relative;
+    left: 40px;
+    width: 40%;
+    z-index: 998;
+}
+
+.bar {
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.navbarstyle {
+    position: absolute;
+    left: 0px;
+    width: 2%;
+}
+.editorstyle {
+    position: absolute;
+    left: 40px;
+    width: 49%;
+}
+.resultstyle {
+    position: absolute;
+    right: 0px;
+    width: 49%;
+}
+.doc-category {
+    border-bottom: 1px solid #e0e0e0;
+    color: #777;
+    cursor: default;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0 -15px 10px 0;
+    padding: 10px 0;
+    font-style: normal;
+}
+.doc-category-item {
+    margin: 10px 0;
+    color: #555;
+    font-style: oblique;
+}
+.keyword {
+    color: #1f61a0;
+    font-style: normal;
+}
+.doc-category-item-root {
+    visibility: hidden;
+}
