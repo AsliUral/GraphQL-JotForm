@@ -14,7 +14,7 @@ function EditorAceResult(props) {
                     right: "40px",
                     width: "700px",
                 }}
-                theme="ocean"
+                theme="twilight"
             />
         </>
     );

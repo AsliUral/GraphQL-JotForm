@@ -20,7 +20,7 @@ import "codemirror-graphql/variables/lint";
 import "codemirror/addon/edit/closebrackets";
 import CodeMirror from "@uiw/react-codemirror";
 import "codemirror/addon/display/autorefresh";
-import "codemirror/theme/monokai.css";
+import "codemirror/theme/yonce.css";
 
 function EditorAceQuery(props) {
     const EditorQueryHint = require("./EditorQueryHint");
@@ -258,7 +258,7 @@ function EditorAceQuery(props) {
                 zIndex: 999,
             }}
             options={{
-                theme: "monokai",
+                theme: "yonce",
                 keyMap: "sublime",
                 mode: "graphql",
                 smartIndent: true,

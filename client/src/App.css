@@ -89,6 +89,11 @@
 .CodeMirror {
     position: "relative";
     left: "40px";
+    font-family: "Courier New", Courier, monospace;
+}
+.ReactJson {
+    font-family: "Courier New", Courier, monospace;
+    right: 300;
 }
 
 .CodeMirror-lint-message-error {
