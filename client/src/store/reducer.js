@@ -233,13 +233,14 @@ const reducer = (state = initialState, action) => {
                 userQueryCondition: false,
                 userFormQueryCondition: false,
                 userUsageQueryCondition: false,
-                userSubmissionsCondition: false,
+                userSubmissionsQueryCondition: false,
                 userSubusersQueryCondition: false,
                 userHistoryQueryCondition: false,
                 userReportsQueryCondition: false,
                 userSettingsQueryCondition: false,
-                userSettingsQueryCondition: false,
+                userFoldersQueryCondition: false,
                 formQueryCondition: false,
+                formQuestionQueryCondition: false,
                 submissionQueryCondition: false,
                 returnCondition: [
                     {

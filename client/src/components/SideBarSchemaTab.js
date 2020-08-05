@@ -1,6 +1,8 @@
 import React from "react";
 import { Accordion, Message } from "semantic-ui-react";
 import graphqlSchema from "../graphqlSchema.json";
+import { Icon } from "semantic-ui-react";
+
 function SideBarSchemaTab(props) {
     let RootQuery = props.schemaObject.RootQuery;
     let UserQuery = props.schemaObject.User;
@@ -25,8 +27,8 @@ function SideBarSchemaTab(props) {
             return <span>{UserUsageQuery}</span>;
         } else if (props.userSubusersQueryCondition) {
             return <span>{UserSubusers}</span>;
-        } else if (props.userSubusersQueryCondition) {
-            return <span>{UserSubusers}</span>;
+        } else if (props.userSubmissionsQueryCondition) {
+            return <span>{UserSubmissions}</span>;
         } else if (props.userHistoryQueryCondition) {
             return <span>{UserHistory}</span>;
         } else if (props.userReportsQueryCondition) {
@@ -83,8 +85,8 @@ function SideBarSchemaTab(props) {
                     <span
                         onClick={() =>
                             props.handlerConditionUpdate(
-                                "userFormQueryCondition",
-                                !props.userFormQueryCondition
+                                "userSubmissionsQueryCondition",
+                                !props.userSubmissionsQueryCondition
                             )
                         }
                         class="type-name"
@@ -108,7 +110,8 @@ function SideBarSchemaTab(props) {
                     >
                         User
                     </span>
-                    <br></br>
+                    <br />
+                    <br />
                     <span class="keyword">{RootQuery.UserForm}</span>
                     <span
                         onClick={() =>
@@ -121,7 +124,8 @@ function SideBarSchemaTab(props) {
                     >
                         UserForm
                     </span>
-                    <br></br>
+                    <br />
+                    <br />
                     <span class="keyword">{RootQuery.UserUsage}</span>
                     <span
                         onClick={() =>
@@ -134,7 +138,8 @@ function SideBarSchemaTab(props) {
                     >
                         UserUsage
                     </span>
-                    <br></br>
+                    <br />
+                    <br />
                     <span class="keyword">{RootQuery.UserSubmissions}</span>
                     <span
                         onClick={() =>
@@ -147,7 +152,8 @@ function SideBarSchemaTab(props) {
                     >
                         UserSubmissions
                     </span>
-                    <br></br>
+                    <br />
+                    <br />
                     <span class="keyword">{RootQuery.UserSubusers}</span>
                     <span
                         onClick={() =>
@@ -160,7 +166,8 @@ function SideBarSchemaTab(props) {
                     >
                         UserSubusers
                     </span>
-                    <br></br>
+                    <br />
+                    <br />
                     <span class="keyword">{RootQuery.UserHistory}</span>
                     <span
                         onClick={() =>
@@ -173,7 +180,8 @@ function SideBarSchemaTab(props) {
                     >
                         UserHistory
                     </span>
-                    <br></br>
+                    <br />
+                    <br />
                     <span class="keyword">{RootQuery.UserFolders}</span>
                     <span
                         onClick={() =>
@@ -186,7 +194,8 @@ function SideBarSchemaTab(props) {
                     >
                         UserFolders
                     </span>
-                    <br></br>
+                    <br />
+                    <br />
                     <span class="keyword">{RootQuery.UserReports}</span>
                     <span
                         onClick={() =>
@@ -199,7 +208,8 @@ function SideBarSchemaTab(props) {
                     >
                         UserReports
                     </span>
-                    <br></br>
+                    <br />
+                    <br />
                     <span class="keyword">{RootQuery.UserSettings}</span>
                     <span
                         onClick={() =>
@@ -212,7 +222,8 @@ function SideBarSchemaTab(props) {
                     >
                         UserSettings
                     </span>
-                    <br></br>
+                    <br />
+                    <br />
                     <span class="keyword">{RootQuery.form}</span>
                     <span
                         onClick={() =>
@@ -225,7 +236,8 @@ function SideBarSchemaTab(props) {
                     >
                         Form
                     </span>
-                    <br></br>
+                    <br />
+                    <br />
                     <span class="keyword">{RootQuery.formQuestion}</span>
                     <span
                         onClick={() =>
@@ -238,7 +250,8 @@ function SideBarSchemaTab(props) {
                     >
                         FormQuestions
                     </span>
-                    <br></br>
+                    <br />
+                    <br />
                     <span class="keyword">{RootQuery.submission}</span>
                     <span
                         onClick={() =>
@@ -258,14 +271,17 @@ function SideBarSchemaTab(props) {
 
     return (
         <>
-            <button
-                onClick={() =>
-                    props.handlerReturnCondition(props.returnCondition)
-                }
-            >
-                Return
-            </button>
             <div class="doc-category">
+                {props.returnCondition.length <= 0 ? null : (
+                    <button
+                        className="return-bar"
+                        onClick={() =>
+                            props.handlerReturnCondition(props.returnCondition)
+                        }
+                    >
+                        <Icon name="angle left" color="blue" />
+                    </button>
+                )}{" "}
                 Root Types
                 <div class="doc-category-item">
                     {props.rootQueryCondition ? (

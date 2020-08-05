@@ -112,6 +112,13 @@
     align-items: center;
     padding: 0;
 }
+.return-bar {
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background-color: whitesmoke;
+}
 
 .navbarstyle {
     position: absolute;
