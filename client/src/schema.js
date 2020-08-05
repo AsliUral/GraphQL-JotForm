@@ -1,3 +1,4 @@
+import React from "react";
 const axios = require("axios");
 const fs = require("fs");
 const {
@@ -484,6 +485,10 @@ const RootQuery = new GraphQLObjectType({
     },
 });
 
-module.exports = new GraphQLSchema({
+const schema = new GraphQLSchema({
     query: RootQuery,
 });
+
+// module.exports = function () {
+//     return schema;
+// };

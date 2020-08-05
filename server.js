@@ -4,6 +4,17 @@ const schema = require("./schema");
 const cors = require("cors");
 const path = require("path");
 const app = express();
+const fs = require("fs");
+const {
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLSchema,
+    GraphQLInt,
+    GraphQLList,
+    GraphQLBoolean,
+    buildSchema,
+    printSchema,
+} = require("graphql");
 
 //allow cors
 app.use(cors());
