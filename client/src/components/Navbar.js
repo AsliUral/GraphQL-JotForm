@@ -5,7 +5,7 @@ import Prettify from "../containers/PrettifyContainer";
 import HistoryModal from "../containers/HistoryModalContainer";
 import PopupIcon from "./PopupIcon";
 import QueryPlay from "../containers/QueryPlayContainer";
-import QueryShare from "./QueryShare";
+// import QueryShare from "./QueryShare";
 
 function Navbar() {
     return (
@@ -16,7 +16,7 @@ function Navbar() {
             <QueryPlay />
             <HistoryModal />
             <PopupIcon />
-            <QueryShare />
+            {/* <QueryShare /> */}
         </>
     );
 }

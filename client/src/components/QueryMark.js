@@ -6,6 +6,7 @@ import "@pathofdev/react-tag-input/build/index.css";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import Form from "react-bootstrap/Form";
 import ButtonB from "react-bootstrap/Button";
+import ReactTooltip from "react-tooltip";
 
 function QueryMark(props) {
     const handleChange = (newTags) => {
@@ -31,16 +32,34 @@ function QueryMark(props) {
             <Modal
                 open={props.modal}
                 trigger={
-                    <Button
-                        animated="vertical"
-                        onClick={() => props.setOpenModal(true)}
-                    >
-                        <Button.Content hidden> Query Mark </Button.Content>
-                        <Button.Content visible>
+                    // <Button
+                    //     animated="vertical"
+                    //     onClick={() => props.setOpenModal(true)}
+                    // >
+                    //     <Button.Content hidden> Query Mark </Button.Content>
+                    //     <Button.Content visible>
+                    //         <Icon name="bookmark" />
+                    //     </Button.Content>
+                    //     <ToastContainer autoClose={2000} />
+                    // </Button>
+                    <div>
+                        <button
+                            className="bar"
+                            data-tip
+                            data-for="queryMarkTip"
+                            onClick={() => props.setOpenModal(true)}
+                        >
                             <Icon name="bookmark" />
-                        </Button.Content>
-                        <ToastContainer autoClose={2000} />
-                    </Button>
+                            <ToastContainer autoClose={2000} />
+                        </button>
+                        <ReactTooltip
+                            id="queryMarkTip"
+                            place="bottom"
+                            effect="solid"
+                        >
+                            Query Mark
+                        </ReactTooltip>
+                    </div>
                 }
                 style={{
                     height: "auto",

@@ -2,18 +2,31 @@ import React from "react";
 
 import { Button, Icon, Modal } from "semantic-ui-react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import ReactTooltip from "react-tooltip";
 
 function HistoryModal(props) {
     return (
         <>
             <Modal
                 trigger={
-                    <Button animated="vertical">
-                        <Button.Content hidden>History</Button.Content>
-                        <Button.Content visible>
+                    // <Button animated="vertical">
+                    //     <Button.Content hidden>History</Button.Content>
+                    //     <Button.Content visible>
+                    //         <Icon name="history" />
+                    //     </Button.Content>
+                    // </Button>
+                    <div>
+                        <button data-tip className="bar" data-for="historyTip">
                             <Icon name="history" />
-                        </Button.Content>
-                    </Button>
+                        </button>
+                        <ReactTooltip
+                            id="historyTip"
+                            place="bottom"
+                            effect="solid"
+                        >
+                            Query History
+                        </ReactTooltip>
+                    </div>
                 }
                 style={{
                     height: "auto",
