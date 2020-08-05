@@ -1,6 +1,6 @@
 import React from "react";
 import { Tab } from "semantic-ui-react";
-import SideBarSchemaTab from "./SideBarSchemaTab";
+import SideBarSchemaTab from "../containers/SideBarSchemaTabContainer";
 import SideBarMarkedQueryTab from "../containers/SideBarMarkedQueryTabContainer";
 
 function SideBarTabView() {

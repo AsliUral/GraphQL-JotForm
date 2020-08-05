@@ -10,7 +10,34 @@ export const RUNMARKEDQUERYFROMSOCIALQL = "RUNMARKEDQUERYFROMSOCIALQL";
 export const SETTAGQUERY = "SETTAGQUERY";
 export const SETHEADER = "SETHEADER";
 export const SETOPENMODAL = "SETOPENMODAL";
-
+export const HANDLERRETURNCONDITION = "HANDLERRETURNCONDITION";
+export const UPDATERETURNCONDITION = "UPDATERETURNCONDITION";
+export const HANDLERROOTQUERYCONDITIONUPDATE =
+    "HANDLERROOTQUERYCONDITIONUPDATE";
+export const HANDLERUSERQUERYCONDITIONUPDATE =
+    "HANDLERUSERQUERYCONDITIONUPDATE";
+export const HANDLERUSERFORMQUERYCONDITIONUPDATE =
+    "HANDLERUSERFORMQUERYCONDITIONUPDATE";
+export const HANDLERUSERUSAGEQUERYCONDITIONUPDATE =
+    "HANDLERUSERUSAGEQUERYCONDITIONUPDATE";
+export const HANDLERUSERSUBMISSONSQUERYCONDITIONUPDATE =
+    "HANDLERUSERSUBMISSONSQUERYCONDITIONUPDATE";
+export const HANDLERUSERSUBUSERSQUERYCONDITIONUPDATE =
+    "HANDLERUSERSUBUSERSQUERYCONDITIONUPDATE";
+export const HANDLERUSERHISTORYQUERYCONDITIONUPDATE =
+    "HANDLERUSERHISTORYQUERYCONDITIONUPDATE";
+export const HANDLERUSERFOLDERSQUERYCONDITIONUPDATE =
+    "HANDLERUSERFOLDERSQUERYCONDITIONUPDATE";
+export const HANDLERUSERREPORTSQUERYCONDITIONUPDATE =
+    "HANDLERUSERREPORTSQUERYCONDITIONUPDATE";
+export const HANDLERUSERSETTINGSQUERYCONDITIONUPDATE =
+    "HANDLERUSERSETTINGSQUERYCONDITIONUPDATE";
+export const HANDLERFORMQUERYCONDITIONUPDATE =
+    "HANDLERFORMQUERYCONDITIONUPDATE";
+export const HANDLERFORMQUERYQUESTIONCONDITIONUPDATE =
+    "HANDLERFORMQUERYQUESTIONCONDITIONUPDATE";
+export const HANDLERSUBMISSIONCONDITIONUPDATE =
+    "HANDLERSUBMISSIONCONDITIONUPDATE";
 export const prettifyQuery = (value) => {
     return (dispatch, getState) => {
         dispatch({ type: PRETTIFYQUERY, val: value });
@@ -98,5 +125,167 @@ export const setPostHeader = (value) => {
 export const setOpenModal = (value) => {
     return (dispatch, getState) => {
         dispatch({ type: SETOPENMODAL, val: value });
+    };
+};
+export const handlerConditionUpdate = (condition, value) => {
+    return (dispatch, getState) => {
+        if (condition == "rootQueryCondition") {
+            dispatch({
+                type: HANDLERROOTQUERYCONDITIONUPDATE,
+                condition: condition,
+                val: value,
+            });
+        }
+        if (condition == "userQueryCondition") {
+            dispatch({
+                type: HANDLERUSERQUERYCONDITIONUPDATE,
+                condition: condition,
+                val: value,
+            });
+        }
+        if (condition == "userFormQueryCondition") {
+            dispatch({
+                type: HANDLERUSERFORMQUERYCONDITIONUPDATE,
+                condition: condition,
+                val: value,
+            });
+        }
+        if (condition == "userUsageQueryCondition") {
+            dispatch({
+                type: HANDLERUSERUSAGEQUERYCONDITIONUPDATE,
+                condition: condition,
+                val: value,
+            });
+        }
+        if (condition == "userSubmissionsQueryCondition") {
+            dispatch({
+                type: HANDLERUSERSUBMISSONSQUERYCONDITIONUPDATE,
+                condition: condition,
+                val: value,
+            });
+        }
+        if (condition == "userSubusersQueryCondition") {
+            dispatch({
+                type: HANDLERUSERSUBUSERSQUERYCONDITIONUPDATE,
+                condition: condition,
+                val: value,
+            });
+        }
+        if (condition == "userHistoryQueryCondition") {
+            dispatch({
+                type: HANDLERUSERHISTORYQUERYCONDITIONUPDATE,
+                condition: condition,
+                val: value,
+            });
+        }
+        if (condition == "userFoldersQueryCondition") {
+            dispatch({
+                type: HANDLERUSERFOLDERSQUERYCONDITIONUPDATE,
+                condition: condition,
+                val: value,
+            });
+        }
+        if (condition == "UserReportsQueryCondition") {
+            dispatch({
+                type: HANDLERUSERREPORTSQUERYCONDITIONUPDATE,
+                condition: condition,
+                val: value,
+            });
+        }
+        if (condition == "userSettingsQueryCondition") {
+            dispatch({
+                type: HANDLERUSERSETTINGSQUERYCONDITIONUPDATE,
+                condition: condition,
+                val: value,
+            });
+        }
+        if (condition == "formQueryCondition") {
+            dispatch({
+                type: HANDLERFORMQUERYCONDITIONUPDATE,
+                condition: condition,
+                val: value,
+            });
+        }
+        if (condition == "formQuestionQueryCondition") {
+            dispatch({
+                type: HANDLERFORMQUERYQUESTIONCONDITIONUPDATE,
+                condition: condition,
+                val: value,
+            });
+        }
+        if (condition == "submissionQueryCondition") {
+            dispatch({
+                type: HANDLERSUBMISSIONCONDITIONUPDATE,
+                condition: condition,
+                val: value,
+            });
+        }
+    };
+};
+
+export const handlerReturnCondition = (value) => {
+    const val = value.shift();
+    val.val = true;
+    return (dispatch, getState) => {
+        dispatch({
+            type: UPDATERETURNCONDITION,
+            val: value,
+        });
+        if (val.conditionName == "rootQueryCondition") {
+            dispatch({
+                type: HANDLERROOTQUERYCONDITIONUPDATE,
+                condition: val.conditionName,
+                val: val.val,
+            });
+        }
+        if (val.conditionName == "userQueryCondition") {
+            dispatch({
+                type: HANDLERUSERQUERYCONDITIONUPDATE,
+                condition: val.conditionName,
+                val: val.val,
+            });
+        }
+        if (val.conditionName == "userFormQueryCondition") {
+            dispatch({
+                type: HANDLERUSERFORMQUERYCONDITIONUPDATE,
+                condition: val.conditionName,
+                val: val.val,
+            });
+        }
+        if (val.conditionName == "userUsageQueryCondition") {
+            dispatch({
+                type: HANDLERUSERUSAGEQUERYCONDITIONUPDATE,
+                condition: val.conditionName,
+                val: val.val,
+            });
+        }
+        if (val.conditionName == "userSubmissionsQueryCondition") {
+            dispatch({
+                type: HANDLERUSERSUBMISSONSQUERYCONDITIONUPDATE,
+                condition: val.conditionName,
+                val: val.val,
+            });
+        }
+        if (val.conditionName == "userSubusersQueryCondition") {
+            dispatch({
+                type: HANDLERUSERSUBUSERSQUERYCONDITIONUPDATE,
+                condition: val.conditionName,
+                val: val.val,
+            });
+        }
+        if (val.conditionName == "userHistoryQueryCondition") {
+            dispatch({
+                type: HANDLERUSERHISTORYQUERYCONDITIONUPDATE,
+                condition: val.conditionName,
+                val: val.val,
+            });
+        }
+        if (val.conditionName == "UserReportsQueryCondition") {
+            dispatch({
+                type: HANDLERUSERREPORTSQUERYCONDITIONUPDATE,
+                condition: val.conditionName,
+                val: val.val,
+            });
+        }
     };
 };

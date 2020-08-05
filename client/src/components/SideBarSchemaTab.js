@@ -2,551 +2,294 @@ import React from "react";
 import { Accordion, Message } from "semantic-ui-react";
 import graphqlSchema from "../graphqlSchema.json";
 function SideBarSchemaTab(props) {
-    let userSchema = null;
-    let userFormSchema = null;
+    let RootQuery = props.schemaObject.RootQuery;
+    let UserQuery = props.schemaObject.User;
+    let UserFormQuery = props.schemaObject.UserForm;
+    let UserUsageQuery = props.schemaObject.UserUsage;
+    let UserSubmissions = props.schemaObject.UserSubmissions;
+    let UserSubusers = props.schemaObject.UserSubusers;
+    let UserHistory = props.schemaObject.UserHistory;
+    let UserFolders = props.schemaObject.UserFolders;
+    let UserReports = props.schemaObject.UserReports;
+    let UserSettings = props.schemaObject.UserSettings;
+    let form = props.schemaObject.form;
+    let formQuestion = props.schemaObject.formQuestion;
+    let submission = props.schemaObject.submission;
 
-    graphqlSchema.map((data) => {
-        userSchema = data.User;
-        userFormSchema = data.UserForm;
-    });
+    const showSchemaDetails = () => {
+        if (props.userQueryCondition) {
+            return <span>{UserQuery}</span>;
+        } else if (props.userFormQueryCondition) {
+            return <span>{UserFormQuery}</span>;
+        } else if (props.userUsageQueryCondition) {
+            return <span>{UserUsageQuery}</span>;
+        } else if (props.userSubusersQueryCondition) {
+            return <span>{UserSubusers}</span>;
+        } else if (props.userSubusersQueryCondition) {
+            return <span>{UserSubusers}</span>;
+        } else if (props.userHistoryQueryCondition) {
+            return <span>{UserHistory}</span>;
+        } else if (props.userReportsQueryCondition) {
+            return <span>{UserReports}</span>;
+        } else if (props.userSettingsQueryCondition) {
+            return <span>{UserSettings}</span>;
+        } else if (props.formQueryCondition) {
+            return <span>{form}</span>;
+        } else if (props.submissionQueryCondition) {
+            return <span>{submission}</span>;
+        } else if (props.formQuestionQueryCondition) {
+            return (
+                <span>
+                    {formQuestion}
+                    <br />
+                    <span class="keyword">{RootQuery.UserForm}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "userFormQueryCondition",
+                                !props.userFormQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        UserForm
+                    </span>
+                </span>
+            );
+        } else if (props.userFoldersQueryCondition) {
+            return (
+                <span>
+                    {UserFolders} <br />
+                    <span class="keyword">{RootQuery.UserForm}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "userFormQueryCondition",
+                                !props.userFormQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        UserForm
+                    </span>
+                </span>
+            );
+        } else if (props.userSubmissionsQueryCondition) {
+            return (
+                <span>
+                    {UserSubmissions}
+                    <br />
+                    <span class="keyword">{RootQuery.UserForm}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "userFormQueryCondition",
+                                !props.userFormQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        UserForm
+                    </span>
+                </span>
+            );
+        } else {
+            return (
+                <div>
+                    <span class="keyword">{RootQuery.User}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "userQueryCondition",
+                                !props.userQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        User
+                    </span>
+                    <br></br>
+                    <span class="keyword">{RootQuery.UserForm}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "userFormQueryCondition",
+                                !props.userFormQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        UserForm
+                    </span>
+                    <br></br>
+                    <span class="keyword">{RootQuery.UserUsage}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "userUsageQueryCondition",
+                                !props.userUsageQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        UserUsage
+                    </span>
+                    <br></br>
+                    <span class="keyword">{RootQuery.UserSubmissions}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "userSubmissionsQueryCondition",
+                                !props.userSubmissionsQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        UserSubmissions
+                    </span>
+                    <br></br>
+                    <span class="keyword">{RootQuery.UserSubusers}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "userSubusersQueryCondition",
+                                !props.userSubusersQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        UserSubusers
+                    </span>
+                    <br></br>
+                    <span class="keyword">{RootQuery.UserHistory}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "userHistoryQueryCondition",
+                                !props.userHistoryQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        UserHistory
+                    </span>
+                    <br></br>
+                    <span class="keyword">{RootQuery.UserFolders}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "userFoldersQueryCondition",
+                                !props.userFoldersQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        UserFolders
+                    </span>
+                    <br></br>
+                    <span class="keyword">{RootQuery.UserReports}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "UserReportsQueryCondition",
+                                !props.UserReportsQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        UserReports
+                    </span>
+                    <br></br>
+                    <span class="keyword">{RootQuery.UserSettings}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "userSettingsQueryCondition",
+                                !props.userSettingsQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        UserSettings
+                    </span>
+                    <br></br>
+                    <span class="keyword">{RootQuery.form}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "formQueryCondition",
+                                !props.formQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        Form
+                    </span>
+                    <br></br>
+                    <span class="keyword">{RootQuery.formQuestion}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "formQuestionQueryCondition",
+                                !props.formQuestionQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        FormQuestions
+                    </span>
+                    <br></br>
+                    <span class="keyword">{RootQuery.submission}</span>
+                    <span
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "submissionQueryCondition",
+                                !props.submissionQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        Submission
+                    </span>
+                </div>
+            );
+        }
+    };
 
-    console.log(userSchema);
-
-    const userQueryContentQl = (
-        <Message>
-            <span className="variable">username:</span>
-            <span className="type">String</span> <br />
-            <span className="variable">name:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">email:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">time_zone:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">account_type:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">status:</span>
-            <span className="type">String</span>
-            <br />
-        </Message>
-    );
-
-    const userFormContentQL = (
-        <Message>
-            <span className="variable">username:</span>
-            <span className="type">String</span> <br />
-            <span className="variable">id:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">type:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">last_submission:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">status:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">height:</span>
-            <span className="type">String</span>
-            <br />
-        </Message>
-    );
-
-    const userUsageContentQL = (
-        <Message>
-            <span className="variable">username:</span>
-            <span className="type">String</span> <br />
-            <span className="variable">name:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">email:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">website:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">time_zone:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">account_type:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">status:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">created_at:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">updated_at:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">usage:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">industry:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">securityAnswer:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">company:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">doNotClone:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">webhooks:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">avatarUrl:</span>
-            <span className="type">String</span>
-            <br />
-        </Message>
-    );
-
-    const userSubmissionsContentQL = (
-        <Message>
-            <span className="variable">submissions:</span>
-            <span className="type">Int</span> <br />
-            <span className="variable">ssl_submissions:</span>
-            <span className="type">Int</span>
-            <br />
-            <span className="variable">payments:</span>
-            <span className="type">Int</span>
-            <br />
-            <span className="variable">uploads:</span>
-            <span className="type">Int</span>
-            <br />
-        </Message>
-    );
-    const userSubusersContentQL = (
-        <Message>
-            <span className="variable">owner:</span>
-            <span className="type">String</span> <br />
-            <span className="variable">status:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">email:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">username:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">created_at:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">permissions:</span>
-            <span className="type">[permissions]</span>
-            <br />
-        </Message>
-    );
-    const userHistoryContentQL = (
-        <Message>
-            <span className="variable">type:</span>
-            <span className="type">String</span> <br />
-            <span className="variable">formID:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">username:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">formTitle:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">formTitle:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">ip:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">timestamp:</span>
-            <span className="type">String</span>
-            <br />
-        </Message>
-    );
-
-    const userFoldersContentQL = (
-        <Message>
-            <span className="variable">id:</span>
-            <span className="type">String</span> <br />
-            <span className="variable">path:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">owner:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">name:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">parent:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">color:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">subfolders:</span>
-            <span className="type">[subfolders]</span>
-            <br />
-        </Message>
-    );
-    const userReportsContentQL = (
-        <Message>
-            <span className="variable">id:</span>
-            <span className="type">String</span> <br />
-            <span className="variable">form_id:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">title:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">created_at:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">updated_at:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">fields:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">list_type:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">status:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">url:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">isProtected:</span>
-            <span className="type">Boolean</span>
-            <br />
-        </Message>
-    );
-    const userSettingsContentQL = (
-        <Message>
-            <span className="variable">username:</span>
-            <span className="type">String</span> <br />
-            <span className="variable">name:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">email:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">website:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">time_zone:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">account_type:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">status:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">created_at:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">updated_at:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">usage:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">industry:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">securityAnswer:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">company:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">doNotClone:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">webhooks:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">avatarUrl:</span>
-            <span className="type">String</span>
-            <br />
-        </Message>
-    );
-    const formContentQL = (
-        <Message>
-            <span className="variable">id:</span>
-            <span className="type">String</span> <br />
-            <span className="variable">username:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">title:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">height:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">url:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">status:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">created_at:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">updated_at:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">new:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">count:</span>
-            <span className="type">String</span>
-            <br />
-        </Message>
-    );
-    const formQuestionsContentQL = (
-        <Message>
-            <span className="variable">hint:</span>
-            <span className="type">String</span> <br />
-            <span className="variable">labelAlign:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">name:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">order:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">qid:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">readonly:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">required:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">shrink:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">size:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">text:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">type:</span>
-            <span className="type">String</span>
-            <br />
-            <span className="variable">validationtype:</span>
-            <span className="type">String</span>
-            <br />
-        </Message>
-    );
-
-    const user = [
-        {
-            key: "panel-1a",
-            title: "userForm",
-            content: userFormContentQL,
-        },
-    ];
-
-    const userContent = (
-        <div>
-            Schema Details
-            <Message>
-                {userQueryContentQl}
-                <Accordion.Accordion panels={user} />
-            </Message>
-        </div>
-    );
-
-    const userFormContent = (
-        <div>
-            Schema Details
-            <div>
-                <Message>{userFormContentQL}</Message>
+    return (
+        <>
+            <button
+                onClick={() =>
+                    props.handlerReturnCondition(props.returnCondition)
+                }
+            >
+                Return
+            </button>
+            <div class="doc-category">
+                Root Types
+                <div class="doc-category-item">
+                    {props.rootQueryCondition ? (
+                        <div className="doc-link">{showSchemaDetails()}</div>
+                    ) : (
+                        <div>
+                            <span class="keyword">query: </span>
+                            <span
+                                onClick={() =>
+                                    props.handlerConditionUpdate(
+                                        "rootQueryCondition",
+                                        !props.rootQueryCondition
+                                    )
+                                }
+                                class="type-name"
+                            >
+                                RootQueryType
+                            </span>
+                        </div>
+                    )}
+                </div>
             </div>
-        </div>
+        </>
     );
-
-    const userUsageContent = (
-        <div>
-            Schema Details
-            <div>
-                <Message>{userUsageContentQL}</Message>
-            </div>
-        </div>
-    );
-
-    const userSubmissionsContent = (
-        <div>
-            Schema Details
-            <div>
-                <Message>{userSubmissionsContentQL}</Message>
-            </div>
-        </div>
-    );
-
-    const userSubusersContent = (
-        <div>
-            Schema Details
-            <div>
-                <Message>{userSubusersContentQL}</Message>
-            </div>
-        </div>
-    );
-
-    const userHistoryContent = (
-        <div>
-            Schema Details
-            <div>
-                <Message>{userHistoryContentQL}</Message>
-            </div>
-        </div>
-    );
-
-    const userFoldersContent = (
-        <div>
-            Schema Details
-            <div>
-                <Message>{userFoldersContentQL}</Message>
-            </div>
-        </div>
-    );
-
-    const userReportsContent = (
-        <div>
-            Schema Details
-            <div>
-                <Message>{userReportsContentQL}</Message>
-            </div>
-        </div>
-    );
-
-    const userSettingsContent = (
-        <div>
-            Schema Details
-            <div>
-                <Message>{userSettingsContentQL}</Message>
-            </div>
-        </div>
-    );
-
-    const formContent = (
-        <div>
-            Schema Details
-            <div>
-                <Message>{formContentQL}</Message>
-            </div>
-        </div>
-    );
-
-    const formQuestionsContent = (
-        <div>
-            Schema Details
-            <div>
-                <Message>{formQuestionsContentQL} </Message>
-                <Accordion.Accordion panels={user} />
-            </div>
-        </div>
-    );
-
-    const submissionContent = (
-        <div>
-            Schema Details
-            <div>
-                <Message>{userFormContentQL}</Message>
-            </div>
-        </div>
-    );
-
-    const rootPanels = [
-        {
-            key: "panel-1",
-            title: "user(apiKey: String)",
-            content: { content: userContent },
-        },
-        {
-            key: "panel-2",
-            title: "userForm(apiKey: String)",
-            content: { content: userFormContent },
-        },
-        {
-            key: "panel-2",
-            title: "userUsage(apiKey: String)",
-            content: { content: userUsageContent },
-        },
-        {
-            key: "panel-2",
-            title: "userSubmissions(apiKey: String)",
-            content: { content: userSubmissionsContent },
-        },
-        {
-            key: "panel-2",
-            title: "userSubusers(apiKey: String)",
-            content: { content: userSubusersContent },
-        },
-        {
-            key: "panel-2",
-            title: "userHistory(apiKey: String)",
-            content: { content: userHistoryContent },
-        },
-        {
-            key: "panel-2",
-            title: "userFolders(apiKey: String)",
-            content: { content: userFoldersContent },
-        },
-        {
-            key: "panel-2",
-            title: "userReports(apiKey: String)",
-            content: { content: userReportsContent },
-        },
-        {
-            key: "panel-2",
-            title: "userSettings(apiKey: String)",
-            content: { content: userSettingsContent },
-        },
-        {
-            key: "panel-2",
-            title: "form(apiKey: StringformID: String)",
-            content: { content: formContent },
-        },
-        {
-            key: "panel-2",
-            title: "formQuestions(apiKey: StringformID: String)",
-            content: { content: formQuestionsContent },
-        },
-        {
-            key: "panel-2",
-            title: "submission(apiKey: StringsubmissionID: String)",
-            content: { content: submissionContent },
-        },
-    ];
-
-    function fetcher(query) {
-        return fetch(window.location.origin + "/graphql", {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                query: query,
-            }),
-        }).then(function (r) {
-            return r.json();
-        });
-    }
-
-    return <Accordion panels={rootPanels} styled />;
 }
 
 export default SideBarSchemaTab;
