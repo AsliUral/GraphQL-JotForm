@@ -89,11 +89,13 @@
 .CodeMirror {
     position: "relative";
     left: "40px";
+    height: 100%;
+    z-index: 4;
     font-family: "Courier New", Courier, monospace;
 }
 .ReactJson {
     font-family: "Courier New", Courier, monospace;
-    right: 300;
+    height: "550px";
 }
 
 .CodeMirror-lint-message-error {
@@ -103,7 +105,11 @@
     position: relative;
     left: 40px;
     width: 40%;
-    z-index: 998;
+    z-index: 999;
+}
+
+.CodeMirror-hint {
+    z-index: 999;
 }
 
 .bar {
@@ -111,6 +117,7 @@
     justify-content: center;
     align-items: center;
     padding: 0;
+    z-index: 999;
 }
 .return-bar {
     border-radius: 50%;
@@ -124,6 +131,7 @@
     position: absolute;
     left: 0px;
     width: 2%;
+    z-index: 999;
 }
 .editorstyle {
     position: absolute;

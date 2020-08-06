@@ -252,6 +252,7 @@ function EditorAceQuery(props) {
         <CodeMirror
             value={props.query}
             width="700px"
+            height="550px"
             style={{
                 position: "relative",
                 width: "70px",

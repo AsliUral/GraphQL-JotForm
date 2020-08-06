@@ -4,7 +4,7 @@ import ReactTooltip from "react-tooltip";
 
 function Prettify(props) {
     return (
-        <div style={{ zIndex: 999 }}>
+        <div>
             {/* <Button
                 animated="vertical"
                 data-tip

@@ -16,7 +16,6 @@ function Navbar() {
             <QueryPlay />
             <HistoryModal />
             <PopupIcon />
-            {/* <QueryShare /> */}
         </>
     );
 }
