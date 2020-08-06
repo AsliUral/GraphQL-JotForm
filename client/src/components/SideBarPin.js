@@ -6,12 +6,13 @@ function SideBarPin(props) {
     return (
         <>
             <Button
-                animated="vertical"
+                basic
+                color="pink"
                 onClick={() => {
                     props.pinSideBar(true);
                 }}
             >
-                <Button.Content hidden>Pin Sidebar</Button.Content>
+                <Button.Content />
                 <Button.Content visible>
                     <Icon name="lock" />
                 </Button.Content>

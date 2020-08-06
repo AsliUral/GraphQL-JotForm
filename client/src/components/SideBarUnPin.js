@@ -6,12 +6,13 @@ function SideBarUnPin(props) {
     return (
         <>
             <Button
-                animated="vertical"
+                basic
+                color="grey"
                 onClick={() => {
                     props.pinSideBar(false);
                 }}
             >
-                <Button.Content hidden>Unpin Sidebar</Button.Content>
+                <Button.Content />
                 <Button.Content visible>
                     <Icon name="lock open" />
                 </Button.Content>
