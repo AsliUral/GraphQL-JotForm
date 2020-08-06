@@ -1,17 +1,27 @@
 import React from "react";
 import CopyToClipboard from "./CopyToClipboard";
-
+import CodeBlock from "react-highlight-codeblock";
 function SideBarMarkedQueryTab(props) {
     if (
         typeof props.queryMark !== "undefined" &&
         typeof props.email !== "undefined"
     ) {
         return (
-            <ol>
+            <ol className="markedQuery">
                 {props.queryMark.map((result, i) => (
                     <div>
                         {result.developerEmail === props.email ? (
-                            <li key={i}>{result.markedQuery}</li>
+                            <div>
+                                <CodeBlock
+                                    code={result.markedQuery}
+                                    callback={(code) => console.log(code)}
+                                    editer={true}
+                                    language="javascript"
+                                    showLineNumbers={false}
+                                    style="github"
+                                />
+                                <br></br>
+                            </div>
                         ) : null}
                     </div>
                 ))}
