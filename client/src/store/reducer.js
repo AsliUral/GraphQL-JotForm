@@ -42,7 +42,7 @@ const initialState = {
             formQuestion: `formQuestions(apiKey: String, formID: String):`,
             submission: `submission(apiKey: String, submissionID: String):`,
         },
-        User: `username: String
+        User: `        username: String
         name: String
         email: String
         time_zone: String

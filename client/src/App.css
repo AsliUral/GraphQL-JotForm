@@ -118,6 +118,7 @@
     align-items: center;
     padding: 0;
     z-index: 999;
+    margin-left: 5px;
 }
 .return-bar {
     border-radius: 50%;
@@ -129,7 +130,6 @@
 
 .navbarstyle {
     position: absolute;
-    left: 0px;
     width: 2%;
     z-index: 999;
 }
@@ -138,6 +138,7 @@
     left: 40px;
     width: 49%;
 }
+
 .resultstyle {
     position: absolute;
     right: 0px;

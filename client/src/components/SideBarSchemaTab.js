@@ -1,7 +1,9 @@
 import React from "react";
 import { Accordion, Message } from "semantic-ui-react";
 import graphqlSchema from "../graphqlSchema.json";
+import { format } from "graphql-formatter";
 import { Icon } from "semantic-ui-react";
+import CodeBlock from "react-highlight-codeblock";
 
 function SideBarSchemaTab(props) {
     let RootQuery = props.schemaObject.RootQuery;
@@ -20,9 +22,29 @@ function SideBarSchemaTab(props) {
 
     const showSchemaDetails = () => {
         if (props.userQueryCondition) {
-            return <span>{UserQuery}</span>;
+            return (
+                <span>
+                    {
+                        <CodeBlock
+                            code={UserQuery}
+                            language="javascript"
+                            showLineNumbers={false}
+                            style="github"
+                        />
+                    }
+                </span>
+            );
         } else if (props.userFormQueryCondition) {
-            return <span>{UserFormQuery}</span>;
+            return (
+                <span>
+                    <CodeBlock
+                        code={UserFormQuery}
+                        language="javascript"
+                        showLineNumbers={false}
+                        style="github"
+                    />
+                </span>
+            );
         } else if (props.userUsageQueryCondition) {
             return <span>{UserUsageQuery}</span>;
         } else if (props.userSubusersQueryCondition) {
@@ -42,8 +64,12 @@ function SideBarSchemaTab(props) {
         } else if (props.formQuestionQueryCondition) {
             return (
                 <span>
-                    {formQuestion}
-                    <br />
+                    <CodeBlock
+                        code={formQuestion}
+                        language="javascript"
+                        showLineNumbers={false}
+                        style="github"
+                    />
                     <span class="keyword">{RootQuery.UserForm}</span>
                     <span
                         onClick={() =>

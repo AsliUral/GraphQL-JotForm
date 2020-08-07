@@ -246,7 +246,7 @@ function EditorQueryHint(query) {
     } else {
         return {
             list: [
-                "user(apiKey: String): User",
+                "user(apiKey: String):",
                 "userForm(apiKey: String): [UserFormType]",
                 "userUsage(apiKey: String): UserUsage",
                 "userSubmissions(apiKey: String): [UserSubmissions]",

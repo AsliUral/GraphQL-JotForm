@@ -34,7 +34,7 @@ function SignUp(props) {
     };
 
     const { auth, authError } = props;
-    if (props.auth.uid) return <Redirect to="/" />;
+    if (props.auth.uid) return <Redirect to="/socialQl" />;
     return (
         <Form onSubmit={handleSubmit}>
             <span
