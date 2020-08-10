@@ -94,7 +94,6 @@ function QueryMark(props) {
                                     }
                                 />
                             </Form.Group>
-
                             <ButtonB
                                 variant="outline-danger"
                                 type="submit"

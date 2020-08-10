@@ -15,6 +15,7 @@ export const sendMessage = (value, id) => {
                 firstName: profile.firstName,
                 initial: profile.initials,
                 lastName: profile.lastName,
+                avatar: profile.avatar,
             };
             const message = {
                 content: value,

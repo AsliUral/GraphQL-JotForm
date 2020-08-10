@@ -4,6 +4,7 @@ import MessagesHeader from "../../containers/MessagesHeaderContainer";
 import MessageForm from "../../containers/MessagesFormContainer";
 import moment from "moment";
 import Typing from "./Typing";
+import { UserAvatar } from "react-user-avatar";
 
 function Messages(props) {
     if (typeof props.messages === "undefined") {
@@ -68,9 +69,7 @@ function Messages(props) {
                         message.channelName === props.channelName ? (
                             <Comment>
                                 <Comment.Avatar
-                                    src={
-                                        "https://react.semantic-ui.com/images/avatar/small/stevie.jpg"
-                                    }
+                                    src={message.message.currentUser.avatar}
                                 />
                                 <Comment.Content
                                     className={isOwnMessage(

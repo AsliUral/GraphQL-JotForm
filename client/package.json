@@ -32,6 +32,7 @@
         "react-simple-code-editor": "^0.11.0",
         "react-toastify": "^6.0.5",
         "react-tooltip": "^4.2.7",
+        "react-user-avatar": "^1.10.0",
         "redux-firestore": "^0.13.0",
         "redux-thunk": "^2.3.0"
     },

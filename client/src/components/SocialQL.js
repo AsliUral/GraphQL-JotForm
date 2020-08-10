@@ -45,7 +45,19 @@ function SocialQL(props) {
                                         <Card.Title>
                                             {result.header}
                                             <div class="tag">
-                                                <Label as="a">
+                                                <Label
+                                                    as="a"
+                                                    onClick={() =>
+                                                        addStarQuery(
+                                                            result.markedQuery,
+                                                            result.star,
+                                                            result.starList
+                                                        )
+                                                    }
+                                                >
+                                                    <ToastContainer
+                                                        autoClose={2000}
+                                                    />
                                                     <Icon name="star" />
                                                     {result.star}
                                                 </Label>
@@ -71,23 +83,6 @@ function SocialQL(props) {
                                         >
                                             Run Query
                                         </ButtonB>
-                                        <div class="tag">
-                                            <ButtonB
-                                                variant="outline-light"
-                                                onClick={() =>
-                                                    addStarQuery(
-                                                        result.markedQuery,
-                                                        result.star,
-                                                        result.starList
-                                                    )
-                                                }
-                                            >
-                                                <ToastContainer
-                                                    autoClose={2000}
-                                                />
-                                                Star Query
-                                            </ButtonB>
-                                        </div>
                                     </Card.Body>
                                     <Card.Footer>
                                         <div class="tag">

@@ -1,5 +1,4 @@
 import { firestore } from "firebase";
-
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 export const SIGNOUT_SUCCESS = "SIGNOUT_SUCCESS";
@@ -45,6 +44,7 @@ export const signUp = (newUser) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firebase = getFirebase();
         const firestore = getFirestore();
+
         firebase
             .auth()
             .createUserWithEmailAndPassword(newUser.email, newUser.password)
@@ -57,6 +57,12 @@ export const signUp = (newUser) => {
                         lastName: newUser.lastName,
                         initials: newUser.firstName[0] + newUser.lastName[0],
                         email: newUser.email,
+                        avatar:
+                            `https://identicon-api.herokuapp.com/` +
+                            newUser.firstName +
+                            " " +
+                            newUser.lastName +
+                            `/100?format=png`,
                     });
             })
             .then(() => {
