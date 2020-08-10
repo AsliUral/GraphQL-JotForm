@@ -12,6 +12,7 @@ export const SETHEADER = "SETHEADER";
 export const SETOPENMODAL = "SETOPENMODAL";
 export const HANDLERRETURNCONDITION = "HANDLERRETURNCONDITION";
 export const UPDATERETURNCONDITION = "UPDATERETURNCONDITION";
+export const STARTQUERY = "STARQUERY";
 export const HANDLERROOTQUERYCONDITIONUPDATE =
     "HANDLERROOTQUERYCONDITIONUPDATE";
 export const HANDLERUSERQUERYCONDITIONUPDATE =
@@ -85,10 +86,37 @@ export const addMarkQuery = (query, header, tag) => {
                 createdAt: new Date(),
                 header: header,
                 tag: tag,
+                star: 1,
+                starList: [developerId],
             })
             .then(() => {
                 dispatch({ type: ADDMARKQUERY, query, header, tag });
             });
+    };
+};
+
+export const starQuery = (query, star, starList) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        const starCount = star + 1;
+        const developerId = getState().firebase.auth.uid;
+        const list = starList;
+        firestore
+            .collection("userMarkedQuery")
+            .where("markedQuery", "==", query)
+            .get()
+            .then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    firestore
+                        .collection("userMarkedQuery")
+                        .doc(doc.id)
+                        .update({
+                            star: starCount,
+                            starList: [...list, developerId],
+                        });
+                });
+            });
+        return;
     };
 };
 

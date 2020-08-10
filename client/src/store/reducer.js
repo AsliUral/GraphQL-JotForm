@@ -42,7 +42,8 @@ const initialState = {
             formQuestion: `formQuestions(apiKey: String, formID: String):`,
             submission: `submission(apiKey: String, submissionID: String):`,
         },
-        User: `        username: String
+        User: `
+        username: String
         name: String
         email: String
         time_zone: String
@@ -55,18 +56,21 @@ const initialState = {
         folderLayout: String
         language: String
         avatarUrl: String`,
-        UserForm: `id: String
+        UserForm: `
+        id: String
         username: String
         type: String
         last_submission: String
         status: String
         height: Int
         count: Int`,
-        UserUsage: `submissions: Int
+        UserUsage: `
+        submissions: Int
         ssl_submissions: Int
         payments: Int
         uploads: Int`,
-        UserSubmissions: `id: String
+        UserSubmissions: `
+        id: String
         form_id: String
         ip: String
         created_at: String
@@ -74,27 +78,31 @@ const initialState = {
         status: String
         new: String
         flag: String`,
-        UserSubusers: `owner: String
+        UserSubusers: `
+        owner: String
         status: String
         email: String
         username: String
         created_at: String
         permissions: [permissions]`,
-        UserHistory: `type: String
+        UserHistory: `
+        type: String
         formID: String
         username: String
         formTitle: String
         formStatus: String
         ip: String
         timestamp: Int`,
-        UserFolders: `id: String
-        path: String
-        owner: String
-        name: String
-        parent: String
-        color: String
-        subfolders: [subfolders]`,
-        UserReports: `id: String
+        UserFolders: `
+    id: String
+    path: String
+    owner: String
+    name: String
+    parent: String
+    color: String
+    subfolders: [subfolders]`,
+        UserReports: `
+        id: String
         form_id: String
         title: String
         created_at: String
@@ -104,7 +112,8 @@ const initialState = {
         status: String
         url: String
         isProtected: Boolean`,
-        UserSettings: `username: String
+        UserSettings: `
+        username: String
         name: String
         email: String
         website: String
@@ -120,36 +129,39 @@ const initialState = {
         doNotClone: String
         webhooks: String
         avatarUrl: String`,
-        form: `id: String
-        username: String
-        title: String
-        height: String
-        url: String
-        status: String
-        created_at: String
-        updated_at: String
-        new: String
-        count: String`,
-        formQuestion: `hint: String
-        labelAlign: String
-        name: String
-        order: String
-        qid: String
-        readonly: String
-        required: String
-        shrink: String
-        size: String
-        text: String
-        type: String
-        validationtype: String`,
-        submission: `id: String
-        form_id: String
-        ip: String
-        created_at: String
-        updated_at: String
-        status: String
-        new: String
-        answers: submissionAnswer`,
+        form: `
+    id: String
+    username: String
+    title: String
+    height: String
+    url: String
+    status: String
+    created_at: String
+    updated_at: String
+    new: String
+    count: String`,
+        formQuestion: `
+    hint: String
+    labelAlign: String
+    name: String
+    order: String
+    qid: String
+    readonly: String
+    required: String
+    shrink: String
+    size: String
+    text: String
+    type: String
+    validationtype: String`,
+        submission: `
+    id: String
+    form_id: String
+    ip: String
+    created_at: String
+    updated_at: String
+    status: String
+    new: String
+    answers: submissionAnswer`,
     },
 };
 

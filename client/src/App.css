@@ -164,6 +164,17 @@
     color: #1f61a0;
     font-style: normal;
 }
+.keyword-right {
+    color: #1f61a0;
+    margin-left: 25px;
+    position: relative;
+    font-style: normal;
+}
+.keyword-right-click {
+    color: #f177db;
+    position: relative;
+    font-style: normal;
+}
 .doc-category-item-root {
     visibility: hidden;
 }

@@ -9,6 +9,8 @@ import SidePanel from "./social/SidePanel";
 import Messages from "../containers/MessagesContainer";
 import { Grid } from "semantic-ui-react";
 import { Redirect, useHistory } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 function SocialQL(props) {
     const history = useHistory();
@@ -20,6 +22,13 @@ function SocialQL(props) {
     const handleClick = (markedQuery) => {
         props.runMarkedQueryfromSocialQL(markedQuery);
         history.push("/");
+    };
+    const addStarQuery = (markedQuery, star, starList) => {
+        if (starList.includes(props.developerId)) {
+            toast("⭐ You've already starred this query ");
+        } else {
+            props.starQuery(markedQuery, star, starList);
+        }
     };
 
     if (!props.auth.uid) return <Redirect to="/signin" />;
@@ -37,7 +46,8 @@ function SocialQL(props) {
                                             {result.header}
                                             <div class="tag">
                                                 <Label as="a">
-                                                    <Icon name="star" /> 23
+                                                    <Icon name="star" />
+                                                    {result.star}
                                                 </Label>
                                             </div>
                                         </Card.Title>
@@ -61,6 +71,23 @@ function SocialQL(props) {
                                         >
                                             Run Query
                                         </ButtonB>
+                                        <div class="tag">
+                                            <ButtonB
+                                                variant="outline-light"
+                                                onClick={() =>
+                                                    addStarQuery(
+                                                        result.markedQuery,
+                                                        result.star,
+                                                        result.starList
+                                                    )
+                                                }
+                                            >
+                                                <ToastContainer
+                                                    autoClose={2000}
+                                                />
+                                                Star Query
+                                            </ButtonB>
+                                        </div>
                                     </Card.Body>
                                     <Card.Footer>
                                         <div class="tag">
