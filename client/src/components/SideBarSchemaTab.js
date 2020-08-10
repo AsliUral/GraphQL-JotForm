@@ -29,7 +29,7 @@ function SideBarSchemaTab(props) {
                             code={UserQuery}
                             language="javascript"
                             showLineNumbers={false}
-                            style="github"
+                            style="a11yLight"
                         />
                     }
                 </span>
@@ -41,26 +41,99 @@ function SideBarSchemaTab(props) {
                         code={UserFormQuery}
                         language="javascript"
                         showLineNumbers={false}
-                        style="github"
+                        style="a11yLight"
                     />
                 </span>
             );
         } else if (props.userUsageQueryCondition) {
-            return <span>{UserUsageQuery}</span>;
+            return (
+                <span>
+                    {" "}
+                    <CodeBlock
+                        code={UserUsageQuery}
+                        language="javascript"
+                        showLineNumbers={false}
+                        style="a11yLight"
+                    />
+                </span>
+            );
         } else if (props.userSubusersQueryCondition) {
-            return <span>{UserSubusers}</span>;
+            return (
+                <span>
+                    <CodeBlock
+                        code={UserSubusers}
+                        language="javascript"
+                        showLineNumbers={false}
+                        style="a11yLight"
+                    />
+                </span>
+            );
         } else if (props.userSubmissionsQueryCondition) {
-            return <span>{UserSubmissions}</span>;
+            return (
+                <span>
+                    <CodeBlock
+                        code={UserSubmissions}
+                        language="javascript"
+                        showLineNumbers={false}
+                        style="a11yLight"
+                    />
+                </span>
+            );
         } else if (props.userHistoryQueryCondition) {
-            return <span>{UserHistory}</span>;
+            return (
+                <span>
+                    <CodeBlock
+                        code={UserHistory}
+                        language="javascript"
+                        showLineNumbers={false}
+                        style="a11yLight"
+                    />
+                </span>
+            );
         } else if (props.userReportsQueryCondition) {
-            return <span>{UserReports}</span>;
+            return (
+                <span>
+                    <CodeBlock
+                        code={UserReports}
+                        language="javascript"
+                        showLineNumbers={false}
+                        style="a11yLight"
+                    />
+                </span>
+            );
         } else if (props.userSettingsQueryCondition) {
-            return <span>{UserSettings}</span>;
+            return (
+                <span>
+                    <CodeBlock
+                        code={UserSettings}
+                        language="javascript"
+                        showLineNumbers={false}
+                        style="a11yLight"
+                    />
+                </span>
+            );
         } else if (props.formQueryCondition) {
-            return <span>{form}</span>;
+            return (
+                <span>
+                    <CodeBlock
+                        code={form}
+                        language="javascript"
+                        showLineNumbers={false}
+                        style="a11yLight"
+                    />
+                </span>
+            );
         } else if (props.submissionQueryCondition) {
-            return <span>{submission}</span>;
+            return (
+                <span>
+                    <CodeBlock
+                        code={submission}
+                        language="javascript"
+                        showLineNumbers={false}
+                        style="a11yLight"
+                    />
+                </span>
+            );
         } else if (props.formQuestionQueryCondition) {
             return (
                 <span>
@@ -68,10 +141,11 @@ function SideBarSchemaTab(props) {
                         code={formQuestion}
                         language="javascript"
                         showLineNumbers={false}
-                        style="github"
+                        style="a11yLight"
                     />
-                    <span class="keyword">{RootQuery.UserForm}</span>
+                    <span class="keyword-right">{RootQuery.UserForm}</span>
                     <span
+                        class="keyword-right-click"
                         onClick={() =>
                             props.handlerConditionUpdate(
                                 "userFormQueryCondition",
@@ -87,9 +161,15 @@ function SideBarSchemaTab(props) {
         } else if (props.userFoldersQueryCondition) {
             return (
                 <span>
-                    {UserFolders} <br />
-                    <span class="keyword">{RootQuery.UserForm}</span>
+                    <CodeBlock
+                        code={UserFolders}
+                        language="javascript"
+                        showLineNumbers={false}
+                        style="a11yLight"
+                    />
+                    <span class="keyword-right">{RootQuery.UserForm}</span>
                     <span
+                        class="keyword-right-click"
                         onClick={() =>
                             props.handlerConditionUpdate(
                                 "userFormQueryCondition",

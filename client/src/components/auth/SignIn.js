@@ -59,13 +59,15 @@ function SignIn(props) {
                     <Form.Group>
                         <Form.Check type="checkbox" label="Check me out" />
                     </Form.Group>
-                    <Button
-                        variant="danger"
-                        type="submit"
-                        style={{ display: "block", align: "center" }}
-                    >
-                        Login
-                    </Button>
+                    <div class="row justify-content-center">
+                        <Button
+                            variant="danger"
+                            type="submit"
+                            style={{ display: "block", align: "center" }}
+                        >
+                            Login
+                        </Button>
+                    </div>
                     <div className="red-text center">
                         {authError ? <p> {authError}</p> : null}
                     </div>

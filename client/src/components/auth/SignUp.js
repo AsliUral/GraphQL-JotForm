@@ -62,10 +62,10 @@ function SignUp(props) {
                     />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>First Name</Form.Label>
+                    <Form.Label>Last Name</Form.Label>
                     <Form.Control
                         id="lastName"
-                        placeholder="lastName"
+                        placeholder="LastName"
                         onChange={handleChange}
                     />
                 </Form.Group>
@@ -78,12 +78,11 @@ function SignUp(props) {
                         onChange={handleChange}
                     />
                 </Form.Group>
-                <Form.Group>
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                <Button variant="danger" type="submit">
-                    SignUp
-                </Button>
+                <div class="row justify-content-center">
+                    <Button variant="danger" type="submit">
+                        SignUp
+                    </Button>
+                </div>
                 <div className="red-text center">
                     {authError ? <p> {authError}</p> : null}
                 </div>
