@@ -12,8 +12,11 @@ import {
     Input,
     Radio,
 } from "semantic-ui-react";
+import { Redirect, useHistory } from "react-router-dom";
 
 const SignedInLinks = (props) => {
+    const history = useHistory();
+
     const { profile } = props;
     const trigger = (
         <span>
@@ -57,6 +60,9 @@ const SignedInLinks = (props) => {
                                     <Dropdown.Item
                                         icon="star"
                                         text="Your Stars"
+                                        onClick={() =>
+                                            history.push("/starQuery")
+                                        }
                                     />
                                     <Dropdown.Divider />
                                     <Modal

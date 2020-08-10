@@ -4,7 +4,6 @@ import MessagesHeader from "../../containers/MessagesHeaderContainer";
 import MessageForm from "../../containers/MessagesFormContainer";
 import moment from "moment";
 import Typing from "./Typing";
-import { UserAvatar } from "react-user-avatar";
 
 function Messages(props) {
     if (typeof props.messages === "undefined") {

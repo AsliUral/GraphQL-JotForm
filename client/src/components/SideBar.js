@@ -26,7 +26,7 @@ function SideBar(props) {
                     sidebar: {
                         background: "white",
                         width: 300,
-                        zIndex: 2,
+                        zIndex: 311,
                         insert: "unset",
                         position: "absolute",
                         top: 0,

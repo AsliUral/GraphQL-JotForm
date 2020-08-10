@@ -12,6 +12,7 @@ import SignIn from "./containers/SignInContainer";
 import SignUp from "./containers/SignUpContainer";
 import SocialQl from "./containers/SocialQLContainer";
 import Collaborate from "./components/collaborate/collaborate";
+import StarQuery from "./containers/StarQueryContainer";
 const client = new ApolloClient({
     uri: "/graphql",
 });
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/signup" component={SignUp} />
                 <Route path="/socialQL" component={SocialQl} />
                 <Route path="/collaborate" component={Collaborate} />
+                <Route path="/starQuery" component={StarQuery} />
             </Switch>
         </BrowserRouter>
     );
