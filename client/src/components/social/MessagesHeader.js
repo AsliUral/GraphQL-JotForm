@@ -21,14 +21,7 @@ function MessagesHeader(props) {
                     <Icon name={"star outline"} color="black" />
                 </span>
             </Header>
-            <Header floated="right">
-                <Input
-                    size="mini"
-                    icon="search"
-                    name="searchTearm"
-                    placeholder="Search Messages"
-                />
-            </Header>
+            <Header floated="right"></Header>
         </Segment>
     );
 }

@@ -112,6 +112,10 @@
     z-index: 999;
 }
 
+.ui.input > input {
+    background-color: azure;
+}
+
 .starHeader {
     font-style: "Comic Sans MS", cursive, sans-serif;
     font-size: 40px;

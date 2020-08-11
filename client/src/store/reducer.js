@@ -26,6 +26,7 @@ const initialState = {
     userFormQueryCondition: false,
     userUsageQueryCondition: false,
     userSubmissionsQueryCondition: false,
+    searchTagValue: "",
     returnCondition: [],
     schemaObject: {
         RootQuery: {
@@ -212,6 +213,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 sidebarDocked: action.val,
+            };
+        case actionTypes.SEARCHTAG:
+            return {
+                ...state,
+                searchTagValue: action.val,
+                queryMark: action.queryMark,
             };
         case actionTypes.RUNMARKEDQUERYFROMSOCIALQL:
             return {

@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 import CodeBlock from "react-highlight-codeblock";
 import "../style/SocialQl.css";
-import { Icon, Label } from "semantic-ui-react";
+import { Icon, Label, Input } from "semantic-ui-react";
 import SidePanel from "./social/SidePanel";
 import Messages from "../containers/MessagesContainer";
 import { Grid } from "semantic-ui-react";
@@ -31,6 +31,137 @@ function SocialQL(props) {
         }
     };
 
+    const viewQuery = () => {
+        if (props.queryMarkStore.length === 0) {
+            return props.queryMark.map((result, i) => (
+                <div class="social">
+                    <Card>
+                        <Card.Body>
+                            <Card.Title>
+                                {result.header}
+                                <div class="tag">
+                                    <Label
+                                        as="a"
+                                        onClick={() =>
+                                            addStarQuery(
+                                                result.markedQuery,
+                                                result.star,
+                                                result.starList
+                                            )
+                                        }
+                                    >
+                                        <ToastContainer autoClose={2000} />
+                                        <Icon name="star" />
+                                        {result.star}
+                                    </Label>
+                                </div>
+                            </Card.Title>
+                            <Card.Text>
+                                <CodeBlock
+                                    code={result.markedQuery}
+                                    callback={(code) => console.log(code)}
+                                    editer={true}
+                                    language="html"
+                                    style="monokai"
+                                    showLineNumbers={false}
+                                />
+                            </Card.Text>
+                            <ButtonB
+                                variant="danger"
+                                onClick={() => handleClick(result.markedQuery)}
+                            >
+                                Run Query
+                            </ButtonB>
+                        </Card.Body>
+                        <Card.Footer>
+                            <div class="tag">
+                                <Badge variant="primary">
+                                    {result.tag[0] ? result.tag[0] : null}
+                                </Badge>
+                                <Badge variant="warning">
+                                    {result.tag[1] ? result.tag[1] : null}
+                                </Badge>
+                                <Badge variant="success">
+                                    {result.tag[2] ? result.tag[2] : null}
+                                </Badge>
+                            </div>
+                            <div class="user">
+                                <Icon name="user" />
+                                {result.developerFirstName} /
+                                {result.developerEmail}
+                            </div>
+                        </Card.Footer>
+                    </Card>
+                </div>
+            ));
+        }
+        return props.queryMarkStore.map((result, i) => (
+            <div class="social">
+                <Card>
+                    <Card.Body>
+                        <Card.Title>
+                            {result.header}
+                            <div class="tag">
+                                <Label
+                                    as="a"
+                                    onClick={() =>
+                                        addStarQuery(
+                                            result.markedQuery,
+                                            result.star,
+                                            result.starList
+                                        )
+                                    }
+                                >
+                                    <ToastContainer autoClose={2000} />
+                                    <Icon name="star" />
+                                    {result.star}
+                                </Label>
+                            </div>
+                        </Card.Title>
+                        <Card.Text>
+                            <CodeBlock
+                                code={result.markedQuery}
+                                callback={(code) => console.log(code)}
+                                editer={true}
+                                language="html"
+                                style="monokai"
+                                showLineNumbers={false}
+                            />
+                        </Card.Text>
+                        <ButtonB
+                            variant="danger"
+                            onClick={() => handleClick(result.markedQuery)}
+                        >
+                            Run Query
+                        </ButtonB>
+                    </Card.Body>
+                    <Card.Footer>
+                        <div class="tag">
+                            <Badge variant="primary">
+                                {result.tag[0] ? result.tag[0] : null}
+                            </Badge>
+                            <Badge variant="warning">
+                                {result.tag[1] ? result.tag[1] : null}
+                            </Badge>
+                            <Badge variant="success">
+                                {result.tag[2] ? result.tag[2] : null}
+                            </Badge>
+                        </div>
+                        <div class="user">
+                            <Icon name="user" />
+                            {result.developerFirstName} /{result.developerEmail}
+                        </div>
+                    </Card.Footer>
+                </Card>
+            </div>
+        ));
+    };
+
+    const searchSpace = (event) => {
+        let keyword = event.target.value;
+        props.searchTag(keyword, props.queryMark);
+        viewQuery();
+    };
     if (!props.auth.uid) return <Redirect to="/signin" />;
 
     return (
@@ -38,79 +169,21 @@ function SocialQL(props) {
             <div class="page">
                 <div class="left-half">
                     <div>
-                        {props.queryMark.map((result, i) => (
-                            <div class="social">
-                                <Card>
-                                    <Card.Body>
-                                        <Card.Title>
-                                            {result.header}
-                                            <div class="tag">
-                                                <Label
-                                                    as="a"
-                                                    onClick={() =>
-                                                        addStarQuery(
-                                                            result.markedQuery,
-                                                            result.star,
-                                                            result.starList
-                                                        )
-                                                    }
-                                                >
-                                                    <ToastContainer
-                                                        autoClose={2000}
-                                                    />
-                                                    <Icon name="star" />
-                                                    {result.star}
-                                                </Label>
-                                            </div>
-                                        </Card.Title>
-                                        <Card.Text>
-                                            <CodeBlock
-                                                code={result.markedQuery}
-                                                callback={(code) =>
-                                                    console.log(code)
-                                                }
-                                                editer={true}
-                                                language="html"
-                                                style="monokai"
-                                                showLineNumbers={false}
-                                            />
-                                        </Card.Text>
-                                        <ButtonB
-                                            variant="danger"
-                                            onClick={() =>
-                                                handleClick(result.markedQuery)
-                                            }
-                                        >
-                                            Run Query
-                                        </ButtonB>
-                                    </Card.Body>
-                                    <Card.Footer>
-                                        <div class="tag">
-                                            <Badge variant="primary">
-                                                {result.tag[0]
-                                                    ? result.tag[0]
-                                                    : null}
-                                            </Badge>
-                                            <Badge variant="warning">
-                                                {result.tag[1]
-                                                    ? result.tag[1]
-                                                    : null}
-                                            </Badge>
-                                            <Badge variant="success">
-                                                {result.tag[2]
-                                                    ? result.tag[2]
-                                                    : null}
-                                            </Badge>
-                                        </div>
-                                        <div class="user">
-                                            <Icon name="user" />
-                                            {result.developerFirstName} /
-                                            {result.developerEmail}
-                                        </div>
-                                    </Card.Footer>
-                                </Card>
-                            </div>
-                        ))}
+                        <div>
+                            <Input
+                                size="mini"
+                                icon="search"
+                                placeholder="Search query's tag"
+                                onChange={(e) => searchSpace(e)}
+                            />
+                            {/* <input
+                                class="w3-input w3-border w3-round"
+                                type="text"
+                                placeholder="Enter item to be searched"
+                                
+                            /> */}
+                        </div>
+                        {viewQuery()}
                     </div>
                 </div>
                 <div class="right-half">

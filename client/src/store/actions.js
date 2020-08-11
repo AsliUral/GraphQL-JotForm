@@ -10,6 +10,7 @@ export const RUNMARKEDQUERYFROMSOCIALQL = "RUNMARKEDQUERYFROMSOCIALQL";
 export const SETTAGQUERY = "SETTAGQUERY";
 export const SETHEADER = "SETHEADER";
 export const SETOPENMODAL = "SETOPENMODAL";
+export const SEARCHTAG = "SEARCHTAG";
 export const HANDLERRETURNCONDITION = "HANDLERRETURNCONDITION";
 export const UPDATERETURNCONDITION = "UPDATERETURNCONDITION";
 export const STARTQUERY = "STARQUERY";
@@ -68,6 +69,19 @@ export const setQueryError = (value) => {
         dispatch({ type: SETQUERYERROR, val: value });
     };
 };
+
+export const searchTag = (value, queryMark) => {
+    let filteredQueryMark = [];
+    queryMark.filter((result) => {
+        if (result.tag.includes(value)) {
+            filteredQueryMark.push(result);
+        }
+    });
+    return (dispatch, getState) => {
+        dispatch({ type: SEARCHTAG, val: value, queryMark: filteredQueryMark });
+    };
+};
+
 // add marked query to firebase but takes time (async)
 export const addMarkQuery = (query, header, tag) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
