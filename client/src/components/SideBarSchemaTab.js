@@ -24,14 +24,41 @@ function SideBarSchemaTab(props) {
         if (props.userQueryCondition) {
             return (
                 <span>
-                    {
-                        <CodeBlock
-                            code={UserQuery}
-                            language="javascript"
-                            showLineNumbers={false}
-                            style="a11yLight"
-                        />
-                    }
+                    <CodeBlock
+                        code={UserQuery}
+                        language="javascript"
+                        showLineNumbers={false}
+                        style="a11yLight"
+                    />
+                    <span class="keyword-right">{RootQuery.UserForm}</span>
+                    <span
+                        class="keyword-right-click"
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "userFormQueryCondition",
+                                !props.userFormQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        UserForm
+                    </span>
+                    <br></br>
+                    <span class="keyword-right">
+                        {RootQuery.UserSubmissions}
+                    </span>
+                    <span
+                        class="keyword-right-click"
+                        onClick={() =>
+                            props.handlerConditionUpdate(
+                                "userSubmissionsQueryCondition",
+                                !props.userSubmissionsQueryCondition
+                            )
+                        }
+                        class="type-name"
+                    >
+                        UserSubmissions
+                    </span>
                 </span>
             );
         } else if (props.userFormQueryCondition) {

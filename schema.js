@@ -28,6 +28,34 @@ const UserFormType = new GraphQLObjectType({
     }),
 });
 
+const UserSubmissionsType = new GraphQLObjectType({
+    name: "UserSubmissions",
+    fields: () => ({
+        id: { type: GraphQLString },
+        form_id: { type: GraphQLString },
+        ip: { type: GraphQLString },
+        created_at: { type: GraphQLString },
+        updated_at: { type: GraphQLString },
+        status: { type: GraphQLString },
+        new: { type: GraphQLString },
+        flag: { type: GraphQLString },
+        userForm: {
+            type: new GraphQLList(UserFormType),
+            args: {
+                apiKey: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/user/forms?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
+    }),
+});
+
 const UserFormschema = new GraphQLSchema({
     query: UserFormType,
 });
@@ -62,6 +90,20 @@ const UserType = new GraphQLObjectType({
                     .then((res) => res.data.content);
             },
         },
+        userSubmissions: {
+            type: new GraphQLList(UserSubmissionsType),
+            args: {
+                apiKey: { type: GraphQLString },
+            },
+            resolve(parentValue, args) {
+                return axios
+                    .get(
+                        `https://api.jotform.com/user/submissions?apiKey=` +
+                            args.apiKey
+                    )
+                    .then((res) => res.data.content);
+            },
+        },
     }),
 });
 
@@ -88,34 +130,6 @@ const UserUsageType = new GraphQLObjectType({
         ssl_submissions: { type: GraphQLInt },
         payments: { type: GraphQLInt },
         uploads: { type: GraphQLInt },
-    }),
-});
-
-const UserSubmissionsType = new GraphQLObjectType({
-    name: "UserSubmissions",
-    fields: () => ({
-        id: { type: GraphQLString },
-        form_id: { type: GraphQLString },
-        ip: { type: GraphQLString },
-        created_at: { type: GraphQLString },
-        updated_at: { type: GraphQLString },
-        status: { type: GraphQLString },
-        new: { type: GraphQLString },
-        flag: { type: GraphQLString },
-        userForm: {
-            type: new GraphQLList(UserFormType),
-            args: {
-                apiKey: { type: GraphQLString },
-            },
-            resolve(parentValue, args) {
-                return axios
-                    .get(
-                        `https://api.jotform.com/user/forms?apiKey=` +
-                            args.apiKey
-                    )
-                    .then((res) => res.data.content);
-            },
-        },
     }),
 });
 

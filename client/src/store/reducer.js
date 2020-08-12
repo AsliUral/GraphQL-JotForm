@@ -44,19 +44,19 @@ const initialState = {
             submission: `submission(apiKey: String, submissionID: String):`,
         },
         User: `
-        username: String
-        name: String
-        email: String
-        time_zone: String
-        account_type: String 
-        status: String 
-        created_at: String
-        updated_at: String
-        website: String
-        company: String
-        folderLayout: String
-        language: String
-        avatarUrl: String`,
+    username: String
+    name: String
+    email: String
+    time_zone: String
+    account_type: String 
+    status: String 
+    reated_at: String
+    updated_at: String
+    website: String
+    company: String
+    folderLayout: String
+    language: String
+    avatarUrl: String`,
         UserForm: `
         id: String
         username: String
@@ -285,7 +285,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 userFormQueryCondition: action.val,
-
+                userQueryCondition: false,
                 returnCondition: [
                     ...state.returnCondition,
                     {
@@ -311,6 +311,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 userSubmissionsQueryCondition: action.val,
+                userQueryCondition: false,
                 returnCondition: [
                     ...state.returnCondition,
                     {
