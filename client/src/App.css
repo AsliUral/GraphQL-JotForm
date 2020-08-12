@@ -107,6 +107,17 @@
     width: 40%;
     z-index: 999;
 }
+.queryHistory {
+    overflow-y: scroll;
+    align-self: center;
+    height: 300px;
+}
+
+.eachQueryHistory {
+    overflow-y: scroll;
+    align-self: center;
+    height: 250px;
+}
 
 .CodeMirror-hint {
     z-index: 999;

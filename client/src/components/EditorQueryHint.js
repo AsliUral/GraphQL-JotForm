@@ -172,6 +172,7 @@ function EditorQueryHint(query) {
                     "language: String",
                     "avatarUrl: String",
                     "userForm(apiKey: String):",
+                    "userSubmissions(apiKey: String):",
                 ],
             };
         } else {
@@ -246,7 +247,7 @@ function EditorQueryHint(query) {
     } else {
         return {
             list: [
-                "user(apiKey: String):",
+                "user(apiKey: String):User",
                 "userForm(apiKey: String): [UserFormType]",
                 "userUsage(apiKey: String): UserUsage",
                 "userSubmissions(apiKey: String): [UserSubmissions]",
