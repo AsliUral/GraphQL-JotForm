@@ -28,6 +28,7 @@ const initialState = {
     userSubmissionsQueryCondition: false,
     searchTagValue: "",
     returnCondition: [],
+    queryRun: false,
     schemaObject: {
         RootQuery: {
             User: `user(apiKey: String):`,
@@ -182,6 +183,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 query: format(state.query),
+                queryRun: true,
                 currentQuery: gql`
                     ${state.query}
                 `,

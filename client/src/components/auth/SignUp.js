@@ -6,7 +6,7 @@ import "../../style/Sign.css";
 
 function SignUp(props) {
     let signIn = {
-        width: "700px",
+        width: "800px",
         margin: "auto",
         display: "block",
         align: "center",
@@ -36,58 +36,116 @@ function SignUp(props) {
     const { auth, authError } = props;
     if (props.auth.uid) return <Redirect to="/socialQl" />;
     return (
-        <Form onSubmit={handleSubmit}>
-            <span
-                className="block-example border border-danger rounded mb-0"
-                style={signIn}
-            >
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
-                        type="email"
-                        id="email"
-                        placeholder="Enter email"
-                        onChange={handleChange}
-                    />
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control
-                        id="firstName"
-                        placeholder="FirstName"
-                        onChange={handleChange}
-                    />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control
-                        id="lastName"
-                        placeholder="LastName"
-                        onChange={handleChange}
-                    />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                        type="password"
-                        id="password"
-                        placeholder="Password"
-                        onChange={handleChange}
-                    />
-                </Form.Group>
-                <div class="row justify-content-center">
-                    <Button variant="danger" type="submit">
-                        SignUp
-                    </Button>
-                </div>
-                <div className="red-text center">
-                    {authError ? <p> {authError}</p> : null}
-                </div>
-            </span>
-        </Form>
+        <div className="Login">
+            <Form onSubmit={handleSubmit}>
+                <span
+                    className="inline-example border border-default rounded mb-0"
+                    style={signIn}
+                >
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>
+                            {" "}
+                            <h1>Email address</h1>
+                        </Form.Label>
+                        <div
+                            style={{
+                                textAlign: "center",
+                            }}
+                        >
+                            <Form.Control
+                                style={{
+                                    width: "500px",
+                                    display: "inline-block ",
+                                }}
+                                type="email"
+                                id="email"
+                                placeholder="Enter email"
+                                onChange={handleChange}
+                            />
+                            <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                            </Form.Text>
+                        </div>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>
+                            {" "}
+                            <h1>First Name</h1>
+                        </Form.Label>
+                        <div
+                            style={{
+                                textAlign: "center",
+                            }}
+                        >
+                            <Form.Control
+                                style={{
+                                    width: "500px",
+                                    display: "inline-block ",
+                                }}
+                                id="firstName"
+                                placeholder="FirstName"
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>
+                            <h1>Last Name</h1>
+                        </Form.Label>
+                        <div
+                            style={{
+                                textAlign: "center",
+                            }}
+                        >
+                            <Form.Control
+                                style={{
+                                    width: "500px",
+                                    display: "inline-block ",
+                                }}
+                                id="lastName"
+                                placeholder="LastName"
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>
+                            {" "}
+                            <h1>Password</h1>
+                        </Form.Label>
+                        <div
+                            style={{
+                                textAlign: "center",
+                            }}
+                        >
+                            <Form.Control
+                                style={{
+                                    width: "500px",
+                                    display: "inline-block ",
+                                }}
+                                type="password"
+                                id="password"
+                                placeholder="Password"
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </Form.Group>
+                    <div class="row justify-content-center">
+                        <Button
+                            variant="danger"
+                            type="submit"
+                            size="lg"
+                            style={{ display: "block", align: "center" }}
+                        >
+                            SignUp
+                        </Button>
+                    </div>
+                    <div className="red-text center">
+                        {authError ? <p> {authError}</p> : null}
+                    </div>
+                </span>
+            </Form>
+        </div>
     );
 }
 

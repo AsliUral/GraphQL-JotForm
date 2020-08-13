@@ -11,6 +11,16 @@ const Navbar = (props) => {
         <nav class="navbar navbar-expand-lg bg-dark">
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <NavLink style={{ color: "#fff" }} to="/">
+                                <img
+                                    height="30"
+                                    src="https://github.com/uralAsli/icon/blob/master/podo_1.png?raw=true"
+                                />
+                            </NavLink>
+                        </a>
+                    </li>
                     <li class="nav-item active">
                         <a class="nav-link">
                             <NavLink style={{ color: "#fff" }} to="/">

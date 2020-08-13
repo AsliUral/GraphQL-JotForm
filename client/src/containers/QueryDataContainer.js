@@ -7,6 +7,7 @@ const mapStateToProps = (state) => {
     return {
         query: state.project.query,
         currentQuery: state.project.currentQuery,
+        queryRun: state.project.queryRun,
     };
 };
 const mapDispatchToProps = (dispatch) => {

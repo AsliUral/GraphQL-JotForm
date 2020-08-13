@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import "../../style/Sign.css";
 function SignIn(props) {
     let signIn = {
-        width: "700px",
+        width: "800px",
         margin: "auto",
         display: "block",
         align: "center",
@@ -29,32 +29,56 @@ function SignIn(props) {
     const { authError, auth } = props;
     if (props.auth.uid) return <Redirect to="/" />;
     return (
-        <div>
+        <div className="Login">
             <Form onSubmit={handleSubmit}>
                 <span
-                    className="block-example border border-danger rounded mb-0"
+                    className="inline-example border border-default rounded mb-0"
                     style={signIn}
                 >
                     <Form.Group>
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control
-                            type="email"
-                            id="email"
-                            placeholder="Enter email"
-                            onChange={handleChange}
-                        />
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                        </Form.Text>
+                        <Form.Label>
+                            <h1>Email address</h1>
+                        </Form.Label>
+                        <div
+                            style={{
+                                textAlign: "center",
+                            }}
+                        >
+                            <Form.Control
+                                style={{
+                                    width: "500px",
+                                    display: "inline-block ",
+                                }}
+                                type="email"
+                                id="email"
+                                placeholder="Enter email"
+                                onChange={handleChange}
+                            />
+                            <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                            </Form.Text>
+                        </div>
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control
-                            id="password"
-                            type="password"
-                            placeholder="Password"
-                            onChange={handleChange}
-                        />
+                        <Form.Label>
+                            <h1>Password</h1>
+                        </Form.Label>
+                        <div
+                            style={{
+                                textAlign: "center",
+                            }}
+                        >
+                            <Form.Control
+                                style={{
+                                    width: "500px",
+                                    display: "inline-block ",
+                                }}
+                                id="password"
+                                type="password"
+                                placeholder="Password"
+                                onChange={handleChange}
+                            />
+                        </div>
                     </Form.Group>
                     <Form.Group>
                         <Form.Check type="checkbox" label="Check me out" />
@@ -63,6 +87,7 @@ function SignIn(props) {
                         <Button
                             variant="danger"
                             type="submit"
+                            size="lg"
                             style={{ display: "block", align: "center" }}
                         >
                             Login
