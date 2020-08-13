@@ -57,7 +57,7 @@ function QueryMark(props) {
                             place="bottom"
                             effect="solid"
                         >
-                            Query Mark
+                            Post Query
                         </ReactTooltip>
                     </div>
                 }
@@ -69,7 +69,7 @@ function QueryMark(props) {
                     right: "auto",
                 }}
             >
-                <Modal.Header> Marked Query SocialQl Post 🚀</Modal.Header>
+                <Modal.Header> Post Query 🚀</Modal.Header>
                 <Modal.Content>
                     <Modal.Description>
                         <Form onSubmit={handleSubmit}>

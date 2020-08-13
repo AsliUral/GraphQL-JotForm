@@ -32,7 +32,7 @@ function StarQuery(props) {
             <div class="page">
                 <div class="left-star-half">
                     <div>
-                        <div class="starHeader">Queries You Star</div>
+                        <div class="starHeader">Starred Queries</div>
                         <br></br>
                         {props.queryMark.map((result, i) => (
                             <div class="social">
@@ -121,7 +121,7 @@ function StarQuery(props) {
                     </div>
                 </div>
                 <div class="right-star-half ">
-                    <div class="starHeader">Starred Queries</div>
+                    <div class="starHeader">Your Queries</div>
                     <br></br>
                     <div>
                         {props.queryMark.map((result, i) => (
