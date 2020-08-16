@@ -7,5 +7,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-//export default AceEditorGraphql;
 export default connect(null, mapDispatchToProps)(Prettify);

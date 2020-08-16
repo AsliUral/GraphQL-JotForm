@@ -14,7 +14,6 @@ function SideBarMarkedQueryTab(props) {
                             <div>
                                 <CodeBlock
                                     code={result.markedQuery}
-                                    callback={(code) => console.log(code)}
                                     editer={true}
                                     language="javascript"
                                     showLineNumbers={false}

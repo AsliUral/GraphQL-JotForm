@@ -34,7 +34,6 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-//export default AceEditorGraphql;
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([{ collection: "messages" }])

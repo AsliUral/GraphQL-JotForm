@@ -55,9 +55,6 @@ function StarQuery(props) {
                                             <Card.Text>
                                                 <CodeBlock
                                                     code={result.markedQuery}
-                                                    callback={(code) =>
-                                                        console.log(code)
-                                                    }
                                                     editer={true}
                                                     language="html"
                                                     style="monokai"
@@ -146,9 +143,6 @@ function StarQuery(props) {
                                             <Card.Text>
                                                 <CodeBlock
                                                     code={result.markedQuery}
-                                                    callback={(code) =>
-                                                        console.log(code)
-                                                    }
                                                     editer={true}
                                                     language="html"
                                                     style="monokai"

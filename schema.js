@@ -116,13 +116,6 @@ schemaObj = { ...schemaObj, User: valUserType };
 const data = JSON.stringify(schemaObj);
 let check = true;
 
-// if (check) {
-//     fs.writeFileSync("graphqlSchema.json", data);
-//     console.log("JSON data is saved.");
-//     check = false;
-//     return;
-// }
-
 const UserUsageType = new GraphQLObjectType({
     name: "UserUsage",
     fields: () => ({

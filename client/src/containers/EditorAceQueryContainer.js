@@ -15,6 +15,4 @@ const mapDispatchToProps = (dispatch) => {
         onChangeQuery: (value) => dispatch(onChangeQuery(value)),
     };
 };
-
-//export default AceEditorGraphql;
 export default connect(mapStateToProps, mapDispatchToProps)(EditorAceQuery);

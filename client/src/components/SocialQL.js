@@ -121,7 +121,6 @@ function SocialQL(props) {
                         <Card.Text>
                             <CodeBlock
                                 code={result.markedQuery}
-                                callback={(code) => console.log(code)}
                                 editer={true}
                                 language="html"
                                 style="monokai"
@@ -176,12 +175,6 @@ function SocialQL(props) {
                                 placeholder="Search query's tag"
                                 onChange={(e) => searchSpace(e)}
                             />
-                            {/* <input
-                                class="w3-input w3-border w3-round"
-                                type="text"
-                                placeholder="Enter item to be searched"
-                                
-                            /> */}
                         </div>
                         {viewQuery()}
                     </div>

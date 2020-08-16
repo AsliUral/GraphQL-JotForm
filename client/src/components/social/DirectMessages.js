@@ -16,7 +16,6 @@ function DirectMessages(props) {
         });
     });
 
-    console.log(statusArr);
     let obj = {};
     let isUserOnline = (email) => {
         statusArr.map((pre) => {
@@ -35,7 +34,6 @@ function DirectMessages(props) {
     const onlineIcon = (user) => (
         <Menu.Item
             key={user.email}
-            onClick={() => console.log(user)}
             style={{ opacity: 0.7, fontStyle: "italic" }}
         >
             <Icon name="circle" color={isUserOnline(user.email)} />@{" "}

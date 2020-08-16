@@ -291,34 +291,3 @@ function EditorAceQuery(props) {
 }
 
 export default EditorAceQuery;
-
-/*
-
-
-<AceEditor
-                mode="graphqlschema"
-                theme="dracula"
-                style={{
-                    position: "absolute",
-                    left: "40px",
-                    width: "700px",
-                    zIndex: 999,
-                }}
-                value={props.query}
-                onChange={props.onChangeQuery}
-                name="UNIQUE_ID_OF_DIV"
-                enableSnippets={true}
-                enableLiveAutocompletion={true}
-                enableBasicAutocompletion={true}
-                highlightActiveLine={true}
-                markers={mark()}
-                editorProps={{ $blockScrolling: true }}
-                setOptions={{
-                    enableBasicAutocompletion: true,
-                    enableLiveAutocompletion: true,
-                    enableSnippets: true,
-                    wrapBehavioursEnabled: true,
-                }}
-            />
-
-*/

@@ -29,7 +29,3 @@ export default compose(
     firestoreConnect([{ collection: "users" }]),
     firestoreConnect([{ collection: "presence" }])
 )(DirectMessages);
-
-// database.on("value", snap => {
-//     snap.val()
-//   })

@@ -16,60 +16,6 @@ import "codemirror/addon/lint/lint";
 import "codemirror-graphql/hint";
 import "codemirror-graphql/lint";
 import "codemirror-graphql/mode";
-
-// const schema = `GraphQLSchema {
-//     __validationErrors: undefined,
-//     description: undefined,
-//     extensions: undefined,
-//     astNode: undefined,
-//     extensionASTNodes: undefined,
-//     _queryType: RootQueryType,
-//     _mutationType: undefined,
-//     _subscriptionType: undefined,
-//     _directives: [ @include, @skip, @deprecated ],
-//     _typeMap: [Object: null prototype] {
-//       RootQueryType: RootQueryType,
-//       User: User,
-//       String: String,
-//       UserFormType: UserFormType,
-//       Int: Int,
-//       UserUsage: UserUsage,
-//       UserSubmissions: UserSubmissions,
-//       UserSubusers: UserSubusers,
-//       permissions: permissions,
-//       UserHistory: UserHistory,
-//       UserFolders: UserFolders,
-//       subfolders: subfolders,
-//       UserReport: UserReport,
-//       Boolean: Boolean,
-//       UserSetting: UserSetting,
-//       form: form,
-//       formQuestions: formQuestions,
-//       submissions: submissions,
-//       submissionAnswer: submissionAnswer,
-//       __Schema: __Schema,
-//       __Type: __Type,
-//       __TypeKind: __TypeKind,
-//       __Field: __Field,
-//       __InputValue: __InputValue,
-//       __EnumValue: __EnumValue,
-//       __Directive: __Directive,
-//       __DirectiveLocation: __DirectiveLocation
-//     },
-//     _subTypeMap: [Object: null prototype] {},
-//     _implementationsMap: [Object: null prototype] {}
-//   }`;
-
-// CodeMirror.fromTextArea(<EditorAceQuery />, {
-//     mode: "graphql",
-//     lint: {
-//         schema: schema,
-//     },
-//     hintOptions: {
-//         schema: schema,
-//     },
-// });
-
 function Editor() {
     return (
         <>

@@ -9,5 +9,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-//export default AceEditorGraphql;
 export default connect(mapStateToProps)(Navbar);

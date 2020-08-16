@@ -10,12 +10,6 @@ function HistoryModal(props) {
         <>
             <Modal
                 trigger={
-                    // <Button animated="vertical">
-                    //     <Button.Content hidden>History</Button.Content>
-                    //     <Button.Content visible>
-                    //         <Icon name="history" />
-                    //     </Button.Content>
-                    // </Button>
                     <div>
                         <button data-tip className="bar" data-for="historyTip">
                             <Icon name="history" color="green" />

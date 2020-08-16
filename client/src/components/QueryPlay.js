@@ -31,13 +31,6 @@ function QueryPlay(props) {
                 </ReactTooltip>
                 <ToastContainer autoClose={2000} />
             </div>
-            {/* <Button animated="vertical" onClick={resultPlay}>
-                <Button.Content hidden>Run</Button.Content>
-                <Button.Content visible>
-                    <Icon name="play circle outline" />
-                </Button.Content>
-                <ToastContainer autoClose={2000} />
-            </Button> */}
         </>
     );
 }

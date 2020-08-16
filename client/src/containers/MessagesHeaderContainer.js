@@ -11,14 +11,6 @@ const mapStateToProps = (state) => {
     };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         sendMessage: (value) => dispatch(sendMessage(value)),
-//         setChannelMessageValue: (value) =>
-//             dispatch(setChannelMessageValue(value)),
-//     };
-// };
-
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([{ collection: "messages" }])

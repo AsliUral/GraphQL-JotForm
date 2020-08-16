@@ -6,12 +6,6 @@ import ReactTooltip from "react-tooltip";
 function CopyClipBoard(props) {
     return (
         <CopyToClipboard text={props.query}>
-            {/* <Button animated="vertical">
-                <Button.Content hidden>Copy</Button.Content>
-                <Button.Content visible>
-                    <Icon name="copy" />
-                </Button.Content>
-            </Button> */}
             <div>
                 <button data-tip className="bar" data-for="copyTip">
                     <Icon name="copy" color="orange" />
