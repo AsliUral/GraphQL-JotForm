@@ -108,28 +108,16 @@ const SignedInLinks = (props) => {
                                                         control={Radio}
                                                         label="1 day"
                                                         value="1 day"
-                                                        // checked={value === "1"}
-                                                        // onChange={
-                                                        //     this.handleChange
-                                                        // }
                                                     />
                                                     <Form.Field
                                                         control={Radio}
                                                         label="1 week"
                                                         value="1 week"
-                                                        // checked={value === "2"}
-                                                        // onChange={
-                                                        //     this.handleChange
-                                                        // }
                                                     />
                                                     <Form.Field
                                                         control={Radio}
                                                         label="1 month"
                                                         value="1 month"
-                                                        // checked={value === "3"}
-                                                        // onChange={
-                                                        //     this.handleChange
-                                                        // }
                                                     />
                                                 </Form.Group>
                                                 <Form.Field

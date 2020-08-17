@@ -14,5 +14,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-//export default AceEditorGraphql;
 export default connect(mapStateToProps, mapDispatchToProps)(QueryPlay);

@@ -2,7 +2,6 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 
-// import { sendMessage, setChannelMessageValue } from "../store/messageActions";
 import Messages from "../components/social/Messages";
 
 const mapStateToProps = (state) => {

@@ -32,16 +32,6 @@ function QueryMark(props) {
             <Modal
                 open={props.modal}
                 trigger={
-                    // <Button
-                    //     animated="vertical"
-                    //     onClick={() => props.setOpenModal(true)}
-                    // >
-                    //     <Button.Content hidden> Query Mark </Button.Content>
-                    //     <Button.Content visible>
-                    //         <Icon name="bookmark" />
-                    //     </Button.Content>
-                    //     <ToastContainer autoClose={2000} />
-                    // </Button>
                     <div>
                         <button
                             className="bar"
