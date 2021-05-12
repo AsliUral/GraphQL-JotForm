@@ -27,7 +27,7 @@
         "ace-builds": "^1.4.11",
         "axios": "^0.19.2",
         "bootswatch": "^4.5.0",
-        "codemirror": "^5.54.0",
+        "codemirror": "^5.58.2",
         "concurrently": "^5.2.0",
         "cors": "^2.8.5",
         "eslint-config-jotform": "^1.0.34",
